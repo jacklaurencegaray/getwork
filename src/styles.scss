@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Vendor Stylesheets */
+@import './node_modules/normalize.scss/normalize.scss';
+@import './node_modules/reset-css/sass/_reset.scss';
+@import './assets/scss/vendor/animate.scss';
+
+/* Font Stylesheets */
+@import './assets/fonts/Calibre.scss';
+
+/* Global Stylesheets */
+@import './assets/scss/base.scss';
