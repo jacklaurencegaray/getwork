@@ -14,8 +14,10 @@
 .content-container {
     display: grid;
     grid-template-columns:  10% 5% 30% 5% 20% 20% 10%;
-    grid-template-rows:  10% 20% 60% 10%;
+    grid-template-rows:  5% 15% 70% 10%;
     grid-gap: 10px 10px;
+    width: 100vw;
+    height: 100vh;
     grid-template-areas: 
         "nav . . . . . ."
         "nav . header header header header ."

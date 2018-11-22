@@ -3,6 +3,7 @@
     grid-template-columns: 100%;
     grid-template-rows: 10% 15% 65% 10%;
     grid-gap: 5px;
+    height: 100vh;
     grid-template-areas:
         "logo"
         "back"
@@ -23,6 +24,6 @@
 
 .nav-screenTitle {
     grid-area: screenTitle;
-    border: 1px solid yellow;
+    border: 5px solid yellow;
 }
 
