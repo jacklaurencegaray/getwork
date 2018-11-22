@@ -10,3 +10,35 @@
 
 /* Global Stylesheets */
 @import './assets/scss/base.scss';
+
+.content-container {
+    display: grid;
+    grid-template-columns:  [col1] 10% [col2] 10% [col3]30% [col4]20% [col5]20% [col6] 10% [end];
+    grid-template-rows:  [row1] 10% [row2] 20% [row3] 60% [row4] 10%;
+    grid-gap: 10px 10px;
+    grid-template-areas: 
+        "nav . . . . ."
+        "nav . header header header ."
+        "nav . listcontent detail detail ."
+        "nav . . . . ."
+}
+
+.content-nav {
+    grid-area: nav;
+    border:1px solid black;
+}
+
+.content-header {
+    grid-area: header;
+    border:1px solid black;
+}
+
+.content-list {
+    grid-area: listcontent;
+    border:1px solid black;
+}
+
+.content-detail {
+    grid-area: detail;
+    border:1px solid black;
+}
