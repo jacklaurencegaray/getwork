@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { JobRequestService } from '../jobrequests.service';
+import { JobRequest } from 'src/app/shared/jobrequest.model';
 
 @Component({
   selector: 'app-jobrequest-list',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./jobrequest-list.component.scss']
 })
 export class JobrequestListComponent implements OnInit {
-
-  constructor() { }
+  jobRequests: JobRequest[];
+  constructor(private jobRequestService: JobRequestService) { }
 
   ngOnInit() {
+    this.jobRequests = this.jobRequestService.getJobRequests();
   }
 
 }

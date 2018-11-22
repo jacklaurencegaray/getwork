@@ -1,3 +1,6 @@
-<p>
-  jobrequest-list works!
-</p>
+<div>
+  <div *ngFor="let jr of jobRequests">
+    <p>ID: {{ jr.id }}</p>
+    <p>Contact Person: {{ jr.contact }}</p>
+  </div>
+</div>
