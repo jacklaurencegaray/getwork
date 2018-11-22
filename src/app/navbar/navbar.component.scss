@@ -1,0 +1,28 @@
+.nav-container{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 10% 15% 65% 10%;
+    grid-gap: 5px;
+    grid-template-areas:
+        "logo"
+        "back"
+        "."
+        "screenTitle"
+
+}
+
+.nav-logo {
+    grid-area: logo;
+    border: 1px solid yellow;
+}
+
+.nav-back {
+    grid-area: back;
+    border: 1px solid yellow;
+}
+
+.nav-screenTitle {
+    grid-area: screenTitle;
+    border: 1px solid yellow;
+}
+
