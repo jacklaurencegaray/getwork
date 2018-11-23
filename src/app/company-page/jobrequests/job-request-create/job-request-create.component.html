@@ -1,25 +1,29 @@
-<form>
+<form (ngSubmit)="createJobRequest(f)" #f="ngForm">
   <div>
     <label for="displayHandler">Display Handler</label>
-    <input type="text" name="displayHandler">
+    <input type="text" name="displayHandler" ngModel>
   </div>
   <div>
+      <label for="contact">Contact Person</label>
+      <input type="text" name="contact" ngModel>
+    </div>
+  <div>
       <label for="description">Description</label>
-      <input type="text" name="description">
+      <input type="text" name="description" ngModel>
   </div>
   <div>
       <label for="duration">Duration</label>
-      <input type="date" name="startDate">
+      <input type="date" name="startDate" ngModel>
       <span> to </span>
-      <input type="date" name="endDate">
+      <input type="date" name="endDate" ngModel>
   </div>
   <div>
       <label for="expirationDate">Expiry Date</label>
-      <input type="date" name="expirationDate">
+      <input type="date" name="expirationDate" ngModel>
   </div>
   <div>
       <label for="status">Status</label>
-      <input type="text" name="status">
+      <input type="text" name="status" ngModel>
   </div>
   <div>
     <button>Create Request</button>

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { JobRequest } from 'src/app/shared/jobrequest.model';
 
 @Component({
   selector: 'app-job-request-detail',

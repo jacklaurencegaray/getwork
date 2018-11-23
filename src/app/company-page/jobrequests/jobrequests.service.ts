@@ -9,8 +9,13 @@ export class JobRequestService{
     ];
     
     jobRequestSelected = new EventEmitter<JobRequest>();
-
+    newJobAdded = new EventEmitter<JobRequest>();
     getJobRequests(){
         return this.jobRequests.slice();
+    }
+
+    addJobRequest(jobRequest: JobRequest){
+        this.jobRequests.push(jobRequest);
+        this.newJobAdded.emit(jobRequest);
     }
 }
