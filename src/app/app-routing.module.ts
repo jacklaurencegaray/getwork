@@ -9,6 +9,7 @@ import { JobRequestCreateComponent } from './company-page/jobrequests/job-reques
 import { JobRequestUpdateComponent } from './company-page/jobrequests/job-request-update/job-request-update.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: ':name', 
