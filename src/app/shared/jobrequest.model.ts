@@ -1,5 +1,7 @@
 export class JobRequest {
-    constructor(public id: number, 
+    constructor(public id: number,
+        public tag: string,
+        public status: string, 
         public contact: string,
         public description: string,
         public startData: Date,

@@ -3,6 +3,9 @@
     <app-jobrequest-list></app-jobrequest-list>
   </div>
   <div class="detail-content">
-        this is for your details
+    <app-job-request-detail *ngIf="jobRequestForDisplay; else noSelected" [jobRequestForDisplay]="jobRequestForDisplay"></app-job-request-detail>
+    <ng-template #noSelected>
+      <h2>Select a job request</h2>
+    </ng-template>
   </div>
 </div>

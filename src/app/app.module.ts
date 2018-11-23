@@ -15,6 +15,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { JobrequestsComponent } from './company-page/jobrequests/jobrequests.component';
 import { JobrequestListComponent } from './company-page/jobrequests/jobrequest-list/jobrequest-list.component';
 import { JobrequestItemComponent } from './company-page/jobrequests/jobrequest-list/jobrequest-item/jobrequest-item.component';
+import { JobRequestDetailComponent } from './company-page/jobrequests/job-request-detail/job-request-detail.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { JobrequestItemComponent } from './company-page/jobrequests/jobrequest-l
     JobrequestsComponent,
     JobrequestListComponent,
     JobrequestItemComponent,
+    JobRequestDetailComponent,
   ],
   imports: [
     BrowserModule,
