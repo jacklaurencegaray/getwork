@@ -13,9 +13,9 @@ export class JobrequestListComponent implements OnInit {
 
   ngOnInit() {
     this.jobRequests = this.jobRequestService.getJobRequests();
-    this.jobRequestService.newJobAdded.subscribe(
-      (jobRequest: JobRequest) => {
-        this.jobRequests.push(jobRequest);
+    this.jobRequestService.jobRequestsChanged.subscribe(
+      (jobRequests: JobRequest[]) => {
+        this.jobRequests = jobRequests.slice();
       }
     );
   }

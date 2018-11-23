@@ -1,4 +1,4 @@
-<form #f="ngForm">
+<form (ngSubmit)="updateJobRequest(f)" #f="ngForm">
     <div>
       <label for="displayHandler">Display Handler</label>
       <input 

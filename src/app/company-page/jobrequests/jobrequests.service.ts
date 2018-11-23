@@ -9,14 +9,14 @@ export class JobRequestService{
     ];
     
     jobRequestSelected = new EventEmitter<JobRequest>();
-    newJobAdded = new EventEmitter<JobRequest>();
+    jobRequestsChanged = new EventEmitter<JobRequest[]>();
     getJobRequests(){
         return this.jobRequests.slice();
     }
 
     addJobRequest(jobRequest: JobRequest){
         this.jobRequests.push(jobRequest);
-        this.newJobAdded.emit(jobRequest);
+        this.jobRequestsChanged.emit(this.jobRequests.slice());
     }
 
     getJobRequestById(id:number){
@@ -25,5 +25,14 @@ export class JobRequestService{
                 return obj.id === id;
             }
         );
+    }
+
+    updateJobRequest(updatedJobRequest: JobRequest){
+        let ndx = this.jobRequests.findIndex(
+            obj => obj.id === updatedJobRequest.id
+        );
+
+        this.jobRequests[ndx] = updatedJobRequest;
+        this.jobRequestsChanged.emit(this.jobRequests.slice());
     }
 }
