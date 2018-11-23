@@ -18,11 +18,6 @@ export class JobRequestCreateComponent implements OnInit {
 
   }
   ngOnInit() {
-    this.route.params.subscribe(
-      (params: Params) => {
-        this.newJobRequest = this.jobRequestService.getJobRequestById(+params['id']);
-      }
-    );
   }
   
   createJobRequest(){
