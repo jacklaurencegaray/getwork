@@ -1,8 +1,7 @@
 .nav-container{
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 10% 15% 65% 10%;
-    grid-gap: 5px;
+    grid-template-rows: 1fr 1fr 3fr 1fr;
     height: 100vh;
     grid-template-areas:
         "logo"
