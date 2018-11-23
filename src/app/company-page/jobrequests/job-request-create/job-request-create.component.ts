@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { JobRequest } from 'src/app/shared/jobrequest.model';
 import { JobRequestService } from '../jobrequests.service';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-job-request-create',
@@ -12,10 +13,16 @@ export class JobRequestCreateComponent implements OnInit {
   @ViewChild("f") createForm: NgForm;
   newJobRequest: JobRequest;
 
-  constructor(private jobRequestService: JobRequestService){
+  constructor(private jobRequestService: JobRequestService,
+    private route: ActivatedRoute){
 
   }
   ngOnInit() {
+    this.route.params.subscribe(
+      (params: Params) => {
+        this.newJobRequest = this.jobRequestService.getJobRequestById(+params['id']);
+      }
+    );
   }
   
   createJobRequest(){

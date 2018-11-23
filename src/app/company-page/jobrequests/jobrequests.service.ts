@@ -18,4 +18,12 @@ export class JobRequestService{
         this.jobRequests.push(jobRequest);
         this.newJobAdded.emit(jobRequest);
     }
+
+    getJobRequestById(id:number){
+        return this.jobRequests.find(
+            obj => {
+                return obj.id === id;
+            }
+        );
+    }
 }
