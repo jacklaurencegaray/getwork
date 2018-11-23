@@ -35,4 +35,13 @@ export class JobRequestService{
         this.jobRequests[ndx] = updatedJobRequest;
         this.jobRequestsChanged.emit(this.jobRequests.slice());
     }
+
+    deleteJobRequest(id:number){
+        let ndx = this.jobRequests.findIndex(
+            obj => obj.id === id
+        );
+
+        this.jobRequests.splice(ndx,1);
+        this.jobRequestsChanged.emit(this.jobRequests.slice());
+    }
 }

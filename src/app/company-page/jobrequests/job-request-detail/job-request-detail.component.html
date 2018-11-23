@@ -8,6 +8,6 @@
   <div class="detail-btn-group">
     <button>View Contracts</button>
     <button [routerLink]="['/test','jobrequests', jobRequestForDisplay.id, 'update']">Update Requests</button>
-    <button>Delete</button>
+    <button (click)="deleteJobRequest()">Delete</button>
   </div>
 </div>

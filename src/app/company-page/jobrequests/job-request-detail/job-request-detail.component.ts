@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { JobRequest } from 'src/app/shared/jobrequest.model';
 import { JobRequestService } from '../jobrequests.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-job-request-detail',
@@ -11,7 +11,8 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class JobRequestDetailComponent implements OnInit {
   @Input() jobRequestForDisplay: JobRequest;
   constructor(private jobRequestService: JobRequestService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(
@@ -19,6 +20,11 @@ export class JobRequestDetailComponent implements OnInit {
         this.jobRequestForDisplay = this.jobRequestService.getJobRequestById(+params['id']);
       }
     );
+  }
+
+  deleteJobRequest(){
+    this.jobRequestService.deleteJobRequest(this.jobRequestForDisplay.id);
+    this.router.navigate(['/test']);
   }
 
 }
