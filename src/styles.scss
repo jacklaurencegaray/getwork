@@ -13,8 +13,8 @@
 
 .content-container {
     display: grid;
-    grid-template-columns:  10% 5% 75% 10%;
-    grid-template-rows:  5% 15% 70% 10%;
+    grid-template-columns:  10% 5% 1fr 10%;
+    grid-template-rows:  5% 15% 1fr 10%;
     grid-gap: 10px 10px;
     width: 100vw;
     height: 100vh;

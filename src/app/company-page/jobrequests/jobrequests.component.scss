@@ -1,6 +1,6 @@
 .content-body-container{
     display: grid;
-    grid-template-columns: 35% 5% 60%;
+    grid-template-columns: 2fr 5% 2fr;
     grid-template-rows: 100%;
     grid-template-areas:
         "list-content . detail-content"
