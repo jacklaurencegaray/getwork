@@ -26,6 +26,7 @@ export class JobRequestUpdateComponent implements OnInit {
         this.jobRequestForUpdate = Object.create(this.jobRequestService.getJobRequestById(+params['id']));
       }
     );
+    console.log(this.jobRequestForUpdate.startDate);
     this.startDate = this.jobRequestForUpdate.startDate.toISOString().substring(0,10);
     this.endDate = this.jobRequestForUpdate.endDate.toISOString().substring(0,10);
     this.expiryDate = this.jobRequestForUpdate.expiryDate.toISOString().substring(0,10);

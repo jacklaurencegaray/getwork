@@ -27,12 +27,20 @@ export class JobRequestCreateComponent implements OnInit {
       this.createForm.form.value.status,
       this.createForm.form.value.contact,
       this.createForm.form.value.description,
-      this.createForm.form.value.startDate,
-      this.createForm.form.value.endDate,
-      this.createForm.form.value.expirationDate
+      this.strToDate(this.createForm.form.value.startDate),
+      this.strToDate(this.createForm.form.value.endDate),
+      this.strToDate(this.createForm.form.value.expirationDate)
     );
     this.jobRequestService.addJobRequest(this.newJobRequest);
     console.log(this.jobRequestService.getJobRequests());
     
+  }
+
+  private strToDate(strDate): Date{
+    let day = parseInt(strDate.substring(0,2));
+    let month = parseInt(strDate.substring(3,5));
+    let year = parseInt(strDate.substring(6,10));
+
+    return new Date(year,month-1, day);
   }
 }
