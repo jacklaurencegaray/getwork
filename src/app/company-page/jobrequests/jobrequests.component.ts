@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JobRequestService } from './jobrequests.service';
+import { JobRequest } from 'src/app/shared/jobrequest.model';
 
 @Component({
   selector: 'app-jobrequests',
@@ -8,10 +9,16 @@ import { JobRequestService } from './jobrequests.service';
   providers: [JobRequestService]
 })
 export class JobrequestsComponent implements OnInit {
-
+  jobRequestForDisplay: JobRequest;
+  
   constructor(private jobRequestService: JobRequestService) { }
-
-  ngOnInit() {
+  
+  ngOnInit(){
+    this.jobRequestService.jobRequestSelected.subscribe(
+        (jobRequest: JobRequest) => {
+            this.jobRequestForDisplay = jobRequest;
+        }
+    );
   }
 
 }

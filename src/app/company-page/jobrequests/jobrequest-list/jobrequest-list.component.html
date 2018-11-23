@@ -1,6 +1,5 @@
 <div>
-  <div *ngFor="let jr of jobRequests">
-    <p>ID: {{ jr.id }}</p>
-    <p>Contact Person: {{ jr.contact }}</p>
-  </div>
+  <app-jobrequest-item 
+    *ngFor="let jobRequest of jobRequests" 
+    [jrElement]="jobRequest"></app-jobrequest-item>
 </div>

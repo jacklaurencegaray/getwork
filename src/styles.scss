@@ -13,16 +13,16 @@
 
 .content-container {
     display: grid;
-    grid-template-columns:  10% 5% 30% 5% 20% 20% 10%;
+    grid-template-columns:  10% 5% 75% 10%;
     grid-template-rows:  5% 15% 70% 10%;
     grid-gap: 10px 10px;
     width: 100vw;
     height: 100vh;
     grid-template-areas: 
-        "nav . . . . . ."
-        "nav . header header header header ."
-        "nav . listcontent . detail detail ."
-        "nav . . . . . ."
+        "nav . . ."
+        "nav . header ."
+        "nav . content-body ."
+        "nav . . ."
 }
 
 .content-nav {
@@ -35,12 +35,7 @@
     border:1px solid black;
 }
 
-.content-list {
-    grid-area: listcontent;
-    border:1px solid black;
-}
-
-.content-detail {
-    grid-area: detail;
+.content-body {
+    grid-area: content-body;
     border:1px solid black;
 }

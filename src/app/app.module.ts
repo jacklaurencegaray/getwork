@@ -14,6 +14,7 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { JobrequestsComponent } from './company-page/jobrequests/jobrequests.component';
 import { JobrequestListComponent } from './company-page/jobrequests/jobrequest-list/jobrequest-list.component';
+import { JobrequestItemComponent } from './company-page/jobrequests/jobrequest-list/jobrequest-item/jobrequest-item.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { JobrequestListComponent } from './company-page/jobrequests/jobrequest-l
     NavbarComponent,
     JobrequestsComponent,
     JobrequestListComponent,
+    JobrequestItemComponent,
   ],
   imports: [
     BrowserModule,
