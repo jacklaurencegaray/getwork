@@ -5,7 +5,7 @@
   <div class="website">{{ companyForDisplay.website }}</div>
   <div class="email">{{ companyForDisplay.email }}</div>
   <div class="detail-btn-group">
-    <button>
+    <button [routerLink]="['/admin',{outlets: {primary: [], adminlistcontent: ['companies', companyForDisplay.id, 'jobrequests' ]}}]">
       View Applications
     </button>
     <button [routerLink]="['/admin', 'companies', companyForDisplay.id, 'update']">Update Details</button>

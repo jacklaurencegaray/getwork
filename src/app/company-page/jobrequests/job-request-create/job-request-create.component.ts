@@ -24,6 +24,7 @@ export class JobRequestCreateComponent implements OnInit {
   createJobRequest(){
     this.newJobRequest = new JobRequest(
       Math.floor(Math.random() * (50000 - 5 + 1)) + 5,
+      +this.route.snapshot.params['id'],
       this.createForm.form.value.displayHandler,
       this.createForm.form.value.status,
       this.createForm.form.value.contact,

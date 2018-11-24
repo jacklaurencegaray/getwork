@@ -3,15 +3,19 @@ import { EventEmitter } from "@angular/core";
 
 export class JobRequestService{
     private jobRequests: JobRequest[] = [
-        new JobRequest(1, 'Fenty Beauty', 'New', 'jack', 'a boy', new Date(), new Date(), new Date()),
-        new JobRequest(2, 'Kylioe', 'Active', 'carlo', 'a boy', new Date(), new Date(), new Date()),
-        new JobRequest(3, 'Zalora', 'Inactive', 'thessa', 'a girl', new Date(), new Date(), new Date())
+        new JobRequest(1, 1, 'Fenty Beauty', 'New', 'jack', 'a boy', new Date(), new Date(), new Date()),
+        new JobRequest(2, 2, 'Kylioe', 'Active', 'carlo', 'a boy', new Date(), new Date(), new Date()),
+        new JobRequest(3, 3, 'Zalora', 'Inactive', 'thessa', 'a girl', new Date(), new Date(), new Date())
     ];
     
     jobRequestSelected = new EventEmitter<JobRequest>();
     jobRequestsChanged = new EventEmitter<JobRequest[]>();
     getJobRequests(){
         return this.jobRequests.slice();
+    }
+    
+    getJobRequestsByCompanyId(company_id: number){
+        return this.filterJobRequests(this.jobRequests, company_id).slice();
     }
 
     addJobRequest(jobRequest: JobRequest){
@@ -23,6 +27,18 @@ export class JobRequestService{
         return this.jobRequests.find(
             obj => {
                 return obj.id === id;
+            }
+        );
+    }
+    
+    filterJobRequests(jobRequests: JobRequest[], company_id: number){
+        return jobRequests.filter(
+            (obj) => {
+               for(let key in obj){
+                    if(obj['companyId'] === company_id){
+                        return obj;
+                    }
+               }
             }
         );
     }
