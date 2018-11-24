@@ -19,6 +19,8 @@ import { JobRequestDetailComponent } from './company-page/jobrequests/job-reques
 import { JobRequestCreateComponent } from './company-page/jobrequests/job-request-create/job-request-create.component';
 import { FormsModule } from '@angular/forms';
 import { JobRequestUpdateComponent } from './company-page/jobrequests/job-request-update/job-request-update.component';
+import { ContractListComponent } from './company-page/jobrequests/contract-list/contract-list.component';
+import { ContractItemComponent } from './company-page/jobrequests/contract-list/contract-item/contract-item.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { JobRequestUpdateComponent } from './company-page/jobrequests/job-reques
     JobRequestDetailComponent,
     JobRequestCreateComponent,
     JobRequestUpdateComponent,
+    ContractListComponent,
+    ContractItemComponent,
   ],
   imports: [
     BrowserModule,
