@@ -25,6 +25,6 @@ export class ContractDetailComponent implements OnInit {
 
   deleteContract(){
     this.contractsService.deleteContract(this.contractForDisplay.id);
-    //this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
+    this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests', this.contractForDisplay.jobRequest_id, 'contracts']}}]);
   }
 }
