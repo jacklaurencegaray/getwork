@@ -37,20 +37,12 @@ export class JobRequestUpdateComponent implements OnInit {
     this.jobRequestForUpdate.contact = this.updateForm.form.value.contact;
     this.jobRequestForUpdate.description = this.updateForm.form.value.description;
     this.jobRequestForUpdate.status = this.updateForm.form.value.status;
-    this.jobRequestForUpdate.startDate = this.strToDate(this.updateForm.form.value.startDate);
-    this.jobRequestForUpdate.endDate = this.strToDate(this.updateForm.form.value.endDate);
-    this.jobRequestForUpdate.expiryDate = this.strToDate(this.updateForm.form.value.expirationDate);
+    this.jobRequestForUpdate.startDate = this.updateForm.form.value.startDate;
+    this.jobRequestForUpdate.endDate = this.updateForm.form.value.endDate;
+    this.jobRequestForUpdate.expiryDate = this.updateForm.form.value.expirationDate;
     
     this.jobRequestService.updateJobRequest(this.jobRequestForUpdate);
-    this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
-  }
-
-  private strToDate(strDate): Date{
-    let day = parseInt(strDate.substring(0,2));
-    let month = parseInt(strDate.substring(3,5));
-    let year = parseInt(strDate.substring(6,10));
-
-    return new Date(year,month-1, day);
+    this.router.navigate(['/test']);
   }
 
 }

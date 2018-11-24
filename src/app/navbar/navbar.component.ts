@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
   }
   
   goHome(){
-    this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
+    this.router.navigate(['/', 'test']);
   }
 
 

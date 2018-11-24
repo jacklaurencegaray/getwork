@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { JobRequest } from 'src/app/shared/jobrequest.model';
 import { JobRequestService } from '../jobrequests.service';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-job-request-create',
@@ -14,8 +14,7 @@ export class JobRequestCreateComponent implements OnInit {
   newJobRequest: JobRequest;
 
   constructor(private jobRequestService: JobRequestService,
-    private route: ActivatedRoute,
-    private router: Router){
+    private route: ActivatedRoute){
 
   }
   ngOnInit() {
@@ -34,7 +33,6 @@ export class JobRequestCreateComponent implements OnInit {
     );
     this.jobRequestService.addJobRequest(this.newJobRequest);
     console.log(this.jobRequestService.getJobRequests());
-    this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
     
   }
 
