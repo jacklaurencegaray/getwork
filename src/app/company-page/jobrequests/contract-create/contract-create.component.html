@@ -1,0 +1,38 @@
+<form (ngSubmit)="createContract(f)" #f="ngForm">
+  <div>
+    <label for="contractorName">Contractor Name:</label>
+    <input 
+      type="text" 
+      ngModel 
+      name="contractorName">
+  </div>
+  <div>
+      <label for="type">Contract Type: </label>
+      <input 
+        type="text" 
+        name="type"
+        ngModel>
+    </div>
+  <div>
+      <label for="status">Contract Status</label>
+      <input 
+        type="text" 
+        name="status"
+        ngModel>
+  </div>
+  <div>
+      <label for="duration">Duration</label>
+      <input
+        type="date" 
+        name="startDate" 
+        ngModel>
+      <span> to </span>
+      <input 
+        type="date" 
+        name="endDate" 
+        ngModel>
+  </div>
+  <div>
+    <button>Create Contract</button>
+  </div>
+</form>
