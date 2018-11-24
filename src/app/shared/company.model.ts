@@ -1,10 +1,10 @@
 export class Company {
-    constructor(public id,
-        public companyName,
-        public address,
-        public contactNum,
-        public website,
-        public email){
+    constructor(public id: number,
+        public companyName: string,
+        public address: string,
+        public contactNum: string,
+        public website: string,
+        public email: string){
 
     }
 }
