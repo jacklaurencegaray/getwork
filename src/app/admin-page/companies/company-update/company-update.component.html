@@ -1,0 +1,40 @@
+<form (ngSubmit)="updateCompany(f)" #f="ngForm">
+  <div>
+    <label for="companyName">Company Name</label>
+    <input 
+      type="text" 
+      [(ngModel)] = "companyForUpdate.companyName" 
+      name="companyName">
+  </div>
+  <div>
+      <label for="address">Company Address</label>
+      <input 
+        type="text" 
+        name="address"
+        [(ngModel)] = "companyForUpdate.address">
+    </div>
+  <div>
+      <label for="contactNum">Contact Number</label>
+      <input 
+        type="text" 
+        name="contactNum"
+        [(ngModel)] = "companyForUpdate.contactNum">
+  </div>
+  <div>
+    <label for="website">Website</label>
+    <input 
+      type="text" 
+      name="website" 
+      [(ngModel)] = "companyForUpdate.website">
+  </div> 
+  <div>
+      <label for="email">Email</label>
+      <input 
+        type="text" 
+        name="email" 
+        [(ngModel)] = "companyForUpdate.email">
+  </div>
+  <div>
+    <button>Update Company</button>
+  </div>
+</form>

@@ -16,6 +16,7 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 import { CompanyListComponent } from './admin-page/companies/company-list/company-list.component';
 import { CompanyDetailComponent } from './admin-page/companies/company-detail/company-detail.component';
 import { CompanyCreateComponent } from './admin-page/companies/company-create/company-create.component';
+import { CompanyUpdateComponent } from './admin-page/companies/company-update/company-update.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -26,7 +27,8 @@ const routes: Routes = [
     children: [
       { path: 'companies', component: CompanyListComponent, outlet: 'adminlistcontent'},
       { path: 'companies/create', component: CompanyCreateComponent },
-      { path: 'companies/:id', component: CompanyDetailComponent }
+      { path: 'companies/:id', component: CompanyDetailComponent },
+      { path: 'companies/:id/update', component: CompanyUpdateComponent, pathMatch: 'full' }
     ] },
   { path: ':name', 
     component: CompanyPageComponent, 

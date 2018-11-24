@@ -25,7 +25,7 @@ export class CompanyDetailComponent implements OnInit {
 
   deleteCompany(){
     this.companyService.deleteCompany(this.companyForDisplay.id);
-    //this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
+    this.router.navigate(['/admin', {outlets: {primary:[], 'adminlistcontent':['companies']}}]);
   }
 
 }
