@@ -23,6 +23,7 @@ import { ContractListComponent } from './company-page/jobrequests/contract-list/
 import { ContractItemComponent } from './company-page/jobrequests/contract-list/contract-item/contract-item.component';
 import { ContractDetailComponent } from './company-page/jobrequests/contract-detail/contract-detail.component';
 import { ContractUpdateComponent } from './company-page/jobrequests/contract-update/contract-update.component';
+import { ContractCreateComponent } from './company-page/jobrequests/contract-create/contract-create.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ContractUpdateComponent } from './company-page/jobrequests/contract-upd
     ContractItemComponent,
     ContractDetailComponent,
     ContractUpdateComponent,
+    ContractCreateComponent,
   ],
   imports: [
     BrowserModule,

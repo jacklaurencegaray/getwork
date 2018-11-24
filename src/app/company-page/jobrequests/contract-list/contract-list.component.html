@@ -3,6 +3,8 @@
     *ngFor="let contract of contracts" 
     [contractElement]="contract"></app-contract-item>
   <div>
-    <button>Create Contract</button>
+    <button [routerLink]="['/test',{outlets: {primary: ['jobrequests', jr_id, 'contracts', 'create'] , listcontent: ['jobrequests', jr_id, 'contracts']}}]">
+      Create Contract
+    </button>
   </div>
 </div>
