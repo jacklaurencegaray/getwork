@@ -6,7 +6,9 @@
   <div class="duration">{{ jobRequestForDisplay.startDate }} to {{ jobRequestForDisplay.endDate }}</div>
   <div class="expiry">{{ jobRequestForDisplay.expiryDate }}</div>
   <div class="detail-btn-group">
-    <button>View Contracts</button>
+    <button>
+      View Contracts
+    </button>
     <button [routerLink]="['/test','jobrequests', jobRequestForDisplay.id, 'update']">Update Requests</button>
     <button (click)="deleteJobRequest()">Delete</button>
   </div>
