@@ -25,6 +25,9 @@ import { ContractDetailComponent } from './company-page/jobrequests/contract-det
 import { ContractUpdateComponent } from './company-page/jobrequests/contract-update/contract-update.component';
 import { ContractCreateComponent } from './company-page/jobrequests/contract-create/contract-create.component';
 import { CompaniesComponent } from './admin-page/companies/companies.component';
+import { CompanyListComponent } from './admin-page/companies/company-list/company-list.component';
+import { CompanyItemComponent } from './admin-page/companies/company-list/company-item/company-item.component';
+import { CompanyDetailComponent } from './admin-page/companies/company-detail/company-detail.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,9 @@ import { CompaniesComponent } from './admin-page/companies/companies.component';
     ContractUpdateComponent,
     ContractCreateComponent,
     CompaniesComponent,
+    CompanyListComponent,
+    CompanyItemComponent,
+    CompanyDetailComponent,
   ],
   imports: [
     BrowserModule,
