@@ -7,6 +7,8 @@ import { CompanyPageComponent } from './company-page/company-page.component';
 import { JobRequestDetailComponent } from './company-page/jobrequests/job-request-detail/job-request-detail.component';
 import { JobRequestCreateComponent } from './company-page/jobrequests/job-request-create/job-request-create.component';
 import { JobRequestUpdateComponent } from './company-page/jobrequests/job-request-update/job-request-update.component';
+import { JobRequestContractsComponent } from './company-page/jobrequests/job-request-contracts/job-request-contracts.component';
+import { JobrequestListComponent } from './company-page/jobrequests/jobrequest-list/jobrequest-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -15,9 +17,11 @@ const routes: Routes = [
   { path: ':name', 
     component: CompanyPageComponent, 
     children: [
+      { path: 'jobrequests', component: JobrequestListComponent, outlet: 'listcontent'},
       { path: 'jobrequests/create', component: JobRequestCreateComponent, pathMatch: 'full' },
       { path: 'jobrequests/:id', component: JobRequestDetailComponent },
       { path: 'jobrequests/:id/update', component: JobRequestUpdateComponent, pathMatch: 'full' },
+      { path: 'jobrequests/:id/contracts', component: JobRequestContractsComponent, pathMatch: 'full', outlet: 'listcontent' }
     ]
   }
 

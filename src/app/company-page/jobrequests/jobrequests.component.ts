@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JobRequestService } from './jobrequests.service';
 import { JobRequest } from 'src/app/shared/jobrequest.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-jobrequests',
@@ -11,7 +12,8 @@ import { JobRequest } from 'src/app/shared/jobrequest.model';
 export class JobrequestsComponent implements OnInit {
   jobRequestForDisplay: JobRequest;
   
-  constructor(private jobRequestService: JobRequestService) { }
+  constructor(private jobRequestService: JobRequestService,
+    private router: Router) { }
   
   ngOnInit(){
     this.jobRequestService.jobRequestSelected.subscribe(
@@ -19,6 +21,7 @@ export class JobrequestsComponent implements OnInit {
             this.jobRequestForDisplay = jobRequest;
         }
     );
+    this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
   }
 
 }

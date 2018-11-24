@@ -42,7 +42,7 @@ export class JobRequestUpdateComponent implements OnInit {
     this.jobRequestForUpdate.expiryDate = this.updateForm.form.value.expirationDate;
     
     this.jobRequestService.updateJobRequest(this.jobRequestForUpdate);
-    this.router.navigate(['/test']);
+    this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
   }
 
 }
