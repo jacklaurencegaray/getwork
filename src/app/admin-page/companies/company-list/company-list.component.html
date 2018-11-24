@@ -3,6 +3,6 @@
     *ngFor="let company of companies" 
     [companyElement]="company"></app-company-item>
   <div>
-    <button>Create Company</button>
+    <button [routerLink]="['/admin','companies','create']">Create Company</button>
   </div>
 </div>

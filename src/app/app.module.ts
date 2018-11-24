@@ -28,6 +28,7 @@ import { CompaniesComponent } from './admin-page/companies/companies.component';
 import { CompanyListComponent } from './admin-page/companies/company-list/company-list.component';
 import { CompanyItemComponent } from './admin-page/companies/company-list/company-item/company-item.component';
 import { CompanyDetailComponent } from './admin-page/companies/company-detail/company-detail.component';
+import { CompanyCreateComponent } from './admin-page/companies/company-create/company-create.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { CompanyDetailComponent } from './admin-page/companies/company-detail/co
     CompanyListComponent,
     CompanyItemComponent,
     CompanyDetailComponent,
+    CompanyCreateComponent,
   ],
   imports: [
     BrowserModule,
