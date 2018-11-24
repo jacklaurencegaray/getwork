@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Contract } from 'src/app/shared/contract.model';
 import { ContractsService } from '../../contracts.service';
+import { JobRequest } from 'src/app/shared/jobrequest.model';
 
 @Component({
   selector: 'app-contract-item',

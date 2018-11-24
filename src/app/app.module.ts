@@ -21,6 +21,7 @@ import { FormsModule } from '@angular/forms';
 import { JobRequestUpdateComponent } from './company-page/jobrequests/job-request-update/job-request-update.component';
 import { ContractListComponent } from './company-page/jobrequests/contract-list/contract-list.component';
 import { ContractItemComponent } from './company-page/jobrequests/contract-list/contract-item/contract-item.component';
+import { ContractDetailComponent } from './company-page/jobrequests/contract-detail/contract-detail.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ContractItemComponent } from './company-page/jobrequests/contract-list/
     JobRequestUpdateComponent,
     ContractListComponent,
     ContractItemComponent,
+    ContractDetailComponent,
   ],
   imports: [
     BrowserModule,

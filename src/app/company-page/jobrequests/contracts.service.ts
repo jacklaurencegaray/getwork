@@ -16,7 +16,7 @@ export class ContractsService {
     contractSelected = new EventEmitter<Contract>();
     contractsChanged = new EventEmitter<Contract[]>();
     getContracts(user_id: number){
-        return this.getContractsByOwner(this.contracts,user_id).slice();
+        return this.getContractsByJobRequestId(this.contracts,user_id).slice();
         //return this.contracts.slice();
     }
 
@@ -51,11 +51,11 @@ export class ContractsService {
         this.contractsChanged.emit(this.contracts.slice());
     }
 
-    getContractsByOwner(contracts: Contract[], owner_id: number){
+    getContractsByJobRequestId(contracts: Contract[], jobRequest_id: number){
         return contracts.filter(
             (obj) => {
                for(let key in obj){
-                    if(obj['owner_id'] === owner_id){
+                    if(obj['jobRequest_id'] === jobRequest_id){
                         return obj;
                     }
                }

@@ -23,8 +23,8 @@ export class ContractListComponent implements OnInit {
 
     this.contractsService.contractsChanged.subscribe(
       (contracts: Contract[]) => {
-        let owner_id = this.route.snapshot.params['id'];
-        this.contracts = this.contractsService.getContractsByOwner(contracts,owner_id);
+        let jobRequest_id = this.route.snapshot.params['id'];
+        this.contracts = this.contractsService.getContractsByJobRequestId(contracts,jobRequest_id);
       }
     );
   }
