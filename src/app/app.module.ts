@@ -22,6 +22,7 @@ import { JobRequestUpdateComponent } from './company-page/jobrequests/job-reques
 import { ContractListComponent } from './company-page/jobrequests/contract-list/contract-list.component';
 import { ContractItemComponent } from './company-page/jobrequests/contract-list/contract-item/contract-item.component';
 import { ContractDetailComponent } from './company-page/jobrequests/contract-detail/contract-detail.component';
+import { ContractUpdateComponent } from './company-page/jobrequests/contract-update/contract-update.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ContractDetailComponent } from './company-page/jobrequests/contract-det
     ContractListComponent,
     ContractItemComponent,
     ContractDetailComponent,
+    ContractUpdateComponent,
   ],
   imports: [
     BrowserModule,

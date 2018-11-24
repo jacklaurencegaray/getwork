@@ -5,7 +5,9 @@
   <div class="description">{{ contractForDisplay.status }}</div>
   <div class="duration">{{ contractForDisplay.startDate }} to {{ contractForDisplay.endDate }}</div>
   <div class="detail-btn-group">
-    <button>Update Contract</button>
+    <button [routerLink]="['/test',{outlets:{ primary: ['jobrequests', contractForDisplay.jobRequest_id, 'contracts', contractForDisplay.id, 'update'], listcontent: ['jobrequests', contractForDisplay.jobRequest_id, 'contracts']}}]">
+      Update Contract
+    </button>
     <button (click)="deleteContract()">Delete Contract</button>
   </div>
 </div>

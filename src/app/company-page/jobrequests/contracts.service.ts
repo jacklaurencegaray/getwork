@@ -15,8 +15,8 @@ export class ContractsService {
     
     contractSelected = new EventEmitter<Contract>();
     contractsChanged = new EventEmitter<Contract[]>();
-    getContracts(user_id: number){
-        return this.getContractsByJobRequestId(this.contracts,user_id).slice();
+    getContracts(jobRequest_id: number){
+        return this.getContractsByJobRequestId(this.contracts,jobRequest_id).slice();
         //return this.contracts.slice();
     }
 
