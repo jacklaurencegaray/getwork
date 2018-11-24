@@ -1,0 +1,10 @@
+<div>
+  <app-contract-item
+    *ngFor="let contract of contracts" 
+    [contractElement]="contract"></app-contract-item>
+  <div>
+    <button [routerLink]="['/test',{outlets: {primary: ['jobrequests', jr_id, 'contracts', 'create'] , listcontent: ['jobrequests', jr_id, 'contracts']}}]">
+      Create Contract
+    </button>
+  </div>
+</div>

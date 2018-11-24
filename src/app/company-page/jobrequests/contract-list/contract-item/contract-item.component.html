@@ -1,0 +1,7 @@
+<div
+  [routerLink]="['/test',{outlets:{ primary: ['jobrequests', contract.jobRequest_id, 'contracts', contract.id], listcontent: ['jobrequests', contract.jobRequest_id, 'contracts']}}]"
+  (click)="onContractSelected()">
+  <p># {{ contract.id }}</p>
+  <p>{{ contract.contractorName }}</p>
+</div>
+<!-- insert routerlink here-->

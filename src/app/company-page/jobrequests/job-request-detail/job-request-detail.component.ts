@@ -24,7 +24,7 @@ export class JobRequestDetailComponent implements OnInit {
 
   deleteJobRequest(){
     this.jobRequestService.deleteJobRequest(this.jobRequestForDisplay.id);
-    this.router.navigate(['/test']);
+    this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
   }
 
 }
