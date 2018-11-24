@@ -24,6 +24,7 @@ import { ContractItemComponent } from './company-page/jobrequests/contract-list/
 import { ContractDetailComponent } from './company-page/jobrequests/contract-detail/contract-detail.component';
 import { ContractUpdateComponent } from './company-page/jobrequests/contract-update/contract-update.component';
 import { ContractCreateComponent } from './company-page/jobrequests/contract-create/contract-create.component';
+import { CompaniesComponent } from './admin-page/companies/companies.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { ContractCreateComponent } from './company-page/jobrequests/contract-cre
     ContractDetailComponent,
     ContractUpdateComponent,
     ContractCreateComponent,
+    CompaniesComponent,
   ],
   imports: [
     BrowserModule,

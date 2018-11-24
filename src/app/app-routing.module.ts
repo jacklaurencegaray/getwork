@@ -12,11 +12,13 @@ import { ContractListComponent } from './company-page/jobrequests/contract-list/
 import { ContractDetailComponent } from './company-page/jobrequests/contract-detail/contract-detail.component';
 import { ContractUpdateComponent } from './company-page/jobrequests/contract-update/contract-update.component';
 import { ContractCreateComponent } from './company-page/jobrequests/contract-create/contract-create.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'admin', component: AdminPageComponent },
   { path: ':name', 
     component: CompanyPageComponent, 
     children: [
