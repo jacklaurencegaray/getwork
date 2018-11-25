@@ -23,7 +23,13 @@ export class ContractListComponent implements OnInit {
     console.log(this.jr_id);
     this.route.params.subscribe(
       (params: Params) => {
-        this.contracts = this.contractsService.getContracts(+params['id']);
+        this.contractsService.getContracts("carloski",1,+params['id']).subscribe(
+          (contracts: any[]) => {
+            this.contracts = contracts.slice();
+          }, (error) => {
+            console.log(error)
+          }
+        );
       }
     );
 

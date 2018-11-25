@@ -1,23 +1,35 @@
 import { JobRequest } from "src/app/shared/jobrequest.model";
-import { EventEmitter } from "@angular/core";
+import { EventEmitter, Injectable } from "@angular/core";
 import { Contract } from "src/app/shared/contract.model";
-
+import { Http } from "@angular/http";
+import 'rxjs/Rx';
+import { Observable } from "rxjs";
+@Injectable()
 export class ContractsService {
-    private contracts: Contract[] = [
-        new Contract(1,1,'poster','jacko', new Date(), new Date(), 'ONGOING'),
-        new Contract(2,1,'Ad','shema', new Date(), new Date(), 'ONGOING'),
-        new Contract(3,2,'industrial','gema', new Date(), new Date(), 'ONGOING'),
-        new Contract(4,2,'billboard','kwima', new Date(), new Date(), 'ONGOING'),
-        new Contract(5,2,'poster','silma', new Date(), new Date(), 'DONE'),
-        new Contract(6,3,'Ad','demado', new Date(), new Date(), 'ONGOING'),
-        new Contract(7,3,'industrial','shimba', new Date(), new Date(), 'ONGOING')
-    ];
+    private contracts: Contract[];
     
+    constructor(private http: Http){
+
+    }
     contractSelected = new EventEmitter<Contract>();
     contractsChanged = new EventEmitter<Contract[]>();
-    getContracts(jobRequest_id: number){
-        return this.getContractsByJobRequestId(this.contracts,jobRequest_id).slice();
-        //return this.contracts.slice();
+    // getContracts(jobRequest_id: number){
+    //     return this.getContractsByJobRequestId(this.contracts,jobRequest_id).slice();
+    //     //return this.contracts.slice();
+    // }
+
+    getContracts(company_name: string, company_id: number, request_id:number){
+        return this.http.get("http://localhost:8090/"+company_name+"/"+company_id+"/jobrequests/"+request_id+"/contracts/getAll")
+        .map(
+            (response) => {
+                return response.json();
+            }
+        )
+        .catch(
+            (error: Response) => {
+                return Observable.throw('something went wrong');
+            }
+        );
     }
 
     addContract(contract: Contract){
@@ -25,10 +37,24 @@ export class ContractsService {
         this.contractsChanged.emit(this.contracts.slice());
     }
 
-    getContractById(id:number){
-        return this.contracts.find(
-            obj => {
-                return obj.id === id;
+    // getContractById(id:number){
+    //     return this.contracts.find(
+    //         obj => {
+    //             return obj.id === id;
+    //         }
+    //     );
+    // }
+
+    getContractById(company_name: string, company_id: number, req_id:number,contract_id: number){
+        return this.http.get("http://localhost:8090/"+company_name+"/"+company_id+"/jobrequests/"+req_id+"/contracts/"+contract_id)
+        .map(
+            (response) => {
+                return response.json();
+            }
+        )
+        .catch(
+            (error: Response) => {
+                return Observable.throw('something went wrong');
             }
         );
     }

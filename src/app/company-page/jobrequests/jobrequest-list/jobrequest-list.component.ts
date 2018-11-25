@@ -30,8 +30,8 @@ export class JobrequestListComponent implements OnInit {
           (jobRequests: any[]) => {
             this.jobRequests = jobRequests.slice();
           }, (error) => {
-            console.log(error)
-          }
+          console.log(error)
+        }
         );
       }
     );
