@@ -3,12 +3,13 @@ import { Company } from 'src/app/shared/company.model';
 import { CompanyService } from './companies.service';
 import { Router } from '@angular/router';
 import { JobRequestService } from 'src/app/company-page/jobrequests/jobrequests.service';
+import { ContractsService } from 'src/app/company-page/jobrequests/contracts.service';
 
 @Component({
   selector: 'app-companies',
   templateUrl: './companies.component.html',
   styleUrls: ['./companies.component.scss'],
-  providers: [CompanyService, JobRequestService]
+  providers: [CompanyService, JobRequestService, ContractsService]
 })
 export class CompaniesComponent implements OnInit {
 
@@ -16,6 +17,7 @@ export class CompaniesComponent implements OnInit {
   
   constructor(private companyService: CompanyService,
     private jobRequestService: JobRequestService,
+    private contractsService: ContractsService,
     private router: Router) { }
   
   ngOnInit(){
