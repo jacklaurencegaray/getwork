@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { JobRequest } from 'src/app/shared/jobrequest.model';
 import { JobRequestService } from 'src/app/company-page/jobrequests/jobrequests.service';
 import { Route, ActivatedRoute, Params } from '@angular/router';
+import { AdminNavbarService } from 'src/app/admin-navbar/admin-navbar.service';
 
 @Component({
   selector: 'app-company-job-requests-list',
@@ -13,6 +14,7 @@ export class CompanyJobRequestsListComponent implements OnInit {
   jobRequests: JobRequest[];
   jr_id;
   constructor(private jobRequestService: JobRequestService,
+    private adminNavbarService: AdminNavbarService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -31,5 +33,7 @@ export class CompanyJobRequestsListComponent implements OnInit {
         this.jobRequests = this.jobRequestService.getJobRequestsByCompanyId(company_id);
       }
     );
+
+    this.adminNavbarService.linkChanged.emit(['sample name', 'requests']);
   }
 }

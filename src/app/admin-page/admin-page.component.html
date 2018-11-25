@@ -2,7 +2,22 @@
   <div class="content-nav">
     <app-admin-navbar></app-admin-navbar>
   </div>
-  <div class="content-header">Admin Page</div>
+
+  <div class="content-header">
+    <span class="companyName">
+      <a> {{ activeLinks[0] }}</a>
+    </span>
+    <span class="jobrequests">
+      <a *ngIf="activeLinks[1]"> > {{ activeLinks[1] }}</a>
+    </span>
+    <span class="displayHandler">
+      <a *ngIf="activeLinks[2]"> > {{ activeLinks[2] }}</a>
+    </span>
+    <span class="contracts">
+      <a *ngIf="activeLinks[3]"> > {{ activeLinks[3] }}</a>
+    </span>
+  </div>
+
   <div class="content-body">
     <app-companies></app-companies>
   </div>

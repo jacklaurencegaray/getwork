@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Company } from 'src/app/shared/company.model';
 import { CompanyService } from '../../companies.service';
+import { AdminNavbarService } from 'src/app/admin-navbar/admin-navbar.service';
 
 @Component({
   selector: 'app-company-item',

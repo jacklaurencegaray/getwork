@@ -1,0 +1,28 @@
+.content-header{
+    display:grid;
+    grid-template-columns: 2fr 2fr 2fr 2fr;
+    grid-template-rows: 3fr 1fr;
+    grid-template-areas: 
+        "companyName requests displayHandler contracts"
+        "notification notification notification notification" 
+}
+
+.notification {
+    grid-area: notification;
+}
+
+.companyName{
+    grid-area: companyName;
+}
+
+.requests{
+    grid-area: requests;
+}
+
+.displayHandler{
+    grid-area: displayHandler;
+}
+
+.contracts{
+    grid-area: contracts;
+}

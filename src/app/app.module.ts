@@ -38,6 +38,7 @@ import { CompanyContractItemComponent } from './admin-page/companies/company-con
 import { CompanyContractDetailComponent } from './admin-page/companies/company-contract-detail/company-contract-detail.component';
 import { CompanyContractUpdateComponent } from './admin-page/companies/company-contract-update/company-contract-update.component';
 import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
+import { AdminNavbarService } from './admin-navbar/admin-navbar.service';
 
 @NgModule({
   declarations: [

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Contract } from 'src/app/shared/contract.model';
 import { ContractsService } from 'src/app/company-page/jobrequests/contracts.service';
 import { ActivatedRoute, Params } from '@angular/router';
+import { AdminNavbarService } from 'src/app/admin-navbar/admin-navbar.service';
 
 @Component({
   selector: 'app-company-contract-list',
@@ -13,6 +14,7 @@ export class CompanyContractListComponent implements OnInit {
   contracts: Contract[];
   jr_id: number;
   constructor(private contractsService: ContractsService,
+    private adminNavbarService: AdminNavbarService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -31,6 +33,8 @@ export class CompanyContractListComponent implements OnInit {
         this.contracts = this.contractsService.getContractsByJobRequestId(contracts,jobRequest_id);
       }
     );
+
+    this.adminNavbarService.linkChanged.emit(['sample name', 'requests', 'sample handler', 'contracts']);
   }
 
 }

@@ -1,5 +1,5 @@
 import { Company } from "src/app/shared/company.model";
-import { EventEmitter } from "@angular/core";
+import { EventEmitter, Injectable } from "@angular/core";
 
 export class CompanyService {
     private companies: Company[] = [
@@ -7,7 +7,7 @@ export class CompanyService {
         new Company(2,'Dolce','France Paris', '55523216','dolce.com', 'dolce@gmail.com'),
         new Company(3,'Gabana','Boutiq de Greek', '90223152','gabana.com', 'gabana@gmail.com')
     ];
-    
+
     companySelected = new EventEmitter<Company>();
     companiesChanged = new EventEmitter<Company[]>();
 

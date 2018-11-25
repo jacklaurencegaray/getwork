@@ -4,6 +4,7 @@ import { CompanyService } from './companies.service';
 import { Router } from '@angular/router';
 import { JobRequestService } from 'src/app/company-page/jobrequests/jobrequests.service';
 import { ContractsService } from 'src/app/company-page/jobrequests/contracts.service';
+import { AdminNavbarService } from 'src/app/admin-navbar/admin-navbar.service';
 
 @Component({
   selector: 'app-companies',
@@ -18,6 +19,7 @@ export class CompaniesComponent implements OnInit {
   constructor(private companyService: CompanyService,
     private jobRequestService: JobRequestService,
     private contractsService: ContractsService,
+    private adminNavbarService: AdminNavbarService,
     private router: Router) { }
   
   ngOnInit(){
