@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { JobRequest } from 'src/app/shared/jobrequest.model';
 import { JobRequestService } from '../jobrequests.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Company } from 'src/app/shared/company.model';
 
 @Component({
   selector: 'app-job-request-create',
@@ -22,19 +23,35 @@ export class JobRequestCreateComponent implements OnInit {
   }
   
   createJobRequest(){
+    // new Company is temporary until Company service is edited, and closedDate too
     this.newJobRequest = new JobRequest(
-      Math.floor(Math.random() * (50000 - 5 + 1)) + 5,
-      +this.route.snapshot.params['id'],
-      this.createForm.form.value.displayHandler,
+      11,
+      '15101138101',
+      new Date(),
+      new Date(),
+      new Company(1,
+        new Date(),
+        new Date(), 
+        'Wakanda', 
+        'France de Guatero', 
+        'versace.com', 
+        '09452186422', 
+        'versace@gmail.com', 
+        'versace'),
       this.createForm.form.value.status,
-      this.createForm.form.value.contact,
       this.createForm.form.value.description,
       this.strToDate(this.createForm.form.value.startDate),
       this.strToDate(this.createForm.form.value.endDate),
-      this.strToDate(this.createForm.form.value.expirationDate)
+      null
     );
-    this.jobRequestService.addJobRequest(this.newJobRequest);
-    console.log(this.jobRequestService.getJobRequests());
+    this.jobRequestService.createJobRequest(this.newJobRequest).subscribe(
+      (response: any) => {
+        console.log(response);
+        this.jobRequestService.jobRequestsChanged.emit([]);
+      }, (error) => {
+            console.log(error);
+      }
+    );
     this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
     
   }

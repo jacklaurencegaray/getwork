@@ -30,7 +30,9 @@ export class JobRequestService{
     }
     
     createJobRequest(jobRequest: any){
-        return this.http.post("http://localhost:8090/"+jobRequest.company.companyName+"/"+jobRequest.company.id+"/jobrequests/create", jobRequest);
+        let url: string = "http://localhost:8090/"+jobRequest.company.companyName+"/"+jobRequest.company.id+"/jobrequests/create";
+        console.log(url);
+        return this.http.post(url, jobRequest);
     }
     
     getJobRequestById(company_name: string, company_id: number, req_id: number){
@@ -46,6 +48,7 @@ export class JobRequestService{
             }
         );
     }
+    
     getJobRequestsByCompanyId(company_id: number){
         return this.filterJobRequests(this.jobRequests, company_id).slice();
     }

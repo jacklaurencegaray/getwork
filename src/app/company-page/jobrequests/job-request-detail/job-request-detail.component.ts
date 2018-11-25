@@ -21,6 +21,7 @@ export class JobRequestDetailComponent implements OnInit {
         this.jobRequestService.getJobRequestById('wakanda',1,+params['id']).subscribe(
           (jobRequest: any) => {
             this.jobRequestForDisplay = jobRequest;
+            console.log(this.jobRequestForDisplay);
           }, (error) => {
             console.log(error)
           }
@@ -30,8 +31,8 @@ export class JobRequestDetailComponent implements OnInit {
   }
 
   deleteJobRequest(){
-    this.jobRequestService.deleteJobRequest(this.jobRequestForDisplay.id);
-    this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
+    //this.jobRequestService.deleteJobRequest(this.jobRequestForDisplay.id);
+    //this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
   }
 
 }

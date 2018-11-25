@@ -24,17 +24,23 @@ export class JobrequestListComponent implements OnInit {
     private adminNavbarService: AdminNavbarService) { }
 
   ngOnInit() {
-    // this.jobRequestService.jobRequestsChanged.subscribe(
-    //   (jobRequests: JobRequest[]) => {
-    //     this.jobRequests = jobRequests.slice();
-    //   }
-    // );
+    this.jobRequestService.jobRequestsChanged.subscribe(
+      (jobRequests: JobRequest[]) => {
+        this.jobRequestService.getJobRequests(this.testCompany.companyName, this.testCompany.id).subscribe(
+          (jobRequests: any[]) => {
+            this.jobRequests = jobRequests.slice();
+          }, (error) => {
+            console.log(error)
+          }
+        );
+      }
+    );
     this.jobRequestService.getJobRequests(
       this.testCompany.companyName, 
       this.testCompany.id)
       .subscribe(
         (jobRequests: any[]) => {
-          this.jobRequests = jobRequests;
+          this.jobRequests = jobRequests.slice();
         }, (error) => {
           console.log(error)
         }
