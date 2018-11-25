@@ -38,4 +38,8 @@ export class ContractListComponent implements OnInit {
     this.adminNavbarService.linkChanged.emit(['Job Requests', ''+this.jr_id, 'Contracts']);
   }
 
+  onCreateContract(){
+    this.adminNavbarService.linkChanged.emit(['Job Requests', ''+this.jr_id, 'Contracts' ]);
+  }
+
 }

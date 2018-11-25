@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Contract } from 'src/app/shared/contract.model';
 import { ContractsService } from '../contracts.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AdminNavbarService } from 'src/app/admin-navbar/admin-navbar.service';
 
 @Component({
   selector: 'app-contract-create',
@@ -15,10 +16,12 @@ export class ContractCreateComponent implements OnInit {
   newContract: Contract;
 
   constructor(private contractsService: ContractsService,
+    private adminNavbarService: AdminNavbarService,
     private route: ActivatedRoute,
     private router: Router){
 
   }
+  
   ngOnInit() {
   }
   
@@ -34,7 +37,6 @@ export class ContractCreateComponent implements OnInit {
     );
     this.contractsService.addContract(this.newContract);
     this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests', this.newContract.jobRequest_id, 'contracts']}}]);
-    
   }
 
   private strToDate(strDate): Date{

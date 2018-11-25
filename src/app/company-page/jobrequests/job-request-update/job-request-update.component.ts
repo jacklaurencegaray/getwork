@@ -3,6 +3,7 @@ import { JobRequest } from 'src/app/shared/jobrequest.model';
 import { JobRequestService } from '../jobrequests.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NgForm, FormArray, FormGroup, FormControl } from '@angular/forms';
+import { AdminNavbarService } from 'src/app/admin-navbar/admin-navbar.service';
 
 @Component({
   selector: 'app-job-request-update',
@@ -18,6 +19,7 @@ export class JobRequestUpdateComponent implements OnInit {
 
   constructor(private jobRequestService: JobRequestService,
     private route: ActivatedRoute,
+    private adminNavbarService: AdminNavbarService,
     private router: Router) { }
 
   ngOnInit() {
@@ -43,6 +45,7 @@ export class JobRequestUpdateComponent implements OnInit {
     
     this.jobRequestService.updateJobRequest(this.jobRequestForUpdate);
     this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
+    this.adminNavbarService.linkChanged.emit(['Job Requests']);
   }
 
   private strToDate(strDate): Date{

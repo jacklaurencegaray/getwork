@@ -25,6 +25,7 @@ export class CompanyPageComponent implements OnInit {
     this.adminNavBarService.linkChanged.subscribe(
       (paths: string[]) => {
         this.activeLinks = paths.slice();
+        console.log("received here");
       }
     );
   }

@@ -3,6 +3,7 @@ import { Contract } from 'src/app/shared/contract.model';
 import { NgForm } from '@angular/forms';
 import { ContractsService } from '../contracts.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
+import { AdminNavbarService } from 'src/app/admin-navbar/admin-navbar.service';
 
 @Component({
   selector: 'app-contract-update',
@@ -19,6 +20,7 @@ export class ContractUpdateComponent implements OnInit {
 
   constructor(private contractsService: ContractsService,
     private route: ActivatedRoute,
+    private adminNavbarService: AdminNavbarService,
     private router: Router) { }
 
   ngOnInit() {
@@ -41,6 +43,7 @@ export class ContractUpdateComponent implements OnInit {
     
     this.contractsService.updateContracts(this.contractForUpdate);
     this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests', this.contractForUpdate.jobRequest_id, 'contracts']}}]);
+    this.adminNavbarService.linkChanged.emit(['Job Requests', ''+this.contractForUpdate.jobRequest_id, 'Contracts']);
   }
 
   private strToDate(strDate): Date{

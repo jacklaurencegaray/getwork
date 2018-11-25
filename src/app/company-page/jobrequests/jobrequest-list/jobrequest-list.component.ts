@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JobRequestService } from '../jobrequests.service';
 import { JobRequest } from 'src/app/shared/jobrequest.model';
+import { AdminNavbarService } from 'src/app/admin-navbar/admin-navbar.service';
 
 @Component({
   selector: 'app-jobrequest-list',
@@ -9,7 +10,8 @@ import { JobRequest } from 'src/app/shared/jobrequest.model';
 })
 export class JobrequestListComponent implements OnInit {
   jobRequests: JobRequest[];
-  constructor(private jobRequestService: JobRequestService) { }
+  constructor(private jobRequestService: JobRequestService,
+    private adminNavbarService: AdminNavbarService) { }
 
   ngOnInit() {
     this.jobRequests = this.jobRequestService.getJobRequests();
@@ -18,6 +20,10 @@ export class JobrequestListComponent implements OnInit {
         this.jobRequests = jobRequests.slice();
       }
     );
+  }
+
+  onCreate(){
+    this.adminNavbarService.linkChanged.emit(['Job Requests']);
   }
 
 }
