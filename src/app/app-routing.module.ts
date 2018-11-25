@@ -21,6 +21,7 @@ import { CompanyJobRequestsListComponent } from './admin-page/companies/company-
 import { CompanyJobRequestsDetailComponent } from './admin-page/companies/company-job-requests-detail/company-job-requests-detail.component';
 import { CompanyContractListComponent } from './admin-page/companies/company-contract-list/company-contract-list.component';
 import { CompanyContractDetailComponent } from './admin-page/companies/company-contract-detail/company-contract-detail.component';
+import { CompanyContractUpdateComponent } from './admin-page/companies/company-contract-update/company-contract-update.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -36,7 +37,8 @@ const routes: Routes = [
       { path: 'companies/:id/jobrequests', component: CompanyJobRequestsListComponent, pathMatch: 'full', outlet: 'adminlistcontent' },
       { path: 'companies/:id/jobrequests/:jobRequestId', component: CompanyJobRequestsDetailComponent, pathMatch: 'full' },
       { path: 'companies/:id/jobrequests/:jobRequestId/contracts', component: CompanyContractListComponent, pathMatch: 'full', outlet: 'adminlistcontent' },
-      { path: 'companies/:id/jobrequests/:jobRequestId/contracts/:contractId', component: CompanyContractDetailComponent, pathMatch: 'full'}
+      { path: 'companies/:id/jobrequests/:jobRequestId/contracts/:contractId', component: CompanyContractDetailComponent, pathMatch: 'full'},
+      { path: 'companies/:id/jobrequests/:jobRequestId/contracts/:contractId/update', component: CompanyContractUpdateComponent, pathMatch: 'full' },
     ] },
   { path: ':name', 
     component: CompanyPageComponent, 
