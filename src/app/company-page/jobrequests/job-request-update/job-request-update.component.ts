@@ -14,7 +14,7 @@ export class JobRequestUpdateComponent implements OnInit {
   jobRequestForUpdate: JobRequest;
   startDate: string;
   endDate: string;
-  expiryDate: string;
+  closedDate = null;
   @ViewChild('f') updateForm: NgForm;
 
   constructor(private jobRequestService: JobRequestService,
@@ -25,25 +25,32 @@ export class JobRequestUpdateComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
-        this.jobRequestForUpdate = Object.create(this.jobRequestService.getJobRequestById(+params['id']));
+        this.jobRequestService.getJobRequestById('Wakanda',1,+params['id']).subscribe(
+          (jobRequest: any) => {
+            this.jobRequestForUpdate = jobRequest;
+          }, (error) => {
+            console.log(error)
+          }
+        );
       }
     );
-    console.log(this.jobRequestForUpdate.startDate);
-    this.startDate = this.jobRequestForUpdate.startDate.toISOString().substring(0,10);
-    this.endDate = this.jobRequestForUpdate.endDate.toISOString().substring(0,10);
-    this.expiryDate = this.jobRequestForUpdate.expiryDate.toISOString().substring(0,10);
   }
 
   updateJobRequest(){
-    this.jobRequestForUpdate.displayHandler = this.updateForm.form.value.displayHandler;
-    this.jobRequestForUpdate.contact = this.updateForm.form.value.contact;
     this.jobRequestForUpdate.description = this.updateForm.form.value.description;
     this.jobRequestForUpdate.status = this.updateForm.form.value.status;
-    this.jobRequestForUpdate.startDate = this.strToDate(this.updateForm.form.value.startDate);
-    this.jobRequestForUpdate.endDate = this.strToDate(this.updateForm.form.value.endDate);
-    this.jobRequestForUpdate.expiryDate = this.strToDate(this.updateForm.form.value.expirationDate);
+    this.jobRequestForUpdate.startDate = this.updateForm.form.value.startDate;
+    this.jobRequestForUpdate.endDate = this.updateForm.form.value.endDate;
+    this.jobRequestForUpdate.closedDate = this.closedDate;
     
-    this.jobRequestService.updateJobRequest(this.jobRequestForUpdate);
+    this.jobRequestService.updateJobRequest(this.jobRequestForUpdate).subscribe(
+      (response: any) => {
+        console.log(response);
+        this.jobRequestService.jobRequestsChanged.emit([]);
+      }, (error) => {
+            console.log(error);
+      }
+    );
     this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
     this.adminNavbarService.linkChanged.emit(['Job Requests']);
   }

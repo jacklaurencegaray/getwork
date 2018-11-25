@@ -48,7 +48,21 @@ export class JobRequestService{
             }
         );
     }
+
+    updateJobRequest(updatedJobRequest: JobRequest){
+        let url: string = "http://localhost:8090/"+updatedJobRequest.company.companyName+"/"+updatedJobRequest.company.id+"/jobrequests/update";
+        return this.http.post(url, updatedJobRequest);
+    }
     
+    // updateJobRequest(updatedJobRequest: JobRequest){
+    //     let ndx = this.jobRequests.findIndex(
+    //         obj => obj.id === updatedJobRequest.id
+    //     );
+
+    //     this.jobRequests[ndx] = updatedJobRequest;
+    //     this.jobRequestsChanged.emit(this.jobRequests.slice());
+    // }
+
     getJobRequestsByCompanyId(company_id: number){
         return this.filterJobRequests(this.jobRequests, company_id).slice();
     }
@@ -68,15 +82,6 @@ export class JobRequestService{
                }
             }
         );
-    }
-
-    updateJobRequest(updatedJobRequest: JobRequest){
-        let ndx = this.jobRequests.findIndex(
-            obj => obj.id === updatedJobRequest.id
-        );
-
-        this.jobRequests[ndx] = updatedJobRequest;
-        this.jobRequestsChanged.emit(this.jobRequests.slice());
     }
 
     deleteJobRequest(id:number){
