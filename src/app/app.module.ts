@@ -39,6 +39,7 @@ import { CompanyContractDetailComponent } from './admin-page/companies/company-c
 import { CompanyContractUpdateComponent } from './admin-page/companies/company-contract-update/company-contract-update.component';
 import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
 import { AdminNavbarService } from './admin-navbar/admin-navbar.service';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { AdminNavbarService } from './admin-navbar/admin-navbar.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

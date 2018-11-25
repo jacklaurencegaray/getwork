@@ -17,7 +17,14 @@ export class JobRequestDetailComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
-        this.jobRequestForDisplay = this.jobRequestService.getJobRequestById(+params['id']);
+        // the passed parameters are just TESTS
+        this.jobRequestService.getJobRequestById('wakanda',1,+params['id']).subscribe(
+          (jobRequest: any) => {
+            this.jobRequestForDisplay = jobRequest;
+          }, (error) => {
+            console.log(error)
+          }
+        );
       }
     );
   }

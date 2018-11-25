@@ -1,11 +1,14 @@
+import { Company } from "./company.model";
+
 export class JobRequest {
     constructor(public id: number,
-        public companyId: number,
-        public displayHandler: string,
+        public jobRequestNumber: string,
+        public creationDate: Date,
+        public modificationDate: Date,
+        public company: Company,
         public status: string, 
-        public contact: string,
         public description: string,
         public startDate: Date,
         public endDate: Date,
-        public expiryDate: Date){}
+        public closedDate: Date){}
 }
