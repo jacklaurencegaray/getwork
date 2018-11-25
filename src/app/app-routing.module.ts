@@ -18,6 +18,7 @@ import { CompanyDetailComponent } from './admin-page/companies/company-detail/co
 import { CompanyCreateComponent } from './admin-page/companies/company-create/company-create.component';
 import { CompanyUpdateComponent } from './admin-page/companies/company-update/company-update.component';
 import { CompanyJobRequestsListComponent } from './admin-page/companies/company-job-requests-list/company-job-requests-list.component';
+import { CompanyJobRequestsDetailComponent } from './admin-page/companies/company-job-requests-detail/company-job-requests-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -30,7 +31,8 @@ const routes: Routes = [
       { path: 'companies/create', component: CompanyCreateComponent },
       { path: 'companies/:id', component: CompanyDetailComponent },
       { path: 'companies/:id/update', component: CompanyUpdateComponent, pathMatch: 'full' },
-      { path: 'companies/:id/jobrequests', component: CompanyJobRequestsListComponent, pathMatch: 'full', outlet: 'adminlistcontent' }
+      { path: 'companies/:id/jobrequests', component: CompanyJobRequestsListComponent, pathMatch: 'full', outlet: 'adminlistcontent' },
+      { path: 'companies/:id/jobrequests/:jobRequestId', component: CompanyJobRequestsDetailComponent, pathMatch: 'full' }
     ] },
   { path: ':name', 
     component: CompanyPageComponent, 
