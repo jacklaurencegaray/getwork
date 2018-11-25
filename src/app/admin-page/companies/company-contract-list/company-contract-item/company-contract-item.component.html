@@ -1,4 +1,5 @@
 <div
+  [routerLink]="['/admin', 'companies', company_id, 'jobrequests', contract.jobRequest_id, 'contracts', contract.id]"
   (click)="onContractSelected()">
   <p># {{ contract.id }}</p>
   <p>{{ contract.contractorName }}</p>
