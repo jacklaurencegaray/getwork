@@ -2,7 +2,20 @@
   <div class="content-nav">
     <app-navbar></app-navbar>
   </div>
-  <div class="content-header">Company Page</div>
+  <div class="content-header">
+      <span class="jobRequest">
+        <a> {{ activeLinks[0] }}</a>
+      </span>
+      <span class="jr_id">
+        <a *ngIf="activeLinks[1]"> > {{ activeLinks[1] }}</a>
+      </span>
+      <span class="contracts">
+        <a *ngIf="activeLinks[2]"> > {{ activeLinks[2] }}</a>
+      </span>
+      <span class="contract_id">
+        <a *ngIf="activeLinks[3]"> > {{ activeLinks[3] }}</a>
+      </span>
+  </div>
   <div class="content-body">
     <app-jobrequests></app-jobrequests>
   </div>

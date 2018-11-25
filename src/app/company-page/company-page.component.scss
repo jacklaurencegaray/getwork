@@ -1,0 +1,28 @@
+.content-header{
+    display:grid;
+    grid-template-columns: 2fr 2fr 2fr 2fr;
+    grid-template-rows: 3fr 1fr;
+    grid-template-areas: 
+        "jobRequest jr_id contracts contract_id"
+        "notification notification notification notification" 
+}
+
+.notification {
+    grid-area: notification;
+}
+
+.jobRequest{
+    grid-area: jobRequest;
+}
+
+.jr_id{
+    grid-area: jr_id;
+}
+
+.contracts{
+    grid-area: contracts;
+}
+
+.contract_id{
+    grid-area: contract_id;
+}
