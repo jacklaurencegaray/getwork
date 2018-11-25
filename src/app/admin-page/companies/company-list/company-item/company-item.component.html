@@ -1,0 +1,7 @@
+<div
+  [routerLink]="['/admin', 'companies', company.id]"
+  (click)="onCompanySelected()">
+  <p>{{ company.companyName }}</p>
+  <p>{{ company.address }}</p>
+</div>
+<!---insert routerlink here to detail-->

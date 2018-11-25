@@ -1,0 +1,6 @@
+<div
+  [routerLink] = "['/admin', 'companies', jr.companyId, 'jobrequests', jr.id]"
+  (click)="onJobRequestSelected()">
+  <p># {{ jr.id }}</p>
+  <p>{{ jr.displayHandler }}</p>
+</div>

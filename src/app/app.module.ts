@@ -24,6 +24,19 @@ import { ContractItemComponent } from './company-page/jobrequests/contract-list/
 import { ContractDetailComponent } from './company-page/jobrequests/contract-detail/contract-detail.component';
 import { ContractUpdateComponent } from './company-page/jobrequests/contract-update/contract-update.component';
 import { ContractCreateComponent } from './company-page/jobrequests/contract-create/contract-create.component';
+import { CompaniesComponent } from './admin-page/companies/companies.component';
+import { CompanyListComponent } from './admin-page/companies/company-list/company-list.component';
+import { CompanyItemComponent } from './admin-page/companies/company-list/company-item/company-item.component';
+import { CompanyDetailComponent } from './admin-page/companies/company-detail/company-detail.component';
+import { CompanyCreateComponent } from './admin-page/companies/company-create/company-create.component';
+import { CompanyUpdateComponent } from './admin-page/companies/company-update/company-update.component';
+import { CompanyJobRequestsListComponent } from './admin-page/companies/company-job-requests-list/company-job-requests-list.component';
+import { CompanyJobRequestsItemComponent } from './admin-page/companies/company-job-requests-list/company-job-requests-item/company-job-requests-item.component';
+import { CompanyJobRequestsDetailComponent } from './admin-page/companies/company-job-requests-detail/company-job-requests-detail.component';
+import { CompanyContractListComponent } from './admin-page/companies/company-contract-list/company-contract-list.component';
+import { CompanyContractItemComponent } from './admin-page/companies/company-contract-list/company-contract-item/company-contract-item.component';
+import { CompanyContractDetailComponent } from './admin-page/companies/company-contract-detail/company-contract-detail.component';
+import { CompanyContractUpdateComponent } from './admin-page/companies/company-contract-update/company-contract-update.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +57,19 @@ import { ContractCreateComponent } from './company-page/jobrequests/contract-cre
     ContractDetailComponent,
     ContractUpdateComponent,
     ContractCreateComponent,
+    CompaniesComponent,
+    CompanyListComponent,
+    CompanyItemComponent,
+    CompanyDetailComponent,
+    CompanyCreateComponent,
+    CompanyUpdateComponent,
+    CompanyJobRequestsListComponent,
+    CompanyJobRequestsItemComponent,
+    CompanyJobRequestsDetailComponent,
+    CompanyContractListComponent,
+    CompanyContractItemComponent,
+    CompanyContractDetailComponent,
+    CompanyContractUpdateComponent,
   ],
   imports: [
     BrowserModule,

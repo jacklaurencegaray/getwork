@@ -1,0 +1,14 @@
+<div class="detail-content-container">
+  <h3 class="companyName">{{ companyForDisplay.companyName }}</h3>
+  <div class="address">{{ companyForDisplay.address }}</div>
+  <div class="contactNum">{{ companyForDisplay.contactNum }}</div>
+  <div class="website">{{ companyForDisplay.website }}</div>
+  <div class="email">{{ companyForDisplay.email }}</div>
+  <div class="detail-btn-group">
+    <button [routerLink]="['/admin',{outlets: {primary: [], adminlistcontent: ['companies', companyForDisplay.id, 'jobrequests' ]}}]">
+      View Applications
+    </button>
+    <button [routerLink]="['/admin', 'companies', companyForDisplay.id, 'update']">Update Details</button>
+    <button (click)="deleteCompany()">Delete Company</button>
+  </div>
+</div>
