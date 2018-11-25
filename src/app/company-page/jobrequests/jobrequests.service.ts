@@ -53,7 +53,21 @@ export class JobRequestService{
         let url: string = "http://localhost:8090/"+updatedJobRequest.company.companyName+"/"+updatedJobRequest.company.id+"/jobrequests/update";
         return this.http.post(url, updatedJobRequest);
     }
+
+    deleteJobRequest(companyName: string, companyId: number, request_id:number){
+        let url: string = "http://localhost:8090/"+companyName+"/"+companyId+"/jobrequests/"+request_id;
+        return this.http.delete(url);
+    }
     
+    // deleteJobRequest(id:number){
+    //     let ndx = this.jobRequests.findIndex(
+    //         obj => obj.id === id
+    //     );
+
+    //     this.jobRequests.splice(ndx,1);
+    //     this.jobRequestsChanged.emit(this.jobRequests.slice());
+    // }
+
     // updateJobRequest(updatedJobRequest: JobRequest){
     //     let ndx = this.jobRequests.findIndex(
     //         obj => obj.id === updatedJobRequest.id
@@ -82,14 +96,5 @@ export class JobRequestService{
                }
             }
         );
-    }
-
-    deleteJobRequest(id:number){
-        let ndx = this.jobRequests.findIndex(
-            obj => obj.id === id
-        );
-
-        this.jobRequests.splice(ndx,1);
-        this.jobRequestsChanged.emit(this.jobRequests.slice());
     }
 }
