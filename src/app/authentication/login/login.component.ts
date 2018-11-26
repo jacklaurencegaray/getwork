@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
           this.loginForm.reset();
           this.router.navigate(['/login']);
         }else{
-          this.router.navigate(['/test']);
+          this.router.navigate(['/'+company.companyName]);
         }
         //this.router.navigate(['/test']);
       }, (error) => {

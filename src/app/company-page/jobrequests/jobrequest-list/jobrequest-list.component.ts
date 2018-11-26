@@ -20,12 +20,19 @@ export class JobrequestListComponent implements OnInit {
     '09452186422', 
     'versace@gmail.com', 
     'versace');
+  companyName: string;
   jobRequests = [];
   constructor(private jobRequestService: JobRequestService,
     private route: ActivatedRoute,
-    private adminNavbarService: AdminNavbarService) { }
-
+    private adminNavbarService: AdminNavbarService) { 
+    }
+  
   ngOnInit() {
+    this.route.paramMap.subscribe(
+      params => {
+        console.log("parameters: "+params.get('companyName'));
+      }
+    );
     this.jobRequestService.jobRequestsChanged.subscribe(
       (jobRequests: JobRequest[]) => {
         this.jobRequestService.getJobRequests(this.testCompany.id).subscribe(
@@ -37,6 +44,7 @@ export class JobrequestListComponent implements OnInit {
         );
       }
     );
+
     this.jobRequestService.getJobRequests(this.testCompany.id)
       .subscribe(
         (jobRequests: any[]) => {
