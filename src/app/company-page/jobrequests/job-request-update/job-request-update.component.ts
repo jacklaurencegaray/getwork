@@ -52,7 +52,9 @@ export class JobRequestUpdateComponent implements OnInit {
     this.jobRequestForUpdate.status = this.updateForm.form.value.status;
     this.jobRequestForUpdate.startDate = this.updateForm.form.value.startDate;
     this.jobRequestForUpdate.endDate = this.updateForm.form.value.endDate;
-    this.jobRequestForUpdate.closedDate = this.closedDate;
+    if(this.jobRequestForUpdate.status === "CLOSED"){
+      this.jobRequestForUpdate.closedDate = new Date();
+    }
     
     this.jobRequestService.updateJobRequest(this.jobRequestForUpdate).subscribe(
       (response: any) => {

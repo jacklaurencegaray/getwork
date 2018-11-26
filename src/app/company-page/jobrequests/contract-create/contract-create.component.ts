@@ -54,12 +54,13 @@ export class ContractCreateComponent implements OnInit {
       this.currentJobRequest,
       new Date(),
       new Date(),
-      '15101138112',
+      this.makeid(),
       this.createForm.form.value.type,
       this.createForm.form.value.contractorName,
       this.createForm.form.value.startDate,
       this.createForm.form.value.endDate,
-      this.createForm.form.value.status
+      null,
+      'NEW'
     );
     this.contractsService.createContract(this.newContract).subscribe(
       (response: any) => {
@@ -70,5 +71,15 @@ export class ContractCreateComponent implements OnInit {
       }
     );
     this.router.navigate(['/'+this.currentCompany.companyName, {outlets: {primary:[], 'listcontent':['jobrequests', this.newContract.jobRequest.id, 'contracts']}}]);
+  }
+
+  private makeid() {
+    let text = "";
+    let possible = "0123456789";
+  
+    for (let i = 0; i < 11; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+  
+    return text;
   }
 }

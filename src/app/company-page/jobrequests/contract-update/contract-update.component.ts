@@ -55,6 +55,9 @@ export class ContractUpdateComponent implements OnInit {
     this.contractForUpdate.status = this.updateForm.form.value.status;
     this.contractForUpdate.startDate = this.updateForm.form.value.startDate;
     this.contractForUpdate.endDate = this.updateForm.form.value.endDate;
+    if(this.contractForUpdate.status === "CLOSED"){
+      this.contractForUpdate.closedDate = new Date();
+    }
     
     this.contractsService.updateContracts(this.contractForUpdate).subscribe(
       (response: any) => {
