@@ -15,12 +15,20 @@ export class CompanyJobRequestsListComponent implements OnInit {
 
   jobRequests: JobRequest[];
   currentCompanyId: number;
+  currentCompany: Company;
   constructor(private jobRequestService: JobRequestService,
+    private companyService: CompanyService,
     private adminNavbarService: AdminNavbarService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.currentCompanyId = this.route.snapshot.params['id'];
+    this.companyService.getCompanyById(+this.currentCompanyId).subscribe(
+      (company: any) => {
+        this.currentCompany = company;
+        this.adminNavbarService.linkChanged.emit([this.currentCompany.companyName, 'requests']);
+      }
+    );
     this.jobRequestService.jobRequestsChanged.subscribe(
       (jobRequests: JobRequest[]) => {
         this.jobRequestService.getJobRequests(this.currentCompanyId).subscribe(
@@ -42,7 +50,5 @@ export class CompanyJobRequestsListComponent implements OnInit {
           console.log(error)
         }
       );
-
-    this.adminNavbarService.linkChanged.emit(['sample name', 'requests']);
   }
 }
