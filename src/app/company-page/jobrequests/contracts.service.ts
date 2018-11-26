@@ -19,7 +19,7 @@ export class ContractsService {
     // }
 
     getContracts(company_name: string, company_id: number, request_id:number){
-        return this.http.get("http://localhost:8090/"+company_name+"/"+company_id+"/jobrequests/"+request_id+"/contracts/getAll")
+        return this.http.get("http://localhost:8090/getwork/"+company_id+"/jobrequests/"+request_id+"/contracts")
         .map(
             (response) => {
                 return response.json();
@@ -33,7 +33,7 @@ export class ContractsService {
     }
 
     createContract(contract: any){
-        let url: string = "http://localhost:8090/"+contract.jobRequest.company.companyName+"/"+contract.jobRequest.company.id+"/jobrequests/"+contract.jobRequest.id+"/contracts/create";
+        let url: string = "http://localhost:8090/getwork/"+contract.jobRequest.company.id+"/jobrequests/"+contract.jobRequest.id+"/contracts/create";
         console.log(url);
         return this.http.post(url, contract);
     }
@@ -53,8 +53,8 @@ export class ContractsService {
     //     );
     // }
 
-    getContractById(company_name: string, company_id: number, req_id:number,contract_id: number){
-        return this.http.get("http://localhost:8090/"+company_name+"/"+company_id+"/jobrequests/"+req_id+"/contracts/"+contract_id)
+    getContractById(company_id: number, req_id:number,contract_id: number){
+        return this.http.get("http://localhost:8090/getwork/"+company_id+"/jobrequests/"+req_id+"/contracts/"+contract_id)
         .map(
             (response) => {
                 return response.json();
@@ -77,7 +77,7 @@ export class ContractsService {
     // }
 
     updateContracts(updatedContract: Contract){
-        let url: string = "http://localhost:8090/"+updatedContract.jobRequest.company.companyName+"/"+updatedContract.jobRequest.company.id+"/jobrequests/"+updatedContract.jobRequest.id+"/contracts/update";
+        let url: string = "http://localhost:8090/getwork/"+updatedContract.jobRequest.company.id+"/jobrequests/"+updatedContract.jobRequest.id+"/contracts/"+updatedContract.id+"/update";
         return this.http.post(url, updatedContract);
     }
 

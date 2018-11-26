@@ -19,7 +19,7 @@ export class ContractDetailComponent implements OnInit {
     this.route.params.subscribe(
       (params: Params) => {
         //paramters are just TEST!
-        this.contractsService.getContractById('carloski',1,+params['id'],+params['contractId']).subscribe(
+        this.contractsService.getContractById(1,+params['id'],+params['contractId']).subscribe(
           (contract: any) => {
             this.contractForDisplay = contract;
             console.log(contract);

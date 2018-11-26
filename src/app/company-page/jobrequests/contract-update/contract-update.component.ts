@@ -27,7 +27,7 @@ export class ContractUpdateComponent implements OnInit {
     this.route.params.subscribe(
       //parameters are only TEST!
       (params: Params) => {
-        this.contractsService.getContractById('carloski',1,+params['id'], +params['contractId']).subscribe(
+        this.contractsService.getContractById(1,+params['id'], +params['contractId']).subscribe(
           (contract: any) => {
             this.contractForUpdate = contract;
           }, (error) => {
