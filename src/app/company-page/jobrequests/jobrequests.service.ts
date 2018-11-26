@@ -15,7 +15,7 @@ export class JobRequestService{
     jobRequestSelected = new EventEmitter<JobRequest>();
     jobRequestsChanged = new EventEmitter<JobRequest[]>();
 
-    getJobRequests(company_name: string, company_id: number){
+    getJobRequests(company_id: number){
         return this.http.get("http://localhost:8090/getwork/"+company_id+"/jobrequests")
         .map(
             (response) => {

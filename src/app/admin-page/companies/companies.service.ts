@@ -39,6 +39,7 @@ export class CompanyService {
         console.log(url);
         return this.http.post(url, company);
     }
+    
     createJobRequest(jobRequest: any){
         let url: string = "http://localhost:8090/getwork/"+jobRequest.company.id+"/jobrequests/create";
         console.log(url);

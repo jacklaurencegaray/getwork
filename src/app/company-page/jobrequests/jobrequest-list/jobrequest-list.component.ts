@@ -26,7 +26,7 @@ export class JobrequestListComponent implements OnInit {
   ngOnInit() {
     this.jobRequestService.jobRequestsChanged.subscribe(
       (jobRequests: JobRequest[]) => {
-        this.jobRequestService.getJobRequests(this.testCompany.companyName, this.testCompany.id).subscribe(
+        this.jobRequestService.getJobRequests(this.testCompany.id).subscribe(
           (jobRequests: any[]) => {
             this.jobRequests = jobRequests.slice();
           }, (error) => {
@@ -35,9 +35,7 @@ export class JobrequestListComponent implements OnInit {
         );
       }
     );
-    this.jobRequestService.getJobRequests(
-      this.testCompany.companyName, 
-      this.testCompany.id)
+    this.jobRequestService.getJobRequests(this.testCompany.id)
       .subscribe(
         (jobRequests: any[]) => {
           this.jobRequests = jobRequests.slice();

@@ -16,15 +16,23 @@ export class CompanyJobRequestsDetailComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
+
     this.route.params.subscribe(
       (params: Params) => {
-        this.jobRequestForDisplay = this.jobRequestService.getJobRequestById(+params['jobRequestId']);
+        this.jobRequestService.getJobRequestById(+params['id'],+params['jobRequestId']).subscribe(
+          (jobRequest: any) => {
+            this.jobRequestForDisplay = jobRequest;
+            console.log(this.jobRequestForDisplay);
+          }, (error) => {
+            console.log(error)
+          }
+        );
       }
     );
   }
 
   deleteJobRequest(){
-    this.jobRequestService.deleteJobRequest(this.jobRequestForDisplay.id);
-    this.router.navigate(['/admin', {outlets: {primary:[], 'adminlistcontent':['companies', this.jobRequestForDisplay.companyId, 'jobrequests']}}]);
+    // this.jobRequestService.deleteJobRequest(this.jobRequestForDisplay.id);
+    // this.router.navigate(['/admin', {outlets: {primary:[], 'adminlistcontent':['companies', this.jobRequestForDisplay.companyId, 'jobrequests']}}]);
   }
 }
