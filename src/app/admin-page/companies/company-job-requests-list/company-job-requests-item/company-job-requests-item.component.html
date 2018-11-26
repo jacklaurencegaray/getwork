@@ -1,6 +1,4 @@
-<div
-  [routerLink] = "['/admin', 'companies', jr.companyId, 'jobrequests', jr.id]"
-  (click)="onJobRequestSelected()">
-  <p># {{ jr.id }}</p>
-  <p>{{ jr.description }}</p>
+<div class='job-request-item' [routerLink]="['/admin', 'companies', jr.companyId, 'jobrequests', jr.id]" (click)="onJobRequestSelected()">
+  <p class='request'># {{ jr.id }}</p>
+  <p class='description'>{{ jr.description }}</p>
 </div>
