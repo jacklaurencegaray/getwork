@@ -3,6 +3,8 @@ import { Contract } from 'src/app/shared/contract.model';
 import { ContractsService } from 'src/app/company-page/jobrequests/contracts.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { AdminNavbarService } from 'src/app/admin-navbar/admin-navbar.service';
+import { CompanyService } from '../companies.service';
+import { JobRequestService } from 'src/app/company-page/jobrequests/jobrequests.service';
 
 @Component({
   selector: 'app-company-contract-list',
@@ -12,7 +14,10 @@ import { AdminNavbarService } from 'src/app/admin-navbar/admin-navbar.service';
 export class CompanyContractListComponent implements OnInit {
 
   contracts: Contract[];
+  currentCompany;
   constructor(private contractsService: ContractsService,
+    private companyService: CompanyService,
+    private jobRequestService: JobRequestService,
     private adminNavbarService: AdminNavbarService,
     private route: ActivatedRoute) { }
 
@@ -40,7 +45,17 @@ export class CompanyContractListComponent implements OnInit {
         );
       }
     );
-    this.adminNavbarService.linkChanged.emit(['sample name', 'requests', 'sample handler', 'contracts']);
+
+    this.companyService.getCompanyById(+this.route.snapshot.params['id']).subscribe(
+      (company: any) => {
+        this.currentCompany = company;
+        this.jobRequestService.getJobRequestById(this.currentCompany.id,+this.route.snapshot.params['jobRequestId']).subscribe(
+          (jobRequest: any) => {
+            this.adminNavbarService.linkChanged.emit([this.currentCompany.companyName, 'requests', jobRequest.description , 'contracts']);
+          }
+        );
+      }
+    );
   }
 
 }
