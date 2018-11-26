@@ -18,7 +18,7 @@ export class ContractsService {
     //     //return this.contracts.slice();
     // }
 
-    getContracts(company_name: string, company_id: number, request_id:number){
+    getContracts(company_id: number, request_id:number){
         return this.http.get("http://localhost:8090/getwork/"+company_id+"/jobrequests/"+request_id+"/contracts")
         .map(
             (response) => {
@@ -37,21 +37,6 @@ export class ContractsService {
         console.log(url);
         return this.http.post(url, contract);
     }
-
-    // addContract(contract: Contract){
-    //     this.contracts.push(contract);
-    //     this.contractsChanged.emit(this.contracts.slice());
-    // }
-
-    
-
-    // getContractById(id:number){
-    //     return this.contracts.find(
-    //         obj => {
-    //             return obj.id === id;
-    //         }
-    //     );
-    // }
 
     getContractById(company_id: number, req_id:number,contract_id: number){
         return this.http.get("http://localhost:8090/getwork/"+company_id+"/jobrequests/"+req_id+"/contracts/"+contract_id)

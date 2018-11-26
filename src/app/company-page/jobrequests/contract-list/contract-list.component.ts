@@ -23,7 +23,7 @@ export class ContractListComponent implements OnInit {
     console.log(this.jr_id);
     this.route.params.subscribe(
       (params: Params) => {
-        this.contractsService.getContracts("carloski",1,+params['id']).subscribe(
+        this.contractsService.getContracts(1,+params['id']).subscribe(
           (contracts: any[]) => {
             this.contracts = contracts.slice();
           }, (error) => {
@@ -35,7 +35,7 @@ export class ContractListComponent implements OnInit {
     
     this.contractsService.contractsChanged.subscribe(
       (contracts: Contract[]) => {
-        this.contractsService.getContracts('carloski', 1, this.jr_id).subscribe(
+        this.contractsService.getContracts(1, this.jr_id).subscribe(
           (contracts: any[]) => {
             this.contracts = contracts.slice();
           }, (error) => {
