@@ -32,7 +32,14 @@ export class ContractDetailComponent implements OnInit {
   }
 
   deleteContract(){
-    this.contractsService.deleteContract(this.contractForDisplay.id);
+    this.contractsService.deleteContract(this.contractForDisplay.jobRequest.company.id,this.contractForDisplay.jobRequest.id,this.contractForDisplay.id).subscribe(
+      (response: any) => {
+        console.log("From server:"+response);
+        this.contractsService.contractsChanged.emit([]);
+      }, (error) => {
+        console.log(error)
+      } 
+    );
     this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests', this.contractForDisplay.jobRequest.id, 'contracts']}}]);
   }
 }

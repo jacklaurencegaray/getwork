@@ -52,27 +52,22 @@ export class ContractsService {
         );
     }
 
-    // updateContracts(updatedContract: Contract){
-    //     let ndx = this.contracts.findIndex(
-    //         obj => obj.id === updatedContract.id
-    //     );
-
-    //     this.contracts[ndx] = updatedContract;
-    //     this.contractsChanged.emit(this.contracts.slice());
-    // }
-
     updateContracts(updatedContract: Contract){
         let url: string = "http://localhost:8090/getwork/"+updatedContract.jobRequest.company.id+"/jobrequests/"+updatedContract.jobRequest.id+"/contracts/"+updatedContract.id+"/update";
         return this.http.post(url, updatedContract);
     }
 
-    deleteContract(id:number){
-        let ndx = this.contracts.findIndex(
-            obj => obj.id === id
-        );
+    // deleteContract(id:number){
+    //     let ndx = this.contracts.findIndex(
+    //         obj => obj.id === id
+    //     );
 
-        this.contracts.splice(ndx,1);
-        this.contractsChanged.emit(this.contracts.slice());
+    //     this.contracts.splice(ndx,1);
+    //     this.contractsChanged.emit(this.contracts.slice());
+    // }
+    deleteContract(companyId:number, request_id: number, contract_id: number){
+        let url: string = "http://localhost:8090/getwork/"+companyId+"/jobrequests/"+request_id+"/contracts/"+contract_id;
+        return this.http.delete(url);
     }
 
     getContractsByJobRequestId(contracts: Contract[], jobRequest_id: number){
