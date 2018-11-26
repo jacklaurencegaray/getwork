@@ -25,7 +25,7 @@ export class JobRequestUpdateComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
-        this.jobRequestService.getJobRequestById('Wakanda',1,+params['id']).subscribe(
+        this.jobRequestService.getJobRequestById(1,+params['id']).subscribe(
           (jobRequest: any) => {
             this.jobRequestForUpdate = jobRequest;
           }, (error) => {

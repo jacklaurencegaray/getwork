@@ -20,7 +20,7 @@ export class JobRequestDetailComponent implements OnInit {
     this.route.params.subscribe(
       (params: Params) => {
         // the passed parameters are just TESTS
-        this.jobRequestService.getJobRequestById('wakanda',1,+params['id']).subscribe(
+        this.jobRequestService.getJobRequestById(1,+params['id']).subscribe(
           (jobRequest: any) => {
             this.jobRequestForDisplay = jobRequest;
             console.log(this.jobRequestForDisplay);
