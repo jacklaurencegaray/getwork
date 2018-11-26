@@ -56,4 +56,8 @@ export class JobrequestListComponent implements OnInit {
     this.router.navigate(['/'+this.currentCompany.companyName,'jobrequests', 'create']);
   }
 
+  onSearchChanges(searchValue : string ) {  
+    console.log(searchValue);
+  }
+
 }
