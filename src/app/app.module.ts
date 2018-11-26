@@ -40,6 +40,7 @@ import { CompanyContractUpdateComponent } from './admin-page/companies/company-c
 import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
 import { AdminNavbarService } from './admin-navbar/admin-navbar.service';
 import { HttpModule } from '@angular/http';
+import { CompanyJobRequestUpdateComponent } from './admin-page/companies/company-job-request-update/company-job-request-update.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { HttpModule } from '@angular/http';
     CompanyContractDetailComponent,
     CompanyContractUpdateComponent,
     AdminNavbarComponent,
+    CompanyJobRequestUpdateComponent,
   ],
   imports: [
     BrowserModule,

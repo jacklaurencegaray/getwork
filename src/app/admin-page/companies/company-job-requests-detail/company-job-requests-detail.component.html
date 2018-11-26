@@ -7,7 +7,7 @@
     <button [routerLink]="['/test', {outlets: {primary: [], listcontent: ['jobrequests', jobRequestForDisplay.id, 'contracts']}}]">
       View Contracts
     </button>
-    <button [routerLink]="['/test','jobrequests', jobRequestForDisplay.id, 'update']">Update Requests</button>
+    <button [routerLink]="['/admin','companies', jobRequestForDisplay.company.id, 'jobrequests', jobRequestForDisplay.id, 'update']">Update Request</button>
     <button (click)="deleteJobRequest()">Delete</button>
   </div>
 </div>
