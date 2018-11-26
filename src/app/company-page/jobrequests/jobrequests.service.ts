@@ -16,7 +16,7 @@ export class JobRequestService{
     jobRequestsChanged = new EventEmitter<JobRequest[]>();
 
     getJobRequests(company_id: number){
-        return this.http.get("http://104.248.149.206:8090/getwork/"+company_id+"/jobrequests")
+        return this.http.get("http://localhost:8090/getwork/"+company_id+"/jobrequests")
         .map(
             (response) => {
                 return response.json();
@@ -30,13 +30,13 @@ export class JobRequestService{
     }
     
     createJobRequest(jobRequest: any){
-        let url: string = "http://104.248.149.206:8090/getwork/"+jobRequest.company.id+"/jobrequests/create";
+        let url: string = "http://localhost:8090/getwork/"+jobRequest.company.id+"/jobrequests/create";
         console.log(url);
         return this.http.post(url, jobRequest);
     }
     
     getJobRequestById(company_id: number, req_id: number){
-        return this.http.get("http://104.248.149.206:8090/getwork/"+company_id+"/jobrequests/"+req_id)
+        return this.http.get("http://localhost:8090/getwork/"+company_id+"/jobrequests/"+req_id)
         .map(
             (response) => {
                 return response.json();
@@ -50,12 +50,12 @@ export class JobRequestService{
     }
 
     updateJobRequest(updatedJobRequest: JobRequest){
-        let url: string = "http://104.248.149.206:8090/getwork/"+updatedJobRequest.company.id+"/jobrequests/"+updatedJobRequest.id+"/update";
+        let url: string = "http://localhost:8090/getwork/"+updatedJobRequest.company.id+"/jobrequests/"+updatedJobRequest.id+"/update";
         return this.http.post(url, updatedJobRequest);
     }
 
     deleteJobRequest(companyId: number, request_id:number){
-        let url: string = "http://104.248.149.206:8090/getwork/"+companyId+"/jobrequests/"+request_id;
+        let url: string = "http://localhost:8090/getwork/"+companyId+"/jobrequests/"+request_id;
         return this.http.delete(url);
     }
     
