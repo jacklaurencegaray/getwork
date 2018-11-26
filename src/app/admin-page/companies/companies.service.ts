@@ -16,7 +16,7 @@ export class CompanyService {
 
     }
     getCompanies() {
-        return this.http.get("http://localhost:8090/getwork/admin/companies")
+        return this.http.get("http://104.248.149.206:8090/getwork/admin/companies")
             .map(
                 (response) => {
                     return response.json();
@@ -35,19 +35,19 @@ export class CompanyService {
     // }
 
     createCompany(company: any) {
-        let url: string = "http://localhost:8090/getwork/register";
+        let url: string = "http://104.248.149.206:8090/getwork/register";
         console.log(url);
         return this.http.post(url, company);
     }
 
     createJobRequest(jobRequest: any) {
-        let url: string = "http://localhost:8090/getwork/" + jobRequest.company.id + "/jobrequests/create";
+        let url: string = "http://104.248.149.206:8090/getwork/" + jobRequest.company.id + "/jobrequests/create";
         console.log(url);
         return this.http.post(url, jobRequest);
     }
 
     getCompanyById(company_id: number) {
-        return this.http.get("http://localhost:8090/getwork/admin/companies/" + company_id)
+        return this.http.get("http://104.248.149.206:8090/getwork/admin/companies/" + company_id)
             .map(
                 (response) => {
                     return response.json();
@@ -61,7 +61,7 @@ export class CompanyService {
     }
 
     getCompanyByName(companyName: string) {
-        return this.http.get("http://localhost:8090/getwork/admin/companies/getByName/" + companyName)
+        return this.http.get("http://104.248.149.206:8090/getwork/admin/companies/getByName/" + companyName)
             .map(
                 (response) => {
                     return response.json();
@@ -75,7 +75,7 @@ export class CompanyService {
     }
 
     updateCompany(updatedCompany: Company) {
-        let url: string = "http://localhost:8090/getwork/admin/companies/" + updatedCompany.id + "/update";
+        let url: string = "http://104.248.149.206:8090/getwork/admin/companies/" + updatedCompany.id + "/update";
         return this.http.post(url, updatedCompany);
     }
 
