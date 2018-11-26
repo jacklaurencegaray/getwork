@@ -61,7 +61,7 @@ export class CompanyService {
     }
 
     getCompanyByName(companyName: string){
-        return this.http.get("http://localhost:8090/getwork/admin/companies/"+companyName)
+        return this.http.get("http://localhost:8090/getwork/admin/companies/getByName/"+companyName)
         .map(
             (response) => {
                 return response.json();

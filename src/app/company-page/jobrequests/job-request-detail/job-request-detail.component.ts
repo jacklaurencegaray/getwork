@@ -3,6 +3,8 @@ import { JobRequest } from 'src/app/shared/jobrequest.model';
 import { JobRequestService } from '../jobrequests.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AdminNavbarService } from 'src/app/admin-navbar/admin-navbar.service';
+import { Company } from 'src/app/shared/company.model';
+import { CompanyService } from 'src/app/admin-page/companies/companies.service';
 
 @Component({
   selector: 'app-job-request-detail',
@@ -11,23 +13,26 @@ import { AdminNavbarService } from 'src/app/admin-navbar/admin-navbar.service';
 })
 export class JobRequestDetailComponent implements OnInit {
   @Input() jobRequestForDisplay: JobRequest;
+  currentCompany: Company;
   constructor(private jobRequestService: JobRequestService,
     private adminNavbarService: AdminNavbarService,
+    private companyService: CompanyService,
     private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit() {
-    this.route.params.subscribe(
-      (params: Params) => {
-        // the passed parameters are just TESTS
-        this.jobRequestService.getJobRequestById(1,+params['id']).subscribe(
+    this.companyService.getCompanyByName(this.route.parent.snapshot.params['companyName']).subscribe(
+      (company: any) => {
+        this.currentCompany = company;
+        this.jobRequestService.getJobRequestById(1,+this.route.snapshot.params['id']).subscribe(
           (jobRequest: any) => {
             this.jobRequestForDisplay = jobRequest;
-            console.log(this.jobRequestForDisplay);
           }, (error) => {
             console.log(error)
           }
         );
+      }, (error) => {
+        console.log(error)
       }
     );
   }

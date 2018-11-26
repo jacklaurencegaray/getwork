@@ -4,6 +4,7 @@ import { JobRequest } from 'src/app/shared/jobrequest.model';
 import { AdminNavbarService } from 'src/app/admin-navbar/admin-navbar.service';
 import { Company } from 'src/app/shared/company.model';
 import { ActivatedRoute } from '@angular/router';
+import { CompanyService } from 'src/app/admin-page/companies/companies.service';
 
 @Component({
   selector: 'app-jobrequest-list',
@@ -11,31 +12,34 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./jobrequest-list.component.scss']
 })
 export class JobrequestListComponent implements OnInit {
-  testCompany = new Company(1,
-    new Date(),
-    new Date(), 
-    'Wakanda', 
-    'France de Guatero', 
-    'versace.com', 
-    '09452186422', 
-    'versace@gmail.com', 
-    'versace');
-  companyName: string;
+  currentCompany;
   jobRequests = [];
   constructor(private jobRequestService: JobRequestService,
+    private companyService: CompanyService,
     private route: ActivatedRoute,
     private adminNavbarService: AdminNavbarService) { 
     }
   
   ngOnInit() {
-    this.route.paramMap.subscribe(
-      params => {
-        console.log("parameters: "+params.get('companyName'));
+    this.companyService.getCompanyByName(this.route.parent.snapshot.params['companyName']).subscribe(
+      (company: any) => {
+        this.currentCompany = company;
+        this.jobRequestService.getJobRequests(this.currentCompany.id)
+        .subscribe(
+          (jobRequests: any[]) => {
+            this.jobRequests = jobRequests.slice();
+          }, (error) => {
+            console.log(error)
+          }
+        );
+      }, (error) => {
+        console.log(error)
       }
     );
+
     this.jobRequestService.jobRequestsChanged.subscribe(
       (jobRequests: JobRequest[]) => {
-        this.jobRequestService.getJobRequests(this.testCompany.id).subscribe(
+        this.jobRequestService.getJobRequests(this.currentCompany.id).subscribe(
           (jobRequests: any[]) => {
             this.jobRequests = jobRequests.slice();
           }, (error) => {
@@ -44,15 +48,6 @@ export class JobrequestListComponent implements OnInit {
         );
       }
     );
-
-    this.jobRequestService.getJobRequests(this.testCompany.id)
-      .subscribe(
-        (jobRequests: any[]) => {
-          this.jobRequests = jobRequests.slice();
-        }, (error) => {
-          console.log(error)
-        }
-      );
   }
 
   onCreate(){
