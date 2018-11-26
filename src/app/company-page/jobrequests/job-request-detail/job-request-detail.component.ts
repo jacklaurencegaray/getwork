@@ -56,5 +56,8 @@ export class JobRequestDetailComponent implements OnInit {
     this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
     this.adminNavbarService.linkChanged.emit(['Job Requests']);
   }
-
+  
+  onUpdate(){
+    this.router.navigate(['/'+this.currentCompany.companyName,'jobrequests', this.jobRequestForDisplay.id, 'update']);
+  }
 }
