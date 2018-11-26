@@ -3,6 +3,7 @@ import { Contract } from 'src/app/shared/contract.model';
 import { NgForm } from '@angular/forms';
 import { ContractsService } from 'src/app/company-page/jobrequests/contracts.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
+import { AdminNavbarService } from 'src/app/admin-navbar/admin-navbar.service';
 
 @Component({
   selector: 'app-company-contract-update',
@@ -12,36 +13,45 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 export class CompanyContractUpdateComponent implements OnInit {
 
   contractForUpdate: Contract;
-  startDate: string;
-  endDate: string;
-  expiryDate: string;
   @ViewChild('f') updateForm: NgForm;
   company_id: number;
   constructor(private contractsService: ContractsService,
+    private adminNavbarService: AdminNavbarService,
     private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
-        this.company_id = +params['id'];
-        this.contractForUpdate = Object.create(this.contractsService.getContractById(+params['contractId']));
+        this.contractsService.getContractById(+params['id'],+params['jobRequestId'],+params['contractId']).subscribe(
+          (contract: any) => {
+            this.contractForUpdate = contract;
+          }, (error) => {
+            console.log(error)
+          }
+        );
       }
     );
-    console.log(this.contractForUpdate);
-    this.startDate = this.contractForUpdate.startDate.toISOString().substring(0,10);
-    this.endDate = this.contractForUpdate.endDate.toISOString().substring(0,10);
   }
 
   updateContract(){
     this.contractForUpdate.contractorName = this.updateForm.form.value.contractorName;
     this.contractForUpdate.type = this.updateForm.form.value.type;
     this.contractForUpdate.status = this.updateForm.form.value.status;
-    this.contractForUpdate.startDate = this.strToDate(this.updateForm.form.value.startDate);
-    this.contractForUpdate.endDate = this.strToDate(this.updateForm.form.value.endDate);
+    this.contractForUpdate.startDate = this.updateForm.form.value.startDate;
+    this.contractForUpdate.endDate = this.updateForm.form.value.endDate;
     
-    this.contractsService.updateContracts(this.contractForUpdate);
-    this.router.navigate(['/admin', {outlets: {primary:[], 'adminlistcontent':['companies', this.company_id, 'jobrequests', this.contractForUpdate.jobRequest_id, 'contracts']}}]);
+    this.contractsService.updateContracts(this.contractForUpdate).subscribe(
+      (response: any) => {
+        console.log(response);
+        this.contractsService.contractsChanged.emit([]);
+      }, (error) => {
+            console.log(error);
+      }
+    );
+
+    this.router.navigate(['/admin', {outlets: {primary:[], 'adminlistcontent':['companies', this.company_id, 'jobrequests', this.contractForUpdate.jobRequest.id, 'contracts']}}]);
+    this.adminNavbarService.linkChanged.emit([this.contractForUpdate.jobRequest.company.companyName, 'requests', this.contractForUpdate.jobRequest.description]);
   }
 
   private strToDate(strDate): Date{
