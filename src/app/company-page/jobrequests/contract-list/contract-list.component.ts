@@ -32,14 +32,19 @@ export class ContractListComponent implements OnInit {
         );
       }
     );
-
+    
     this.contractsService.contractsChanged.subscribe(
       (contracts: Contract[]) => {
-        let jobRequest_id = +this.route.snapshot.params['id'];
-        console.log(jobRequest_id);
-        this.contracts = this.contractsService.getContractsByJobRequestId(contracts,jobRequest_id);
+        this.contractsService.getContracts('carloski', 1, this.jr_id).subscribe(
+          (contracts: any[]) => {
+            this.contracts = contracts.slice();
+          }, (error) => {
+          console.log(error)
+        }
+        );
       }
     );
+
 
     this.adminNavbarService.linkChanged.emit(['Job Requests', ''+this.jr_id, 'Contracts']);
   }

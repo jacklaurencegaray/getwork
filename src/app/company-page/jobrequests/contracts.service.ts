@@ -59,13 +59,18 @@ export class ContractsService {
         );
     }
 
-    updateContracts(updatedContract: Contract){
-        let ndx = this.contracts.findIndex(
-            obj => obj.id === updatedContract.id
-        );
+    // updateContracts(updatedContract: Contract){
+    //     let ndx = this.contracts.findIndex(
+    //         obj => obj.id === updatedContract.id
+    //     );
 
-        this.contracts[ndx] = updatedContract;
-        this.contractsChanged.emit(this.contracts.slice());
+    //     this.contracts[ndx] = updatedContract;
+    //     this.contractsChanged.emit(this.contracts.slice());
+    // }
+
+    updateContracts(updatedContract: Contract){
+        let url: string = "http://localhost:8090/"+updatedContract.jobRequest.company.companyName+"/"+updatedContract.jobRequest.company.id+"/jobrequests/"+updatedContract.jobRequest.id+"/contracts/update";
+        return this.http.post(url, updatedContract);
     }
 
     deleteContract(id:number){
