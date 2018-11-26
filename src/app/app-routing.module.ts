@@ -25,7 +25,7 @@ import { CompanyContractUpdateComponent } from './admin-page/companies/company-c
 import { CompanyJobRequestUpdateComponent } from './admin-page/companies/company-job-request-update/company-job-request-update.component';
 
 const routes: Routes = [
-  // { path: '', redirectTo: '/login', pathMatch: 'full'},
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   {
@@ -58,7 +58,7 @@ const routes: Routes = [
       { path: 'jobrequests/:id/contracts/:contractId/update', component: ContractUpdateComponent, pathMatch: 'full' },
     ]
   },
-  { path: '**', redirectTo: '/carloskie' }
+  { path: '**', redirectTo: '/login' }
 
 ];
 

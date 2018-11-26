@@ -23,6 +23,7 @@ export class LoginComponent {
     this.homeService.login(this.loginForm.form.value.email, this.loginForm.form.value.password).subscribe(
       (company: Company) => {
         if (company === null) {
+          this.error = 'You entered an invalid email/password.';
           // this.loginForm.reset();
           // this.router.navigate(['/login']);
         } else {

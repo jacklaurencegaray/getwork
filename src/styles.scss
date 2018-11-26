@@ -34,9 +34,18 @@
 
 input,
 textarea,
-button {
+button,
+select {
+    box-sizing: border-box;
     &:focus {
         outline: none;
         border: inherit;
     }
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
 }
