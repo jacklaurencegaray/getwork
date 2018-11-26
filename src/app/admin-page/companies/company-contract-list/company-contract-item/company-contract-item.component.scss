@@ -1,0 +1,32 @@
+.contract-item {
+    margin-top: 30px;
+    border-bottom: 3px solid #eeeef0;
+    padding-bottom: 30px;
+    display: grid;
+    grid-template-columns: 3fr 10fr;
+    cursor: pointer;
+    .status {
+        text-align: center;
+        .color-status {
+            font-size: 12px;
+            padding: 0px 6px;
+            border-radius: 999px;
+            &.NEW {
+                background-color: #2569FF;
+            }
+            &.INPROGRESS {
+                background-color: #595959;
+            }
+            &.CLOSED {
+                background-color: #FF0000;
+            }
+        }
+    }
+    &:focus {
+        outline: none;
+    }
+    .id {
+        font-size: 25px;
+        font-weight: 600;
+    }
+}

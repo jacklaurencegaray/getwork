@@ -1,36 +1,23 @@
 <form (ngSubmit)="updateContract(f)" #f="ngForm">
   <div>
     <label for="contractorName">Contractor Name:</label>
-    <input 
-      type="text" 
-      [(ngModel)] = "contractForUpdate.contractorName" 
-      name="contractorName">
+    <input type="text" [(ngModel)]="contractForUpdate.contractorName" name="contractorName">
   </div>
   <div>
-      <label for="type">Contract Type: </label>
-      <input 
-        type="text" 
-        name="type"
-        [(ngModel)] = "contractForUpdate.type">
-    </div>
-  <div>
-      <label for="status">Contract Status</label>
-      <input 
-        type="text" 
-        name="status"
-        [(ngModel)] = "contractForUpdate.status">
+    <label for="type">Contract Type: </label>
+    <input type="text" name="type" [(ngModel)]="contractForUpdate.type">
   </div>
   <div>
-      <label for="duration">Duration</label>
-      <input
-        type="date" 
-        name="startDate" 
-        [(ngModel)] = "contractForUpdate.startDate">
+    <label for="status">Contract Status</label>
+    <input type="text" name="status" [(ngModel)]="contractForUpdate.status">
+  </div>
+  <div>
+    <label for="duration">Duration</label>
+    <div class="schedule-picker">
+      <input type="date" name="startDate" [(ngModel)]="contractForUpdate.startDate">
       <span> to </span>
-      <input 
-        type="date" 
-        name="endDate" 
-        [(ngModel)] = "contractForUpdate.endDate">
+      <input type="date" name="endDate" [(ngModel)]="contractForUpdate.endDate">
+    </div>
   </div>
   <div>
     <button>Update Contract</button>

@@ -4,6 +4,29 @@
     border-bottom: 3px solid #eeeef0;
     cursor: pointer;
     color: #120F3F;
+    .status {
+        text-align: center;
+        span {
+            font-size: 12px;
+            padding: 0px 6px;
+            border-radius: 999px;
+            &.NEW {
+                background-color: #2569FF;
+            }
+            &.INPROGRESS {
+                background-color: #595959;
+            }
+            &.CLOSED {
+                background-color: #FF0000;
+            }
+        }
+    }
+    .layout {
+        display: grid;
+        grid-template-columns: 2fr 7fr;
+        align-items: center;
+        justify-content: center;
+    }
     &:focus {
         outline: none;
     }

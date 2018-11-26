@@ -1,6 +1,10 @@
-<div
-  [routerLink]="['/admin', 'companies', company_id, 'jobrequests', contract.jobRequest_id, 'contracts', contract.id]"
-  (click)="onContractSelected()">
-  <p># {{ contract.id }}</p>
-  <p>{{ contract.contractorName }}</p>
+<div [routerLink]="['/admin', 'companies', company_id, 'jobrequests', contract.jobRequest_id, 'contracts', contract.id]"
+  (click)="onContractSelected()" class='contract-item'>
+  <div class='status'>
+    <span class='color-status {{ contract.status }}'></span>
+  </div>
+  <div class='descriptors'>
+    <p class='id'># {{ contract.id }}</p>
+    <p class='name'>{{ contract.contractorName }}</p>
+  </div>
 </div>

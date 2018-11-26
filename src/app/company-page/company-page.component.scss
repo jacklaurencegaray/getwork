@@ -2,6 +2,8 @@
     display: grid;
     grid-template-columns: 2fr 2fr 2fr 2fr;
     grid-template-rows: 3fr 1fr;
+    align-items: center;
+    justify-items: center;
     grid-template-areas: "jobRequest jr_id contracts contract_id" "notification notification notification notification"
 }
 

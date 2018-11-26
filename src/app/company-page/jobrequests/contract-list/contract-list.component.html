@@ -1,10 +1,7 @@
 <div>
-  <app-contract-item
-    *ngFor="let contract of contracts" 
-    [contractElement]="contract"></app-contract-item>
+  <app-contract-item *ngFor="let contract of contracts" [contractElement]="contract"></app-contract-item>
   <div>
-    <button
-      (click)="onCreateContract()">
+    <button (click)="onCreateContract()">
       Create Contract
     </button>
   </div>

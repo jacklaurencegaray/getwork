@@ -1,0 +1,43 @@
+form {
+    max-width: 400px;
+    padding-left: 30px;
+    h1 {
+        font-weight: 600;
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    div {
+        .schedule-picker {
+            display: grid;
+            grid-template-columns: 1fr 50px 1fr;
+            align-items: center;
+            justify-items: center;
+        }
+        margin-bottom: 15px;
+        label {
+            font-weight: 600;
+            font-size: 15px;
+        }
+        input {
+            background-color: #F8F8F8;
+            border: 0;
+            padding: 15px 20px;
+            margin: 6px 0;
+            font-size: 16px;
+            width: 100%;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #2569FF;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 5px;
+            border: 0;
+            margin: 15px 0px;
+            &:focus {
+                outline: 0;
+            }
+        }
+    }
+}
