@@ -18,7 +18,6 @@ export class ContractsService {
     //     //return this.contracts.slice();
     // }
 
-<<<<<<< HEAD
     getContracts(company_id: number, request_id: number) {
         return this.http.get("http://104.248.149.206:8090/getwork/" + company_id + "/jobrequests/" + request_id + "/contracts")
             .map(
@@ -35,24 +34,6 @@ export class ContractsService {
 
     createContract(contract: any) {
         let url: string = "http://104.248.149.206:8090/getwork/" + contract.jobRequest.company.id + "/jobrequests/" + contract.jobRequest.id + "/contracts/create";
-=======
-    getContracts(company_id: number, request_id:number){
-        return this.http.get("http://104.248.149.206:8090/getwork/"+company_id+"/jobrequests/"+request_id+"/contracts")
-        .map(
-            (response) => {
-                return response.json();
-            }
-        )
-        .catch(
-            (error: Response) => {
-                return Observable.throw('something went wrong');
-            }
-        );
-    }
-
-    createContract(contract: any){
-        let url: string = "http://104.248.149.206:8090/getwork/"+contract.jobRequest.company.id+"/jobrequests/"+contract.jobRequest.id+"/contracts/create";
->>>>>>> 932eb4a89bb65fe3da388981f0f032e99277ab47
         console.log(url);
         return this.http.post(url, contract);
     }
@@ -84,13 +65,8 @@ export class ContractsService {
     //     this.contracts.splice(ndx,1);
     //     this.contractsChanged.emit(this.contracts.slice());
     // }
-<<<<<<< HEAD
     deleteContract(companyId: number, request_id: number, contract_id: number) {
         let url: string = "http://104.248.149.206:8090/getwork/" + companyId + "/jobrequests/" + request_id + "/contracts/" + contract_id;
-=======
-    deleteContract(companyId:number, request_id: number, contract_id: number){
-        let url: string = "http://104.248.149.206:8090/getwork/"+companyId+"/jobrequests/"+request_id+"/contracts/"+contract_id;
->>>>>>> 932eb4a89bb65fe3da388981f0f032e99277ab47
         return this.http.delete(url);
     }
 
