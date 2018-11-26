@@ -15,6 +15,6 @@ export class HomeService{
         console.log("email: "+ email+ "pass: "+password);
         let params = new HttpParams().set('email', email).set('password',password);
         let url = "http://localhost:8090/getwork/login";
-        return this.http.post(url, {params: params});
+        return this.http.post(url,null,{params:params});
     }
 }

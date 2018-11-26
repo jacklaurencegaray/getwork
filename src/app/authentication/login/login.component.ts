@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { CompanyService } from 'src/app/admin-page/companies/companies.service';
 import { HomeService } from 'src/app/home.service';
+import { Company } from 'src/app/shared/company.model';
 
 @Component({
   selector: 'app-login',
@@ -22,10 +23,16 @@ export class LoginComponent implements OnInit {
   login(){
     console.log("hello :"+this.loginForm.form.value.email);
     this.homeService.login(this.loginForm.form.value.email, this.loginForm.form.value.password).subscribe(
-      (company: any) => {
-        this.router.navigate(['/test']);
+      (company: Company) => {
+        if(company === null){
+          this.loginForm.reset();
+          this.router.navigate(['/login']);
+        }else{
+          this.router.navigate(['/test']);
+        }
+        //this.router.navigate(['/test']);
       }, (error) => {
-        this.router.navigate(['/login']);
+        console.log(error);
       }
     );
   }
