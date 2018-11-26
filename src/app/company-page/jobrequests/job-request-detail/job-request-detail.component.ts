@@ -45,7 +45,7 @@ export class JobRequestDetailComponent implements OnInit {
 
   deleteJobRequest(){
     //PARAMETERS ARE JUST TEST
-    this.jobRequestService.deleteJobRequest(1,this.jobRequestForDisplay.id).subscribe(
+    this.jobRequestService.deleteJobRequest(this.currentCompany.id,this.jobRequestForDisplay.id).subscribe(
       (response: any) => {
         console.log("From server:"+response);
         this.jobRequestService.jobRequestsChanged.emit([]);
@@ -53,11 +53,15 @@ export class JobRequestDetailComponent implements OnInit {
         console.log(error)
       } 
     );
-    this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
+    this.router.navigate(['/'+this.currentCompany.companyName, {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
     this.adminNavbarService.linkChanged.emit(['Job Requests']);
   }
   
   onUpdate(){
     this.router.navigate(['/'+this.currentCompany.companyName,'jobrequests', this.jobRequestForDisplay.id, 'update']);
+  }
+
+  gotoContracts(){
+    this.router.navigate(['/'+this.currentCompany.companyName, {outlets: {primary: [], listcontent: ['jobrequests', this.jobRequestForDisplay.id, 'contracts']}}]);
   }
 }

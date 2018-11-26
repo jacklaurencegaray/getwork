@@ -4,6 +4,8 @@ import { ContractsService } from '../contracts.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { JobRequest } from 'src/app/shared/jobrequest.model';
 import { AdminNavbarService } from 'src/app/admin-navbar/admin-navbar.service';
+import { Company } from 'src/app/shared/company.model';
+import { CompanyService } from 'src/app/admin-page/companies/companies.service';
 
 @Component({
   selector: 'app-contract-list',
@@ -14,28 +16,33 @@ export class ContractListComponent implements OnInit {
 
   contracts: Contract[];
   jr_id: number;
+  currentCompany: Company;
   constructor(private contractsService: ContractsService,
+    private companyService: CompanyService,
     private route: ActivatedRoute,
     private adminNavbarService: AdminNavbarService) { }
 
   ngOnInit() {
     this.jr_id = +this.route.snapshot.params['id'];
-    console.log(this.jr_id);
-    this.route.params.subscribe(
-      (params: Params) => {
-        this.contractsService.getContracts(1,+params['id']).subscribe(
+
+    this.companyService.getCompanyByName(this.route.parent.snapshot.params['companyName']).subscribe(
+      (company: any) => {
+        this.currentCompany = company;
+        this.contractsService.getContracts(this.currentCompany.id,+this.route.snapshot.params['id']).subscribe(
           (contracts: any[]) => {
             this.contracts = contracts.slice();
           }, (error) => {
             console.log(error)
           }
         );
+      }, (error) => {
+        console.log(error)
       }
     );
-    
+
     this.contractsService.contractsChanged.subscribe(
       (contracts: Contract[]) => {
-        this.contractsService.getContracts(1, this.jr_id).subscribe(
+        this.contractsService.getContracts(this.currentCompany.id, this.jr_id).subscribe(
           (contracts: any[]) => {
             this.contracts = contracts.slice();
           }, (error) => {

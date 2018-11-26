@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Contract } from 'src/app/shared/contract.model';
 import { ContractsService } from '../contracts.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
+import { CompanyService } from 'src/app/admin-page/companies/companies.service';
+import { Company } from 'src/app/shared/company.model';
 
 @Component({
   selector: 'app-contract-detail',
@@ -11,22 +13,31 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 export class ContractDetailComponent implements OnInit {
 
   @Input() contractForDisplay: Contract;
+  currentCompany: Company;
   constructor(private contractsService: ContractsService,
+    private companyService: CompanyService,
     private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit() {
-    this.route.params.subscribe(
-      (params: Params) => {
-        //paramters are just TEST!
-        this.contractsService.getContractById(1,+params['id'],+params['contractId']).subscribe(
-          (contract: any) => {
-            this.contractForDisplay = contract;
-            console.log(contract);
-          }, (error) => {
-            console.log(error)
+    this.companyService.getCompanyByName(this.route.parent.snapshot.params['companyName']).subscribe(
+      (company: any) => {
+        this.currentCompany = company;
+        this.route.params.subscribe(
+          (params: Params) => {
+            //paramters are just TEST!
+            this.contractsService.getContractById(this.currentCompany.id,+params['id'],+params['contractId']).subscribe(
+              (contract: any) => {
+                this.contractForDisplay = contract;
+                console.log(contract);
+              }, (error) => {
+                console.log(error)
+              }
+            );
           }
         );
+      }, (error) => {
+        console.log(error)
       }
     );
   }
