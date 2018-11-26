@@ -19,7 +19,7 @@ export class ContractsService {
     // }
 
     getContracts(company_id: number, request_id: number) {
-        return this.http.get("http://104.248.149.206:8090/getwork/" + company_id + "/jobrequests/" + request_id + "/contracts")
+        return this.http.get("http://localhost:8090/getwork/" + company_id + "/jobrequests/" + request_id + "/contracts")
             .map(
                 (response) => {
                     return response.json();
@@ -33,13 +33,13 @@ export class ContractsService {
     }
 
     createContract(contract: any) {
-        let url: string = "http://104.248.149.206:8090/getwork/" + contract.jobRequest.company.id + "/jobrequests/" + contract.jobRequest.id + "/contracts/create";
+        let url: string = "http://localhost:8090/getwork/" + contract.jobRequest.company.id + "/jobrequests/" + contract.jobRequest.id + "/contracts/create";
         console.log(url);
         return this.http.post(url, contract);
     }
 
     getContractById(company_id: number, req_id: number, contract_id: number) {
-        return this.http.get("http://104.248.149.206:8090/getwork/" + company_id + "/jobrequests/" + req_id + "/contracts/" + contract_id)
+        return this.http.get("http://localhost:8090/getwork/" + company_id + "/jobrequests/" + req_id + "/contracts/" + contract_id)
             .map(
                 (response) => {
                     return response.json();
@@ -53,7 +53,7 @@ export class ContractsService {
     }
 
     updateContracts(updatedContract: Contract) {
-        let url: string = "http://104.248.149.206:8090/getwork/" + updatedContract.jobRequest.company.id + "/jobrequests/" + updatedContract.jobRequest.id + "/contracts/" + updatedContract.id + "/update";
+        let url: string = "http://localhost:8090/getwork/" + updatedContract.jobRequest.company.id + "/jobrequests/" + updatedContract.jobRequest.id + "/contracts/" + updatedContract.id + "/update";
         return this.http.post(url, updatedContract);
     }
 
@@ -66,7 +66,7 @@ export class ContractsService {
     //     this.contractsChanged.emit(this.contracts.slice());
     // }
     deleteContract(companyId: number, request_id: number, contract_id: number) {
-        let url: string = "http://104.248.149.206:8090/getwork/" + companyId + "/jobrequests/" + request_id + "/contracts/" + contract_id;
+        let url: string = "http://localhost:8090/getwork/" + companyId + "/jobrequests/" + request_id + "/contracts/" + contract_id;
         return this.http.delete(url);
     }
 
