@@ -35,7 +35,7 @@ export class CompanyService {
     // }
 
     createCompany(company:any){
-        let url: string = "http://localhost:8090/getwork/register";
+        let url: string = "http://104.248.149.206:8090/getwork/register";
         console.log(url);
         return this.http.post(url, company);
     }
