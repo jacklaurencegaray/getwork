@@ -1,0 +1,16 @@
+.contract-list {
+    padding: 50px;
+    background-color: #F8F8F8;
+    border-radius: 8px;
+    box-sizing: border-box;
+    max-height: 550px;
+    overflow: auto;
+    color: #120F3F;
+    position: relative;
+    .create-contract {
+        position: fixed;
+        right: 5vw;
+        bottom: 5vh;
+        cursor: pointer;
+    }
+}

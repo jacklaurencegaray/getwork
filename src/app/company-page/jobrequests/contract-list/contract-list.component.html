@@ -1,8 +1,4 @@
-<div>
-  <app-contract-item *ngFor="let contract of contracts" [contractElement]="contract"></app-contract-item>
-  <div>
-    <button (click)="onCreateContract()">
-      Create Contract
-    </button>
-  </div>
+<div class='contract-list'>
+  <app-contract-item *ngFor="let contract of contracts" [contractElement]="contract"></app-contract-item><img src='../../../../assets/img/add-button.svg'
+    (click)="onCreateContract()" class='create-contract' />
 </div>

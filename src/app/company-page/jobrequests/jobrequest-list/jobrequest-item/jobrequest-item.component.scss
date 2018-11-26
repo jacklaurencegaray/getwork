@@ -1,0 +1,42 @@
+.jobrequest-item {
+    margin-top: 30px;
+    padding-bottom: 30px;
+    border-bottom: 3px solid #eeeef0;
+    cursor: pointer;
+    color: #120F3F;
+    .layout {
+        grid-template-columns: 3fr 10fr;
+        display: grid;
+        grid-column-gap: 10px;
+        align-items: center;
+        .status {
+            text-align: center;
+            line-height: 10px;
+            margin-bottom: 20px;
+            .color-status {
+                font-size: 12px;
+                padding: 0px 6px;
+                border-radius: 999px;
+                &.NEW {
+                    background-color: #2569FF;
+                }
+                &.INPROGRESS {
+                    background-color: #595959;
+                }
+                &.CLOSED {
+                    background-color: #FF0000;
+                }
+            }
+        }
+    }
+    &:focus {
+        outline: none;
+    }
+    .id {
+        font-size: 18px;
+    }
+    .description {
+        font-size: 23px;
+        font-weight: bold;
+    }
+}

@@ -1,29 +1,20 @@
 <form (ngSubmit)="createContract(f)" #f="ngForm">
+  <h3>Create Contract</h3>
   <div>
     <label for="contractorName">Contractor Name:</label>
-    <input 
-      type="text" 
-      ngModel 
-      name="contractorName">
+    <input type="text" ngModel name="contractorName">
   </div>
   <div>
-      <label for="type">Contract Type: </label>
-      <input 
-        type="text" 
-        name="type"
-        ngModel>
-    </div>
+    <label for="type">Contract Type: </label>
+    <input type="text" name="type" ngModel>
+  </div>
   <div>
-      <label for="duration">Duration</label>
-      <input
-        type="date" 
-        name="startDate" 
-        ngModel>
+    <label for="duration">Duration</label>
+    <div class='schedule-picker'>
+      <input type="date" name="startDate" ngModel>
       <span> to </span>
-      <input 
-        type="date" 
-        name="endDate" 
-        ngModel>
+      <input type="date" name="endDate" ngModel>
+    </div>
   </div>
   <div>
     <button>Create Contract</button>

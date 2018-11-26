@@ -58,7 +58,7 @@ const routes: Routes = [
       { path: 'jobrequests/:id/contracts/:contractId/update', component: ContractUpdateComponent, pathMatch: 'full' },
     ]
   },
-  { path: '**', redirectTo: '/companies' }
+  { path: '**', redirectTo: '/carloskie' }
 
 ];
 

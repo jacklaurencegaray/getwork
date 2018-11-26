@@ -1,0 +1,15 @@
+.jobrequest-list {
+    padding: 50px;
+    background-color: #F8F8F8;
+    border-radius: 8px;
+    box-sizing: border-box;
+    max-height: 520px;
+    overflow: auto;
+    color: #120F3F;
+    .create-request {
+        position: fixed;
+        right: 5vw;
+        bottom: 5vh;
+        cursor: pointer;
+    }
+}

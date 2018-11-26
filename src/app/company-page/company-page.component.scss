@@ -3,7 +3,6 @@
     grid-template-columns: 2fr 2fr 2fr 2fr;
     grid-template-rows: 3fr 1fr;
     align-items: center;
-    justify-items: center;
     grid-template-areas: "jobRequest jr_id contracts contract_id" "notification notification notification notification"
 }
 
@@ -18,12 +17,18 @@
 
 .jr_id {
     grid-area: jr_id;
+    font-weight: 600;
+    font-size: 18px;
 }
 
 .contracts {
     grid-area: contracts;
+    font-weight: 600;
+    font-size: 18px;
 }
 
 .contract_id {
     grid-area: contract_id;
+    font-weight: 600;
+    font-size: 18px;
 }
