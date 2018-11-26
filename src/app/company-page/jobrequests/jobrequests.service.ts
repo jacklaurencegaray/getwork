@@ -15,7 +15,6 @@ export class JobRequestService {
     jobRequestSelected = new EventEmitter<JobRequest>();
     jobRequestsChanged = new EventEmitter<JobRequest[]>();
 
-<<<<<<< HEAD
     getJobRequests(company_id: number) {
         return this.http.get("http://104.248.149.206:8090/getwork/" + company_id + "/jobrequests")
             .map(
@@ -57,49 +56,6 @@ export class JobRequestService {
 
     deleteJobRequest(companyId: number, request_id: number) {
         let url: string = "http://104.248.149.206:8090/getwork/" + companyId + "/jobrequests/" + request_id;
-=======
-    getJobRequests(company_id: number){
-        return this.http.get("http://104.248.149.206:8090/getwork/"+company_id+"/jobrequests")
-        .map(
-            (response) => {
-                return response.json();
-            }
-        )
-        .catch(
-            (error: Response) => {
-                return Observable.throw('something went wrong');
-            }
-        );
-    }
-    
-    createJobRequest(jobRequest: any){
-        let url: string = "http://104.248.149.206:8090/getwork/"+jobRequest.company.id+"/jobrequests/create";
-        console.log(url);
-        return this.http.post(url, jobRequest);
-    }
-    
-    getJobRequestById(company_id: number, req_id: number){
-        return this.http.get("http://104.248.149.206:8090/getwork/"+company_id+"/jobrequests/"+req_id)
-        .map(
-            (response) => {
-                return response.json();
-            }
-        )
-        .catch(
-            (error: Response) => {
-                return Observable.throw('something went wrong');
-            }
-        );
-    }
-
-    updateJobRequest(updatedJobRequest: JobRequest){
-        let url: string = "http://104.248.149.206:8090/getwork/"+updatedJobRequest.company.id+"/jobrequests/"+updatedJobRequest.id+"/update";
-        return this.http.post(url, updatedJobRequest);
-    }
-
-    deleteJobRequest(companyId: number, request_id:number){
-        let url: string = "http://104.248.149.206:8090/getwork/"+companyId+"/jobrequests/"+request_id;
->>>>>>> 932eb4a89bb65fe3da388981f0f032e99277ab47
         return this.http.delete(url);
     }
 

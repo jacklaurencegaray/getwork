@@ -57,7 +57,6 @@ export class ContractsService {
         return this.http.post(url, contract);
     }
 
-<<<<<<< HEAD
     getContractById(company_id: number, req_id: number, contract_id: number) {
         return this.http.get("http://104.248.149.206:8090/getwork/" + company_id + "/jobrequests/" + req_id + "/contracts/" + contract_id)
             .map(
@@ -74,24 +73,6 @@ export class ContractsService {
 
     updateContracts(updatedContract: Contract) {
         let url: string = "http://104.248.149.206:8090/getwork/" + updatedContract.jobRequest.company.id + "/jobrequests/" + updatedContract.jobRequest.id + "/contracts/" + updatedContract.id + "/update";
-=======
-    getContractById(company_id: number, req_id:number,contract_id: number){
-        return this.http.get("http://104.248.149.206:8090/getwork/"+company_id+"/jobrequests/"+req_id+"/contracts/"+contract_id)
-        .map(
-            (response) => {
-                return response.json();
-            }
-        )
-        .catch(
-            (error: Response) => {
-                return Observable.throw('something went wrong');
-            }
-        );
-    }
-
-    updateContracts(updatedContract: Contract){
-        let url: string = "http://104.248.149.206:8090/getwork/"+updatedContract.jobRequest.company.id+"/jobrequests/"+updatedContract.jobRequest.id+"/contracts/"+updatedContract.id+"/update";
->>>>>>> 932eb4a89bb65fe3da388981f0f032e99277ab47
         return this.http.post(url, updatedContract);
     }
 
