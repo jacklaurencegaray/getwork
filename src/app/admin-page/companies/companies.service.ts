@@ -29,9 +29,20 @@ export class CompanyService {
         );
     }
 
-    addCompany(company: Company){
-        this.companies.push(company);
-        this.companiesChanged.emit(this.companies.slice());
+    // addCompany(company: Company){
+    //     this.companies.push(company);
+    //     this.companiesChanged.emit(this.companies.slice());
+    // }
+
+    createCompany(company:any){
+        let url: string = "http://localhost:8090/getwork/register";
+        console.log(url);
+        return this.http.post(url, company);
+    }
+    createJobRequest(jobRequest: any){
+        let url: string = "http://localhost:8090/getwork/"+jobRequest.company.id+"/jobrequests/create";
+        console.log(url);
+        return this.http.post(url, jobRequest);
     }
     
     getCompanyById(company_id: number){
@@ -47,15 +58,6 @@ export class CompanyService {
             }
         );
     }
-
-    // updateCompany(updatedCompany: Company){
-    //     let ndx = this.companies.findIndex(
-    //         obj => obj.id === updatedCompany.id
-    //     );
-
-    //     this.companies[ndx] = updatedCompany;
-    //     this.companiesChanged.emit(this.companies.slice());
-    // }
 
     updateCompany(updatedCompany: Company){
         let url: string = "http://localhost:8090/getwork/admin/companies/"+updatedCompany.id+"/update";
