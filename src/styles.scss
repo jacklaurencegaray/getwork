@@ -1,40 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Vendor Stylesheets */
+
 @import './node_modules/normalize.scss/normalize.scss';
 @import './node_modules/reset-css/sass/_reset.scss';
 @import './assets/scss/vendor/animate.scss';
-
 /* Font Stylesheets */
+
 @import './assets/fonts/Calibre.scss';
-
 /* Global Stylesheets */
-@import './assets/scss/base.scss';
 
+@import './assets/scss/base.scss';
 .content-container {
     display: grid;
-    grid-template-columns:  1fr 0.5fr 7.5fr 1fr;
-    grid-template-rows:  0.5fr 1.5fr 7.5fr 0.5fr;
+    grid-template-columns: 1fr 0.5fr 7.5fr 1fr;
+    grid-template-rows: 0.5fr 1.5fr 7.5fr 0.5fr;
     width: 100vw;
     height: 100vh;
-    grid-template-areas: 
-        "nav . . ."
-        "nav . header ."
-        "nav . content-body ."
-        "nav . . ."
+    grid-template-areas: "nav . . ." "nav . header ." "nav . content-body ." "nav . . ."
 }
 
 .content-nav {
     grid-area: nav;
-    border:1px solid black;
+    border: 1px solid black;
 }
 
 .content-header {
     grid-area: header;
-    border:1px solid black;
+    border: 1px solid black;
 }
 
 .content-body {
     grid-area: content-body;
-    border:1px solid black;
+    border: 1px solid black;
+}
+
+input,
+textarea,
+button {
+    &:focus {
+        outline: none;
+        border: 0;
+    }
 }
