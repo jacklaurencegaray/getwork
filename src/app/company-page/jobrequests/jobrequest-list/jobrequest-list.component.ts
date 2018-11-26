@@ -3,7 +3,7 @@ import { JobRequestService } from '../jobrequests.service';
 import { JobRequest } from 'src/app/shared/jobrequest.model';
 import { AdminNavbarService } from 'src/app/admin-navbar/admin-navbar.service';
 import { Company } from 'src/app/shared/company.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CompanyService } from 'src/app/admin-page/companies/companies.service';
 
 @Component({
@@ -17,6 +17,7 @@ export class JobrequestListComponent implements OnInit {
   constructor(private jobRequestService: JobRequestService,
     private companyService: CompanyService,
     private route: ActivatedRoute,
+    private router: Router,
     private adminNavbarService: AdminNavbarService) { 
     }
   
@@ -52,6 +53,7 @@ export class JobrequestListComponent implements OnInit {
 
   onCreate(){
     this.adminNavbarService.linkChanged.emit(['Job Requests']);
+    this.router.navigate(['/'+this.currentCompany.companyName,'jobrequests', 'create']);
   }
 
 }
