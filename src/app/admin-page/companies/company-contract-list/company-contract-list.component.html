@@ -1,6 +1,4 @@
-<input type="text" placeholder="search a contract"/>
-<div>
-  <app-company-contract-item
-    *ngFor="let contract of contracts" 
-    [contractElement]="contract"></app-company-contract-item>
+<div class='company-contract-list'>
+  <input type="text" placeholder="search a contract" />
+  <app-company-contract-item *ngFor="let contract of contracts" [contractElement]="contract"></app-company-contract-item>
 </div>

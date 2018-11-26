@@ -2,6 +2,8 @@
     display: grid;
     grid-template-columns: 1fr 2fr 2fr 2fr;
     grid-template-rows: 3fr 1fr;
+    align-items: center;
+    justify-items: center;
     grid-template-areas: "companyName requests displayHandler contracts" "notification notification notification notification"
 }
 
@@ -25,4 +27,11 @@
 
 .contracts {
     grid-area: contracts;
+}
+
+.jobrequests,
+.displayHandler,
+.contracts {
+    font-weight: 500;
+    font-size: 20px;
 }

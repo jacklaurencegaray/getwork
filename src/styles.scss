@@ -37,6 +37,6 @@ textarea,
 button {
     &:focus {
         outline: none;
-        border: 0;
+        border: inherit;
     }
 }

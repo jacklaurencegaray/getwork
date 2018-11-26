@@ -1,13 +1,15 @@
 <div class="detail-content-container">
   <h3 class="tag">#{{ jobRequestForDisplay.id }} {{ jobRequestForDisplay.description }}</h3>
-  <div class="status">{{ jobRequestForDisplay.status }}</div>
+  <div class="status"><span class='color-status {{ jobRequestForDisplay.status }}'></span> {{
+    jobRequestForDisplay.status | lowercase }}</div>
   <div class="duration">{{ jobRequestForDisplay.startDate }} to {{ jobRequestForDisplay.endDate }}</div>
   <div class="closedDate">{{ jobRequestForDisplay.closedDate }}</div>
   <div class="detail-btn-group">
     <button [routerLink]="['/admin', {outlets: {primary: [], adminlistcontent: ['companies', jobRequestForDisplay.company.id, 'jobrequests', jobRequestForDisplay.id, 'contracts']}}]">
       View Contracts
     </button>
-    <button [routerLink]="['/admin','companies', jobRequestForDisplay.company.id, 'jobrequests', jobRequestForDisplay.id, 'update']">Update Request</button>
+    <button [routerLink]="['/admin','companies', jobRequestForDisplay.company.id, 'jobrequests', jobRequestForDisplay.id, 'update']">Update
+      Request</button>
     <button (click)="deleteJobRequest()">Delete</button>
   </div>
 </div>

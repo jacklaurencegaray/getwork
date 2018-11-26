@@ -1,5 +1,4 @@
-<div
-  [routerLink]="['/'+contract.jobRequest.company.companyName,{outlets:{ primary: ['jobrequests', contract.jobRequest_id, 'contracts', contract.id], listcontent: ['jobrequests', contract.jobRequest_id, 'contracts']}}]"
+<div [routerLink]="['/'+contract.jobRequest.company.companyName,{outlets:{ primary: ['jobrequests', contract.jobRequest_id, 'contracts', contract.id], listcontent: ['jobrequests', contract.jobRequest_id, 'contracts']}}]"
   (click)="onContractSelected()">
   <p># {{ contract.id }}</p>
   <p>{{ contract.contractorName }}</p>
