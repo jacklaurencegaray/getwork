@@ -1,4 +1,3 @@
-<input type="text" placeholder="search a company"/>
 <div class="company-list">
   <app-company-item [class.first-item]='first' [class.last-item]='last' *ngFor="let company of companies; let first = first; let last = last"
     [companyElement]="company"></app-company-item>

@@ -1,8 +1,5 @@
-<input type="text" placeholder="search a job request"/>
 <div>
-  <app-jobrequest-item
-    *ngFor="let jobRequest of jobRequests" 
-    [jrElement]="jobRequest"></app-jobrequest-item>
+  <app-jobrequest-item *ngFor="let jobRequest of jobRequests" [jrElement]="jobRequest"></app-jobrequest-item>
   <div>
     <button (click)="onCreate()">Create Request</button>
   </div>
