@@ -3,6 +3,6 @@
     *ngFor="let jobRequest of jobRequests" 
     [jrElement]="jobRequest"></app-jobrequest-item>
   <div>
-    <button [routerLink] = "['/carloski','jobrequests', 'create']" (click)="onCreate()">Create Request</button>
+    <button (click)="onCreate()">Create Request</button>
   </div>
 </div>
