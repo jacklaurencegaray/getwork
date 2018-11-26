@@ -4,6 +4,8 @@ import { JobRequestService } from '../jobrequests.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NgForm, FormArray, FormGroup, FormControl } from '@angular/forms';
 import { AdminNavbarService } from 'src/app/admin-navbar/admin-navbar.service';
+import { Company } from 'src/app/shared/company.model';
+import { CompanyService } from 'src/app/admin-page/companies/companies.service';
 
 @Component({
   selector: 'app-job-request-update',
@@ -15,23 +17,32 @@ export class JobRequestUpdateComponent implements OnInit {
   startDate: string;
   endDate: string;
   closedDate = null;
+  currentCompany: Company;
   @ViewChild('f') updateForm: NgForm;
 
   constructor(private jobRequestService: JobRequestService,
+    private companyService: CompanyService,
     private route: ActivatedRoute,
     private adminNavbarService: AdminNavbarService,
     private router: Router) { }
 
   ngOnInit() {
-    this.route.params.subscribe(
-      (params: Params) => {
-        this.jobRequestService.getJobRequestById(1,+params['id']).subscribe(
-          (jobRequest: any) => {
-            this.jobRequestForUpdate = jobRequest;
-          }, (error) => {
-            console.log(error)
+    this.companyService.getCompanyByName(this.route.parent.snapshot.params['companyName']).subscribe(
+      (company: any) => {
+        this.currentCompany = company;
+        this.route.params.subscribe(
+          (params: Params) => {
+            this.jobRequestService.getJobRequestById(this.currentCompany.id,+params['id']).subscribe(
+              (jobRequest: any) => {
+                this.jobRequestForUpdate = jobRequest;
+              }, (error) => {
+                console.log(error)
+              }
+            );
           }
         );
+      }, (error) => {
+        console.log(error)
       }
     );
   }
@@ -51,7 +62,7 @@ export class JobRequestUpdateComponent implements OnInit {
             console.log(error);
       }
     );
-    this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
+    this.router.navigate(['/'+this.jobRequestForUpdate.company.companyName, {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
     this.adminNavbarService.linkChanged.emit(['Job Requests']);
   }
 
