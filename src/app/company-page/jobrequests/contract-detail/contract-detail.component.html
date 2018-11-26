@@ -5,7 +5,7 @@
   <div class="description">{{ contractForDisplay.status }}</div>
   <div class="duration">{{ contractForDisplay.startDate }} to {{ contractForDisplay.endDate }}</div>
   <div class="detail-btn-group">
-    <button (click)="onUpdate()">
+    <button *ngIf="contractForDisplay.status !== 'CLOSED'" (click)="onUpdate()">
       Update Contract
     </button>
     <button (click)="deleteContract()">Delete Contract</button>

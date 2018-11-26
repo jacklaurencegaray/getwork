@@ -7,7 +7,7 @@
     <button (click)="gotoContracts()">
       View Contracts
     </button>
-    <button (click)="onUpdate()">Update Requests</button>
+    <button *ngIf="jobRequestForDisplay.status !== 'CLOSED'" (click)="onUpdate()">Update Requests</button>
     <button (click)="deleteJobRequest()">Delete</button>
   </div>
 </div>
