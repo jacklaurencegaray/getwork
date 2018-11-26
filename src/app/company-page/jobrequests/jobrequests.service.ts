@@ -54,8 +54,8 @@ export class JobRequestService{
         return this.http.post(url, updatedJobRequest);
     }
 
-    deleteJobRequest(companyName: string, companyId: number, request_id:number){
-        let url: string = "http://localhost:8090/"+companyName+"/"+companyId+"/jobrequests/"+request_id;
+    deleteJobRequest(companyId: number, request_id:number){
+        let url: string = "http://localhost:8090/getwork/"+companyId+"/jobrequests/"+request_id;
         return this.http.delete(url);
     }
     

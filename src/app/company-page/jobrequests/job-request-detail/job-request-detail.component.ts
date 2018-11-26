@@ -34,16 +34,16 @@ export class JobRequestDetailComponent implements OnInit {
 
   deleteJobRequest(){
     //PARAMETERS ARE JUST TEST
-    // this.jobRequestService.deleteJobRequest("carloski",1,this.jobRequestForDisplay.id).subscribe(
-    //   (response: any) => {
-    //     console.log("From server:"+response);
-    //     this.jobRequestService.jobRequestsChanged.emit([]);
-    //   }, (error) => {
-    //     console.log(error)
-    //   } 
-    // );
-    // this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
-    // this.adminNavbarService.linkChanged.emit(['Job Requests']);
+    this.jobRequestService.deleteJobRequest(1,this.jobRequestForDisplay.id).subscribe(
+      (response: any) => {
+        console.log("From server:"+response);
+        this.jobRequestService.jobRequestsChanged.emit([]);
+      }, (error) => {
+        console.log(error)
+      } 
+    );
+    this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
+    this.adminNavbarService.linkChanged.emit(['Job Requests']);
   }
 
 }

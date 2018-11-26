@@ -11,18 +11,29 @@
           <p class="title">Signup to Getwork</p>
           <p>Get started with Getwork.</p>
           <div class="form">
-            <div class="input-form">
-              <input type="email" placeholder="Email" />
-            </div>
-            <div class="input-form">
-              <input type="text" placeholder="Username" />
-            </div>
-            <div class="input-form">
-              <input type="password" placeholder="Password" />
-            </div>
-            <div class="input-form">
-              <button>Register</button>
-            </div>
+            <form (ngSubmit)="registerCompany(f)" #f="ngForm">
+                <div class="input-form">
+                    <input type="email" placeholder="Email" name="email" ngModel/>
+                  </div>
+                  <div class="input-form">
+                    <input type="password" placeholder="Password" name="password" ngModel/>
+                  </div>
+                  <div class="input-form">
+                    <input type="text" placeholder="Company Name" name="companyName" ngModel/>
+                  </div>
+                  <div class="input-form">
+                    <input type="text" placeholder="Address" name="address" ngModel/>
+                  </div>
+                  <div class="input-form">
+                    <input type="text" placeholder="Company URL" name="companyUrl" ngModel/>
+                  </div>
+                  <div class="input-form">
+                    <input type="text" placeholder="Telephone Number" name="telephoneNumber" ngModel/>
+                  </div>
+                  <div class="input-form">
+                    <button>Register</button>
+                  </div>
+            </form>
           </div>
           <p (click)="goToLogin()">Already registered?</p>
         </div>

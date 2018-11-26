@@ -13,15 +13,17 @@
         <p class="title">Login</p>
         <p>You entered incorrect login details.</p>
         <div class="form">
-          <div class="input-form">
-            <input type="text" placeholder="Username" />
-          </div>
-          <div class="input-form">
-            <input type="password" placeholder="Password" />
-          </div>
-          <div class="input-form">
-            <button [routerLink]="['/test']">Login</button>
-          </div>
+          <form (ngSubmit)="login(f)" #f="ngForm">
+              <div class="input-form">
+                  <input type="text" placeholder="Email" name="email" ngModel/>
+                </div>
+                <div class="input-form">
+                  <input type="password" placeholder="Password" name="password" ngModel/>
+                </div>
+                <div class="input-form">
+                  <button>Login</button>
+                </div>  
+          </form>
         </div>
         <p>Forgot Password?</p>
         <p (click)="goToRegister()">Haven't registered?</p>

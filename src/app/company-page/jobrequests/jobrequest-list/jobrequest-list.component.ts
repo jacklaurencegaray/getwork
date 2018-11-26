@@ -3,6 +3,7 @@ import { JobRequestService } from '../jobrequests.service';
 import { JobRequest } from 'src/app/shared/jobrequest.model';
 import { AdminNavbarService } from 'src/app/admin-navbar/admin-navbar.service';
 import { Company } from 'src/app/shared/company.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-jobrequest-list',
@@ -21,6 +22,7 @@ export class JobrequestListComponent implements OnInit {
     'versace');
   jobRequests = [];
   constructor(private jobRequestService: JobRequestService,
+    private route: ActivatedRoute,
     private adminNavbarService: AdminNavbarService) { }
 
   ngOnInit() {

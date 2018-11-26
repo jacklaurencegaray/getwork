@@ -42,7 +42,7 @@ const routes: Routes = [
       { path: 'companies/:id/jobrequests/:jobRequestId/contracts/:contractId', component: CompanyContractDetailComponent, pathMatch: 'full'},
       { path: 'companies/:id/jobrequests/:jobRequestId/contracts/:contractId/update', component: CompanyContractUpdateComponent, pathMatch: 'full' },
     ] },
-  { path: ':name', 
+  { path: ':companyName', 
     component: CompanyPageComponent, 
     children: [
       { path: 'jobrequests', component: JobrequestListComponent, outlet: 'listcontent'},

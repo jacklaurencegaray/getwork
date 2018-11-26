@@ -41,6 +41,9 @@ import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
 import { AdminNavbarService } from './admin-navbar/admin-navbar.service';
 import { HttpModule } from '@angular/http';
 import { CompanyJobRequestUpdateComponent } from './admin-page/companies/company-job-request-update/company-job-request-update.component';
+import { CompanyService } from './admin-page/companies/companies.service';
+import { HomeService } from './home.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -81,9 +84,10 @@ import { CompanyJobRequestUpdateComponent } from './admin-page/companies/company
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [HomeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

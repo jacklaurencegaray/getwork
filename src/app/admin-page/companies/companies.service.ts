@@ -39,7 +39,7 @@ export class CompanyService {
         console.log(url);
         return this.http.post(url, company);
     }
-    
+
     createJobRequest(jobRequest: any){
         let url: string = "http://localhost:8090/getwork/"+jobRequest.company.id+"/jobrequests/create";
         console.log(url);
@@ -48,6 +48,20 @@ export class CompanyService {
     
     getCompanyById(company_id: number){
         return this.http.get("http://localhost:8090/getwork/admin/companies/"+company_id)
+        .map(
+            (response) => {
+                return response.json();
+            }
+        )
+        .catch(
+            (error: Response) => {
+                return Observable.throw('something went wrong');
+            }
+        );
+    }
+
+    getCompanyByName(companyName: string){
+        return this.http.get("http://localhost:8090/getwork/admin/companies/"+companyName)
         .map(
             (response) => {
                 return response.json();
