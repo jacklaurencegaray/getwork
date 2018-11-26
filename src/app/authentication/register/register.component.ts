@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
       new Date(),
       this.registrationForm.form.value.companyName,
       this.registrationForm.form.value.address,
-      this.registrationForm.form.value.companyUrl,
+      ' ',
       this.registrationForm.form.value.telephoneNumber,
       this.registrationForm.form.value.email,
       this.registrationForm.form.value.password
