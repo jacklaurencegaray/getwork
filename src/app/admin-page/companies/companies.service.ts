@@ -86,5 +86,6 @@ export class CompanyService {
 
         this.companies.splice(ndx,1);
         this.companiesChanged.emit(this.companies.slice());
-    }   
+    } 
+    
 }
