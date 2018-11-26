@@ -1,8 +1,7 @@
-<div>
-  <app-company-item
-    *ngFor="let company of companies" 
+<div class="company-list">
+  <app-company-item [class.first-item]='first' [class.last-item]='last' *ngFor="let company of companies; let first = first; let last = last"
     [companyElement]="company"></app-company-item>
-  <div>
-    <button [routerLink]="['/admin','companies','create']">Create Company</button>
+  <div class="add-button">
+    <img src='../../../../assets/img/add-button.svg' [routerLink]="['/admin', 'companies', 'create']" />
   </div>
 </div>

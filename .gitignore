@@ -17,6 +17,10 @@
 .settings/
 *.sublime-workspace
 
+# Temporary
+app-routing.module.ts
+.gitignore
+
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json

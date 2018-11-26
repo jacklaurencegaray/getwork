@@ -25,13 +25,14 @@ import { CompanyContractUpdateComponent } from './admin-page/companies/company-c
 import { CompanyJobRequestUpdateComponent } from './admin-page/companies/company-job-request-update/company-job-request-update.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full'},
+  // { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'admin', 
+  {
+    path: 'admin',
     component: AdminPageComponent,
     children: [
-      { path: 'companies', component: CompanyListComponent, outlet: 'adminlistcontent'},
+      { path: 'companies', component: CompanyListComponent, outlet: 'adminlistcontent' },
       { path: 'companies/create', component: CompanyCreateComponent },
       { path: 'companies/:id', component: CompanyDetailComponent },
       { path: 'companies/:id/update', component: CompanyUpdateComponent, pathMatch: 'full' },
@@ -39,13 +40,15 @@ const routes: Routes = [
       { path: 'companies/:id/jobrequests/:jobRequestId', component: CompanyJobRequestsDetailComponent, pathMatch: 'full' },
       { path: 'companies/:id/jobrequests/:jobRequestId/update', component: CompanyJobRequestUpdateComponent, pathMatch: 'full' },
       { path: 'companies/:id/jobrequests/:jobRequestId/contracts', component: CompanyContractListComponent, pathMatch: 'full', outlet: 'adminlistcontent' },
-      { path: 'companies/:id/jobrequests/:jobRequestId/contracts/:contractId', component: CompanyContractDetailComponent, pathMatch: 'full'},
+      { path: 'companies/:id/jobrequests/:jobRequestId/contracts/:contractId', component: CompanyContractDetailComponent, pathMatch: 'full' },
       { path: 'companies/:id/jobrequests/:jobRequestId/contracts/:contractId/update', component: CompanyContractUpdateComponent, pathMatch: 'full' },
-    ] },
-  { path: ':companyName', 
-    component: CompanyPageComponent, 
+    ]
+  },
+  {
+    path: ':companyName',
+    component: CompanyPageComponent,
     children: [
-      { path: 'jobrequests', component: JobrequestListComponent, outlet: 'listcontent'},
+      { path: 'jobrequests', component: JobrequestListComponent, outlet: 'listcontent' },
       { path: 'jobrequests/create', component: JobRequestCreateComponent, pathMatch: 'full' },
       { path: 'jobrequests/:id', component: JobRequestDetailComponent },
       { path: 'jobrequests/:id/contracts/create', component: ContractCreateComponent, pathMatch: 'full' },
@@ -55,7 +58,7 @@ const routes: Routes = [
       { path: 'jobrequests/:id/contracts/:contractId/update', component: ContractUpdateComponent, pathMatch: 'full' },
     ]
   },
-  { path: '**', redirectTo: '/login'}
+  { path: '**', redirectTo: '/admin' }
 
 ];
 

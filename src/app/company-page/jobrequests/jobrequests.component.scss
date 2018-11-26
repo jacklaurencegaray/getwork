@@ -1,17 +1,14 @@
-.content-body-container{
+.content-body-container {
     display: grid;
     grid-template-columns: 4fr 0.5fr 4.5fr;
     grid-template-rows: 1fr;
-    grid-template-areas:
-        "list-content . detail-content"
+    grid-template-areas: "list-content . detail-content"
 }
 
 .list-content {
     grid-area: list-content;
-    border: 1px solid yellow;
 }
 
 .detail-content {
     grid-area: detail-content;
-    border: 1px solid blue;
 }

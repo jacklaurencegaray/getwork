@@ -1,0 +1,17 @@
+.company-list {
+    background-color: #F8F8F8;
+    padding: 30px 50px;
+    overflow: auto;
+    border-radius: 14px;
+    color: #120F3F;
+}
+
+.add-button {
+    position: fixed;
+    bottom: 5vh;
+    right: 5vw;
+    cursor: pointer;
+    img:focus {
+        outline: 0;
+    }
+}

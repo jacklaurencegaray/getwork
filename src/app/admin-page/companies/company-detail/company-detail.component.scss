@@ -1,0 +1,23 @@
+.detail-content-container {
+    .companyName {
+        font-size: 30px;
+        font-weight: 600;
+        line-height: 60px;
+    }
+    div {
+        line-height: 40px;
+    }
+    .detail-btn-group {
+        button {
+            background: #2569FF;
+            border-radius: 5px;
+            font-size: 18px;
+            color: #FFFFFF;
+            letter-spacing: 0.2px;
+            border: 0;
+            margin-right: 12px;
+            padding: 3px 11px;
+            margin-top: 9px;
+        }
+    }
+}

@@ -1,28 +1,28 @@
-.content-header{
-    display:grid;
-    grid-template-columns: 2fr 2fr 2fr 2fr;
+.content-header {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 2fr;
     grid-template-rows: 3fr 1fr;
-    grid-template-areas: 
-        "companyName requests displayHandler contracts"
-        "notification notification notification notification" 
+    grid-template-areas: "companyName requests displayHandler contracts" "notification notification notification notification"
 }
 
 .notification {
     grid-area: notification;
 }
 
-.companyName{
+.companyName {
     grid-area: companyName;
+    font-size: 40px;
+    margin-top: 15px;
 }
 
-.requests{
+.requests {
     grid-area: requests;
 }
 
-.displayHandler{
+.displayHandler {
     grid-area: displayHandler;
 }
 
-.contracts{
+.contracts {
     grid-area: contracts;
 }

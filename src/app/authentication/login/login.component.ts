@@ -23,8 +23,8 @@ export class LoginComponent {
     this.homeService.login(this.loginForm.form.value.email, this.loginForm.form.value.password).subscribe(
       (company: Company) => {
         if (company === null) {
-          this.loginForm.reset();
-          this.router.navigate(['/login']);
+          // this.loginForm.reset();
+          // this.router.navigate(['/login']);
         } else {
           this.router.navigate(['/' + company.companyName]);
         }
