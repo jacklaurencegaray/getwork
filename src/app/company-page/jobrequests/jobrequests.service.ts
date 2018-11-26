@@ -59,24 +59,6 @@ export class JobRequestService {
         return this.http.delete(url);
     }
 
-    // deleteJobRequest(id:number){
-    //     let ndx = this.jobRequests.findIndex(
-    //         obj => obj.id === id
-    //     );
-
-    //     this.jobRequests.splice(ndx,1);
-    //     this.jobRequestsChanged.emit(this.jobRequests.slice());
-    // }
-
-    // updateJobRequest(updatedJobRequest: JobRequest){
-    //     let ndx = this.jobRequests.findIndex(
-    //         obj => obj.id === updatedJobRequest.id
-    //     );
-
-    //     this.jobRequests[ndx] = updatedJobRequest;
-    //     this.jobRequestsChanged.emit(this.jobRequests.slice());
-    // }
-
     getJobRequestsByCompanyId(company_id: number) {
         return this.filterJobRequests(this.jobRequests, company_id).slice();
     }
