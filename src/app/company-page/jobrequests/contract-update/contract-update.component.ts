@@ -4,6 +4,8 @@ import { NgForm } from '@angular/forms';
 import { ContractsService } from '../contracts.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { AdminNavbarService } from 'src/app/admin-navbar/admin-navbar.service';
+import { CompanyService } from 'src/app/admin-page/companies/companies.service';
+import { Company } from 'src/app/shared/company.model';
 
 @Component({
   selector: 'app-contract-update',
@@ -17,23 +19,32 @@ export class ContractUpdateComponent implements OnInit {
   endDate: string;
   expiryDate: string;
   @ViewChild('f') updateForm: NgForm;
+  currentCompany: Company;
 
   constructor(private contractsService: ContractsService,
+    private companyService: CompanyService,
     private route: ActivatedRoute,
     private adminNavbarService: AdminNavbarService,
     private router: Router) { }
 
   ngOnInit() {
-    this.route.params.subscribe(
-      //parameters are only TEST!
-      (params: Params) => {
-        this.contractsService.getContractById(1,+params['id'], +params['contractId']).subscribe(
-          (contract: any) => {
-            this.contractForUpdate = contract;
-          }, (error) => {
-            console.log(error)
+    this.companyService.getCompanyByName(this.route.parent.snapshot.params['companyName']).subscribe(
+      (company: any) => {
+        this.currentCompany = company;
+        this.route.params.subscribe(
+          //parameters are only TEST!
+          (params: Params) => {
+            this.contractsService.getContractById(this.currentCompany.id,+params['id'], +params['contractId']).subscribe(
+              (contract: any) => {
+                this.contractForUpdate = contract;
+              }, (error) => {
+                console.log(error)
+              }
+            );
           }
         );
+      }, (error) => {
+        console.log(error)
       }
     );
   }
@@ -53,15 +64,7 @@ export class ContractUpdateComponent implements OnInit {
             console.log(error);
       }
     );
-    this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests', this.contractForUpdate.jobRequest.id, 'contracts']}}]);
+    this.router.navigate(['/'+this.currentCompany.companyName, {outlets: {primary:[], 'listcontent':['jobrequests', this.contractForUpdate.jobRequest.id, 'contracts']}}]);
     this.adminNavbarService.linkChanged.emit(['Job Requests', ''+this.contractForUpdate.jobRequest.id, 'Contracts']);
-  }
-
-  private strToDate(strDate): Date{
-    let day = parseInt(strDate.substring(0,2));
-    let month = parseInt(strDate.substring(3,5));scrollY
-    let year = parseInt(strDate.substring(6,10));
-
-    return new Date(year,month-1, day);
   }
 }

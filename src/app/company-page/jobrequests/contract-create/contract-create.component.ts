@@ -8,7 +8,6 @@ import { JobRequest } from 'src/app/shared/jobrequest.model';
 import { Company } from 'src/app/shared/company.model';
 import { CompanyService } from 'src/app/admin-page/companies/companies.service';
 import { JobRequestService } from '../jobrequests.service';
-import { runInThisContext } from 'vm';
 
 @Component({
   selector: 'app-contract-create',
@@ -62,7 +61,6 @@ export class ContractCreateComponent implements OnInit {
       this.createForm.form.value.endDate,
       this.createForm.form.value.status
     );
-    console.log(this.currentJobRequest.id);
     this.contractsService.createContract(this.newContract).subscribe(
       (response: any) => {
         console.log(response);
@@ -72,13 +70,5 @@ export class ContractCreateComponent implements OnInit {
       }
     );
     this.router.navigate(['/'+this.currentCompany.companyName, {outlets: {primary:[], 'listcontent':['jobrequests', this.newContract.jobRequest.id, 'contracts']}}]);
-  }
-
-  private strToDate(strDate): Date{
-    let day = parseInt(strDate.substring(0,2));
-    let month = parseInt(strDate.substring(3,5));
-    let year = parseInt(strDate.substring(6,10));
-
-    return new Date(year,month-1, day);
   }
 }

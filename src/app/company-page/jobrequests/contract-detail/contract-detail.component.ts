@@ -51,6 +51,10 @@ export class ContractDetailComponent implements OnInit {
         console.log(error)
       } 
     );
-    this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests', this.contractForDisplay.jobRequest.id, 'contracts']}}]);
+    this.router.navigate(['/'+this.currentCompany.companyName, {outlets: {primary:[], 'listcontent':['jobrequests', this.contractForDisplay.jobRequest.id, 'contracts']}}]);
+  }
+
+  onUpdate(){
+    this.router.navigate(['/'+this.currentCompany.companyName,{outlets:{ primary: ['jobrequests', this.contractForDisplay.jobRequest.id, 'contracts', this.contractForDisplay.id, 'update'], listcontent: ['jobrequests', this.contractForDisplay.jobRequest.id, 'contracts']}}]);
   }
 }
