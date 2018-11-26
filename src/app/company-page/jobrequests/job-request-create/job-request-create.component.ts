@@ -40,8 +40,8 @@ export class JobRequestCreateComponent implements OnInit {
         'versace'),
       this.createForm.form.value.status,
       this.createForm.form.value.description,
-      this.strToDate(this.createForm.form.value.startDate),
-      this.strToDate(this.createForm.form.value.endDate),
+      this.createForm.form.value.startDate,
+      this.createForm.form.value.endDate,
       null
     );
     this.jobRequestService.createJobRequest(this.newJobRequest).subscribe(

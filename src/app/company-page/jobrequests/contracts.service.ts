@@ -32,10 +32,18 @@ export class ContractsService {
         );
     }
 
-    addContract(contract: Contract){
-        this.contracts.push(contract);
-        this.contractsChanged.emit(this.contracts.slice());
+    createContract(contract: any){
+        let url: string = "http://localhost:8090/"+contract.jobRequest.company.companyName+"/"+contract.jobRequest.company.id+"/jobrequests/"+contract.jobRequest.id+"/contracts/create";
+        console.log(url);
+        return this.http.post(url, contract);
     }
+
+    // addContract(contract: Contract){
+    //     this.contracts.push(contract);
+    //     this.contractsChanged.emit(this.contracts.slice());
+    // }
+
+    
 
     // getContractById(id:number){
     //     return this.contracts.find(
