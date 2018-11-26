@@ -23,7 +23,13 @@ export class CompanyListComponent implements OnInit {
     
     this.companyService.companiesChanged.subscribe(
       (companies: Company[]) => {
-        this.companies = companies.slice();
+        this.companyService.getCompanies().subscribe(
+          (companies: any[]) => {
+            this.companies = companies.slice();
+          }, (error) => {
+          console.log(error)
+        }
+        );
       }
     );
   }

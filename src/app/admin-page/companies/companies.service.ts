@@ -15,10 +15,6 @@ export class CompanyService {
     constructor(private http: Http){
 
     }
-    // getCompanies(){
-    //     return this.companies.slice();
-    // }
-
     getCompanies(){
         return this.http.get("http://localhost:8090/getwork/admin/companies")
         .map(
@@ -37,14 +33,6 @@ export class CompanyService {
         this.companies.push(company);
         this.companiesChanged.emit(this.companies.slice());
     }
-
-    // getCompanyById(id:number){
-    //     return this.companies.find(
-    //         obj => {
-    //             return obj.id === id;
-    //         }
-    //     );
-    // }
     
     getCompanyById(company_id: number){
         return this.http.get("http://localhost:8090/getwork/admin/companies/"+company_id)
@@ -60,13 +48,18 @@ export class CompanyService {
         );
     }
 
-    updateCompany(updatedCompany: Company){
-        let ndx = this.companies.findIndex(
-            obj => obj.id === updatedCompany.id
-        );
+    // updateCompany(updatedCompany: Company){
+    //     let ndx = this.companies.findIndex(
+    //         obj => obj.id === updatedCompany.id
+    //     );
 
-        this.companies[ndx] = updatedCompany;
-        this.companiesChanged.emit(this.companies.slice());
+    //     this.companies[ndx] = updatedCompany;
+    //     this.companiesChanged.emit(this.companies.slice());
+    // }
+
+    updateCompany(updatedCompany: Company){
+        let url: string = "http://localhost:8090/getwork/admin/companies/"+updatedCompany.id+"/update";
+        return this.http.post(url, updatedCompany);
     }
 
     deleteCompany(id:number){
