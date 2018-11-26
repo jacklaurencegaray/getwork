@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
   }
   
   goHome(){
-    this.router.navigate(['/carloskie', {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
+    this.router.navigate(['/'+this.route.snapshot.params['companyName'], {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
     this.adminNavbarService.linkChanged.emit(['Job Requests']);
   }
 
