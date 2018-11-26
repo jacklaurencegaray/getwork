@@ -1,43 +1,40 @@
 <div class="register authentication">
-    <div class="header">
-      Getwork.
+  <div class="header">
+    Getwork.
+  </div>
+  <div class="content">
+    <div class="artwork animated fadeInUp">
+      <object data="../../../assets/img/register-art.svg"></object>
     </div>
-    <div class="content">
-      <div class="artwork animated fadeInUp">
-        <object data="../../../assets/img/register-art.svg"></object>
-      </div>
-      <div class="authentication-form">
-        <div class="form-container">
-          <p class="title">Signup to Getwork</p>
-          <p>Get started with Getwork.</p>
-          <div class="form">
-            <form (ngSubmit)="registerCompany(f)" #f="ngForm">
-                <div class="input-form">
-                    <input type="email" placeholder="Email" name="email" ngModel/>
-                  </div>
-                  <div class="input-form">
-                    <input type="password" placeholder="Password" name="password" ngModel/>
-                  </div>
-                  <div class="input-form">
-                    <input type="text" placeholder="Company Name" name="companyName" ngModel/>
-                  </div>
-                  <div class="input-form">
-                    <input type="text" placeholder="Address" name="address" ngModel/>
-                  </div>
-                  <div class="input-form">
-                    <input type="text" placeholder="Company URL" name="companyUrl" ngModel/>
-                  </div>
-                  <div class="input-form">
-                    <input type="text" placeholder="Telephone Number" name="telephoneNumber" ngModel/>
-                  </div>
-                  <div class="input-form">
-                    <button>Register</button>
-                  </div>
-            </form>
-          </div>
-          <p (click)="goToLogin()">Already registered?</p>
+    <div class="authentication-form">
+      <div class="form-container">
+        <p class="title">Signup to Getwork</p>
+        <br />
+        <div class="form">
+          <form (ngSubmit)="registerCompany(f)" #f="ngForm">
+            <div class="input-form">
+              <input type="email" placeholder="Email" name="email" ngModel />
+            </div>
+            <div class="input-form">
+              <input type="password" placeholder="Password" name="password" ngModel />
+            </div>
+            <div class="input-form">
+              <input type="text" placeholder="Company Name" name="companyName" ngModel />
+            </div>
+            <div class="input-form">
+              <input type="text" placeholder="Address" name="address" ngModel />
+            </div>
+            <div class="input-form">
+              <input type="text" placeholder="Telephone Number" name="telephoneNumber" ngModel />
+            </div>
+            <div class="input-form">
+              <button>Register</button>
+            </div>
+          </form>
         </div>
+        <br />
+        <p (click)="goToLogin()">Already registered?</p>
       </div>
     </div>
   </div>
-  
+</div>
