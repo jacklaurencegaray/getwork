@@ -36,11 +36,11 @@ export class JobRequestCreateComponent implements OnInit {
     // new Company is temporary until Company service is edited, and closedDate too
     this.newJobRequest = new JobRequest(
       11,
-      '15101138193',
+      this.makeid(),
       new Date(),
       new Date(),
       this.currentCompany,
-      this.createForm.form.value.status,
+      'NEW',
       this.createForm.form.value.description,
       this.createForm.form.value.startDate,
       this.createForm.form.value.endDate,
@@ -56,5 +56,15 @@ export class JobRequestCreateComponent implements OnInit {
     );
     this.router.navigate(['/'+this.currentCompany.companyName, {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
     
+  }
+
+  private makeid() {
+    let text = "";
+    let possible = "0123456789";
+  
+    for (let i = 0; i < 11; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+  
+    return text;
   }
 }
