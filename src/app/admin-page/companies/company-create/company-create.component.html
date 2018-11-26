@@ -1,27 +1,22 @@
 <form (ngSubmit)="createCompany(f)" #f="ngForm">
+  <h1>Add Company</h1>
   <div>
-    <label for="companyName">Company Name</label>
-    <input type="text" name="companyName" ngModel>
+    <input type="text" name="companyName" placeholder='Company Name' ngModel>
   </div>
   <div>
-    <label for="password">Company Password</label>
-    <input type="password" name="password" ngModel>
+    <input type="password" name="password" placeholder='Company Password' ngModel>
   </div>
   <div>
-      <label for="address">Company Address</label>
-      <input type="text" name="address" ngModel>
-    </div>
-  <div>
-      <label for="telephoneNumber">Company Telephone Number</label>
-      <input type="text" name="telephoneNumber" ngModel>
+    <input type="text" name="address" placeholder='Company Address' ngModel>
   </div>
   <div>
-    <label for="companyUrl">Company URL</label>
-    <input type="text" name="companyUrl" ngModel>
+    <input type="text" name="telephoneNumber" placeholder='Company Telephone Number' ngModel>
   </div>
   <div>
-      <label for="email">Email</label>
-      <input type="text" name="email" ngModel>
+    <input type="text" name="companyUrl" placeholder='Company Url' ngModel>
+  </div>
+  <div>
+    <input type="text" name="email" placeholder='Company Email' ngModel>
   </div>
   <div>
     <button>Create Company</button>

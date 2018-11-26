@@ -1,0 +1,30 @@
+form {
+    max-width: 400px;
+    padding-left: 30px;
+    h1 {
+        font-weight: 600;
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+    div {
+        input {
+            background-color: #F8F8F8;
+            border: 0;
+            padding: 15px 20px;
+            margin: 6px 0;
+            font-size: 16px;
+            width: 100%;
+        }
+        button {
+            background-color: #2569FF;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 5px;
+            border: 0;
+            margin: 15px 0px;
+            &:focus {
+                outline: 0;
+            }
+        }
+    }
+}
