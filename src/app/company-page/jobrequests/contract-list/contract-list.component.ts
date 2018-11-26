@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Contract } from 'src/app/shared/contract.model';
 import { ContractsService } from '../contracts.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { JobRequest } from 'src/app/shared/jobrequest.model';
 import { AdminNavbarService } from 'src/app/admin-navbar/admin-navbar.service';
 import { Company } from 'src/app/shared/company.model';
@@ -20,6 +20,7 @@ export class ContractListComponent implements OnInit {
   constructor(private contractsService: ContractsService,
     private companyService: CompanyService,
     private route: ActivatedRoute,
+    private router: Router,
     private adminNavbarService: AdminNavbarService) { }
 
   ngOnInit() {
@@ -52,12 +53,15 @@ export class ContractListComponent implements OnInit {
       }
     );
 
-
+    
     this.adminNavbarService.linkChanged.emit(['Job Requests', ''+this.jr_id, 'Contracts']);
   }
 
   onCreateContract(){
     this.adminNavbarService.linkChanged.emit(['Job Requests', ''+this.jr_id, 'Contracts' ]);
+    this.router.navigate(['/'+this.currentCompany.companyName,{outlets: {primary: ['jobrequests', this.jr_id, 'contracts', 'create'] , listcontent: ['jobrequests', this.jr_id, 'contracts']}}]);
   }
+
+
 
 }
