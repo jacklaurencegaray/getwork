@@ -59,6 +59,7 @@ export class ContractCreateComponent implements OnInit {
       this.createForm.form.value.contractorName,
       this.createForm.form.value.startDate,
       this.createForm.form.value.endDate,
+      null,
       'NEW'
     );
     this.contractsService.createContract(this.newContract).subscribe(

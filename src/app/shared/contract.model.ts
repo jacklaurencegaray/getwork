@@ -10,6 +10,7 @@ export class Contract{
         public contractorName: string,
         public startDate: Date,
         public endDate: Date,
+        public closedDate: Date,
         public status: string){
     }
 }
