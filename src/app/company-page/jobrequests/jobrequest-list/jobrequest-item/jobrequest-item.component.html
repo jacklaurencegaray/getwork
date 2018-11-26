@@ -1,5 +1,5 @@
 <div
-  [routerLink] = "['/test','jobrequests', jr.id]"
+  [routerLink] = "['/'+jr.company.companyName,'jobrequests', jr.id]"
   (click)="onJobRequestSelected()">
   <p># {{ jr.id }}</p>
   <p>{{ jr.description }}</p>

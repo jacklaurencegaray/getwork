@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JobRequestService } from './jobrequests.service';
 import { JobRequest } from 'src/app/shared/jobrequest.model';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ContractsService } from './contracts.service';
 import { CompanyService } from 'src/app/admin-page/companies/companies.service';
 
@@ -15,6 +15,7 @@ export class JobrequestsComponent implements OnInit {
   jobRequestForDisplay: JobRequest;
   
   constructor(private jobRequestService: JobRequestService,
+    private route: ActivatedRoute,
     private router: Router) { }
   
   ngOnInit(){
@@ -24,7 +25,8 @@ export class JobrequestsComponent implements OnInit {
         }
     );
     //temp PARAMETERS == TEST
-    this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
+    console.log(this.route.snapshot.params['companyName']);
+    this.router.navigate(['/'+this.route.snapshot.params['companyName'], {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
   }
 
 }

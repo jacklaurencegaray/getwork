@@ -4,6 +4,7 @@ import { JobRequest } from 'src/app/shared/jobrequest.model';
 import { JobRequestService } from '../jobrequests.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Company } from 'src/app/shared/company.model';
+import { CompanyService } from 'src/app/admin-page/companies/companies.service';
 
 @Component({
   selector: 'app-job-request-create',
@@ -13,31 +14,32 @@ import { Company } from 'src/app/shared/company.model';
 export class JobRequestCreateComponent implements OnInit {
   @ViewChild("f") createForm: NgForm;
   newJobRequest: JobRequest;
+  currentCompany: Company;
 
   constructor(private jobRequestService: JobRequestService,
+    private companyService: CompanyService,
     private route: ActivatedRoute,
     private router: Router){
 
   }
   ngOnInit() {
+    this.companyService.getCompanyByName(this.route.parent.snapshot.params['companyName']).subscribe(
+      (company: any) => {
+        this.currentCompany = company;
+      }, (error) => {
+        console.log(error)
+      }
+    );
   }
   
   createJobRequest(){
     // new Company is temporary until Company service is edited, and closedDate too
     this.newJobRequest = new JobRequest(
       11,
-      '15101138190',
+      '15101138195',
       new Date(),
       new Date(),
-      new Company(1,
-        new Date(),
-        new Date(), 
-        'Wakanda', 
-        'France de Guatero', 
-        'versace.com', 
-        '09452186422', 
-        'versace@gmail.com', 
-        'versace'),
+      this.currentCompany,
       this.createForm.form.value.status,
       this.createForm.form.value.description,
       this.createForm.form.value.startDate,
@@ -52,15 +54,7 @@ export class JobRequestCreateComponent implements OnInit {
             console.log(error);
       }
     );
-    this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
+    this.router.navigate(['/'+this.currentCompany.companyName, {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
     
-  }
-
-  private strToDate(strDate): Date{
-    let day = parseInt(strDate.substring(0,2));
-    let month = parseInt(strDate.substring(3,5));
-    let year = parseInt(strDate.substring(6,10));
-
-    return new Date(year,month-1, day);
   }
 }

@@ -15,6 +15,7 @@ export class CompanyService {
     constructor(private http: Http) {
 
     }
+<<<<<<< HEAD
     getCompanies() {
         return this.http.get("http://104.248.149.206:8090/getwork/admin/companies")
             .map(
@@ -27,6 +28,20 @@ export class CompanyService {
                     return Observable.throw('something went wrong');
                 }
             );
+=======
+    getCompanies(){
+        return this.http.get("http://104.248.149.206:8090/getwork/admin/companies")
+        .map(
+            (response) => {
+                return response.json();
+            }
+        )
+        .catch(
+            (error: Response) => {
+                return Observable.throw('something went wrong');
+            }
+        );
+>>>>>>> 932eb4a89bb65fe3da388981f0f032e99277ab47
     }
 
     // addCompany(company: Company){
@@ -34,12 +49,17 @@ export class CompanyService {
     //     this.companiesChanged.emit(this.companies.slice());
     // }
 
+<<<<<<< HEAD
     createCompany(company: any) {
+=======
+    createCompany(company:any){
+>>>>>>> 932eb4a89bb65fe3da388981f0f032e99277ab47
         let url: string = "http://104.248.149.206:8090/getwork/register";
         console.log(url);
         return this.http.post(url, company);
     }
 
+<<<<<<< HEAD
     createJobRequest(jobRequest: any) {
         let url: string = "http://104.248.149.206:8090/getwork/" + jobRequest.company.id + "/jobrequests/create";
         console.log(url);
@@ -76,6 +96,44 @@ export class CompanyService {
 
     updateCompany(updatedCompany: Company) {
         let url: string = "http://104.248.149.206:8090/getwork/admin/companies/" + updatedCompany.id + "/update";
+=======
+    createJobRequest(jobRequest: any){
+        let url: string = "http://104.248.149.206:8090/getwork/"+jobRequest.company.id+"/jobrequests/create";
+        console.log(url);
+        return this.http.post(url, jobRequest);
+    }
+    
+    getCompanyById(company_id: number){
+        return this.http.get("http://104.248.149.206:8090/getwork/admin/companies/"+company_id)
+        .map(
+            (response) => {
+                return response.json();
+            }
+        )
+        .catch(
+            (error: Response) => {
+                return Observable.throw('something went wrong');
+            }
+        );
+    }
+
+    getCompanyByName(companyName: string){
+        return this.http.get("http://104.248.149.206:8090/getwork/admin/companies/getByName/"+companyName)
+        .map(
+            (response) => {
+                return response.json();
+            }
+        )
+        .catch(
+            (error: Response) => {
+                return Observable.throw('something went wrong');
+            }
+        );
+    }
+
+    updateCompany(updatedCompany: Company){
+        let url: string = "http://104.248.149.206:8090/getwork/admin/companies/"+updatedCompany.id+"/update";
+>>>>>>> 932eb4a89bb65fe3da388981f0f032e99277ab47
         return this.http.post(url, updatedCompany);
     }
 
