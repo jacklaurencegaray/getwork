@@ -24,13 +24,19 @@ export class JobRequestDetailComponent implements OnInit {
     this.companyService.getCompanyByName(this.route.parent.snapshot.params['companyName']).subscribe(
       (company: any) => {
         this.currentCompany = company;
-        this.jobRequestService.getJobRequestById(1,+this.route.snapshot.params['id']).subscribe(
-          (jobRequest: any) => {
-            this.jobRequestForDisplay = jobRequest;
-          }, (error) => {
-            console.log(error)
-          }
-        );
+          this.route.params.subscribe(
+            (params: Params) => {
+              // the passed parameters are just TESTS
+              this.jobRequestService.getJobRequestById(this.currentCompany.id,+params['id']).subscribe(
+                (jobRequest: any) => {
+                  this.jobRequestForDisplay = jobRequest;
+                  console.log(this.jobRequestForDisplay);
+                }, (error) => {
+                  console.log(error)
+                }
+              );
+            }
+          );
       }, (error) => {
         console.log(error)
       }

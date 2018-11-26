@@ -36,7 +36,7 @@ export class JobRequestCreateComponent implements OnInit {
     // new Company is temporary until Company service is edited, and closedDate too
     this.newJobRequest = new JobRequest(
       11,
-      '15101138195',
+      '15101138193',
       new Date(),
       new Date(),
       this.currentCompany,
