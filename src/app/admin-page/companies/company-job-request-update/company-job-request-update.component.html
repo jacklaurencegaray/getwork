@@ -1,0 +1,31 @@
+<form (ngSubmit)="updateJobRequest(f)" #f="ngForm">
+  <div>
+    <label for="description">Description</label>
+    <input 
+      type="text" 
+      [(ngModel)] = "jobRequestForUpdate.description" 
+      name="description">
+  </div>
+  <div>
+      <label for="status">Status</label>
+      <input 
+        type="text" 
+        name="status"
+        [(ngModel)] = "jobRequestForUpdate.status">
+    </div>
+  <div>
+      <label for="duration">Duration</label>
+      <input
+        type="date" 
+        name="startDate" 
+        [(ngModel)] = "jobRequestForUpdate.startDate">
+      <span> to </span>
+      <input 
+        type="date" 
+        name="endDate" 
+        [(ngModel)] = "jobRequestForUpdate.endDate">
+  </div>
+  <div>
+    <button>Update Request</button>
+  </div>
+</form>

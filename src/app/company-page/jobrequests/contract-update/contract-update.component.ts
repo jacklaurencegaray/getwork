@@ -25,30 +25,41 @@ export class ContractUpdateComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(
+      //parameters are only TEST!
       (params: Params) => {
-        this.contractForUpdate = Object.create(this.contractsService.getContractById(+params['contractId']));
+        this.contractsService.getContractById(1,+params['id'], +params['contractId']).subscribe(
+          (contract: any) => {
+            this.contractForUpdate = contract;
+          }, (error) => {
+            console.log(error)
+          }
+        );
       }
     );
-    console.log(this.contractForUpdate.startDate);
-    this.startDate = this.contractForUpdate.startDate.toISOString().substring(0,10);
-    this.endDate = this.contractForUpdate.endDate.toISOString().substring(0,10);
   }
 
   updateContract(){
     this.contractForUpdate.contractorName = this.updateForm.form.value.contractorName;
     this.contractForUpdate.type = this.updateForm.form.value.type;
     this.contractForUpdate.status = this.updateForm.form.value.status;
-    this.contractForUpdate.startDate = this.strToDate(this.updateForm.form.value.startDate);
-    this.contractForUpdate.endDate = this.strToDate(this.updateForm.form.value.endDate);
+    this.contractForUpdate.startDate = this.updateForm.form.value.startDate;
+    this.contractForUpdate.endDate = this.updateForm.form.value.endDate;
     
-    this.contractsService.updateContracts(this.contractForUpdate);
-    this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests', this.contractForUpdate.jobRequest_id, 'contracts']}}]);
-    this.adminNavbarService.linkChanged.emit(['Job Requests', ''+this.contractForUpdate.jobRequest_id, 'Contracts']);
+    this.contractsService.updateContracts(this.contractForUpdate).subscribe(
+      (response: any) => {
+        console.log(response);
+        this.contractsService.contractsChanged.emit([]);
+      }, (error) => {
+            console.log(error);
+      }
+    );
+    this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests', this.contractForUpdate.jobRequest.id, 'contracts']}}]);
+    this.adminNavbarService.linkChanged.emit(['Job Requests', ''+this.contractForUpdate.jobRequest.id, 'Contracts']);
   }
 
   private strToDate(strDate): Date{
     let day = parseInt(strDate.substring(0,2));
-    let month = parseInt(strDate.substring(3,5));
+    let month = parseInt(strDate.substring(3,5));scrollY
     let year = parseInt(strDate.substring(6,10));
 
     return new Date(year,month-1, day);

@@ -1,40 +1,82 @@
 import { Company } from "src/app/shared/company.model";
 import { EventEmitter, Injectable } from "@angular/core";
 
+import { Http, Headers } from "@angular/http";
+import 'rxjs/Rx';
+import { Observable } from "rxjs";
+
+@Injectable()
 export class CompanyService {
-    private companies: Company[] = [
-        new Company(1,'Versace','Italia Romano', '0944223222','versace.com', 'versace@gmail.com'),
-        new Company(2,'Dolce','France Paris', '55523216','dolce.com', 'dolce@gmail.com'),
-        new Company(3,'Gabana','Boutiq de Greek', '90223152','gabana.com', 'gabana@gmail.com')
-    ];
+    private companies: Company[];
 
     companySelected = new EventEmitter<Company>();
     companiesChanged = new EventEmitter<Company[]>();
+    
+    constructor(private http: Http){
 
+    }
     getCompanies(){
-        return this.companies.slice();
+        return this.http.get("http://localhost:8090/getwork/admin/companies")
+        .map(
+            (response) => {
+                return response.json();
+            }
+        )
+        .catch(
+            (error: Response) => {
+                return Observable.throw('something went wrong');
+            }
+        );
     }
 
-    addCompany(company: Company){
-        this.companies.push(company);
-        this.companiesChanged.emit(this.companies.slice());
+    // addCompany(company: Company){
+    //     this.companies.push(company);
+    //     this.companiesChanged.emit(this.companies.slice());
+    // }
+
+    createCompany(company:any){
+        let url: string = "http://localhost:8090/getwork/register";
+        console.log(url);
+        return this.http.post(url, company);
     }
 
-    getCompanyById(id:number){
-        return this.companies.find(
-            obj => {
-                return obj.id === id;
+    createJobRequest(jobRequest: any){
+        let url: string = "http://localhost:8090/getwork/"+jobRequest.company.id+"/jobrequests/create";
+        console.log(url);
+        return this.http.post(url, jobRequest);
+    }
+    
+    getCompanyById(company_id: number){
+        return this.http.get("http://localhost:8090/getwork/admin/companies/"+company_id)
+        .map(
+            (response) => {
+                return response.json();
+            }
+        )
+        .catch(
+            (error: Response) => {
+                return Observable.throw('something went wrong');
+            }
+        );
+    }
+
+    getCompanyByName(companyName: string){
+        return this.http.get("http://localhost:8090/getwork/admin/companies/"+companyName)
+        .map(
+            (response) => {
+                return response.json();
+            }
+        )
+        .catch(
+            (error: Response) => {
+                return Observable.throw('something went wrong');
             }
         );
     }
 
     updateCompany(updatedCompany: Company){
-        let ndx = this.companies.findIndex(
-            obj => obj.id === updatedCompany.id
-        );
-
-        this.companies[ndx] = updatedCompany;
-        this.companiesChanged.emit(this.companies.slice());
+        let url: string = "http://localhost:8090/getwork/admin/companies/"+updatedCompany.id+"/update";
+        return this.http.post(url, updatedCompany);
     }
 
     deleteCompany(id:number){
@@ -44,5 +86,6 @@ export class CompanyService {
 
         this.companies.splice(ndx,1);
         this.companiesChanged.emit(this.companies.slice());
-    }   
+    } 
+    
 }

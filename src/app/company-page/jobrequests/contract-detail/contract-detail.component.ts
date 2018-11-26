@@ -18,13 +18,28 @@ export class ContractDetailComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
-        this.contractForDisplay = this.contractsService.getContractById(+params['contractId']);
+        //paramters are just TEST!
+        this.contractsService.getContractById(1,+params['id'],+params['contractId']).subscribe(
+          (contract: any) => {
+            this.contractForDisplay = contract;
+            console.log(contract);
+          }, (error) => {
+            console.log(error)
+          }
+        );
       }
     );
   }
 
   deleteContract(){
-    this.contractsService.deleteContract(this.contractForDisplay.id);
-    this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests', this.contractForDisplay.jobRequest_id, 'contracts']}}]);
+    this.contractsService.deleteContract(this.contractForDisplay.jobRequest.company.id,this.contractForDisplay.jobRequest.id,this.contractForDisplay.id).subscribe(
+      (response: any) => {
+        console.log("From server:"+response);
+        this.contractsService.contractsChanged.emit([]);
+      }, (error) => {
+        console.log(error)
+      } 
+    );
+    this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests', this.contractForDisplay.jobRequest.id, 'contracts']}}]);
   }
 }

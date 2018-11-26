@@ -13,10 +13,23 @@ export class CompanyListComponent implements OnInit {
   constructor(private companyService: CompanyService) { }
 
   ngOnInit() {
-    this.companies = this.companyService.getCompanies();
+    this.companyService.getCompanies().subscribe(
+      (companies: any[]) => {
+        this.companies = companies.slice();
+      }, (error) => {
+        console.log(error)
+      }
+    );
+    
     this.companyService.companiesChanged.subscribe(
       (companies: Company[]) => {
-        this.companies = companies.slice();
+        this.companyService.getCompanies().subscribe(
+          (companies: any[]) => {
+            this.companies = companies.slice();
+          }, (error) => {
+          console.log(error)
+        }
+        );
       }
     );
   }

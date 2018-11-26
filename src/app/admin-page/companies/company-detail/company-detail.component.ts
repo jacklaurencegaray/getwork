@@ -16,9 +16,21 @@ export class CompanyDetailComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
+    // this.route.params.subscribe(
+    //   (params: Params) => {
+    //     this.companyForDisplay = this.companyService.getCompanyById(+params['id']);
+    //   }
+    // );
     this.route.params.subscribe(
       (params: Params) => {
-        this.companyForDisplay = this.companyService.getCompanyById(+params['id']);
+        // the passed parameters are just TESTS
+        this.companyService.getCompanyById(+params['id']).subscribe(
+          (company: any) => {
+            this.companyForDisplay = company;
+          }, (error) => {
+            console.log(error)
+          }
+        );
       }
     );
   }

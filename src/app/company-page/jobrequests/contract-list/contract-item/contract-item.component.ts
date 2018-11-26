@@ -20,6 +20,6 @@ export class ContractItemComponent implements OnInit {
 
   onContractSelected(){
     this.contractsService.contractSelected.emit(this.contract);
-    this.adminNavbarService.linkChanged.emit(['Job Requests', ''+this.contract.jobRequest_id, 'Contracts', ''+this.contract.id]);
+    this.adminNavbarService.linkChanged.emit(['Job Requests', ''+this.contract.jobRequest.id, 'Contracts', ''+this.contract.id]);
   }
 }

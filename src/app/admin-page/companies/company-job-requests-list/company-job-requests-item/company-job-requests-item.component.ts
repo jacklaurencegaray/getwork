@@ -19,7 +19,7 @@ export class CompanyJobRequestsItemComponent implements OnInit {
 
   onJobRequestSelected(){
     this.jobRequestService.jobRequestSelected.emit(this.jr);
-    this.adminNavbarService.linkChanged.emit(['sample name', 'requests', this.jr.displayHandler]);
+    this.adminNavbarService.linkChanged.emit(['sample name', 'requests', this.jr.description]);
   }
 
 }

@@ -23,15 +23,24 @@ export class CompanyCreateComponent implements OnInit {
   
   createCompany(){
     this.newCompany = new Company(
-      Math.floor(Math.random() * (50000 - 5 + 1)) + 5,
+      10,
+      new Date(),
+      new Date(),
       this.createForm.form.value.companyName,
       this.createForm.form.value.address,
-      this.createForm.form.value.contactNum,
-      this.createForm.form.value.website,
+      this.createForm.form.value.companyUrl,
+      this.createForm.form.value.telephoneNumber,
       this.createForm.form.value.email,
+      this.createForm.form.value.password
     );
-    this.companyService.addCompany(this.newCompany);
-    console.log(this.companyService.getCompanies());
+    this.companyService.createCompany(this.newCompany).subscribe(
+      (response: any) => {
+        console.log(response);
+        this.companyService.companiesChanged.emit([]);
+      }, (error) => {
+            console.log(error);
+      }
+    );
     this.router.navigate(['/admin', {outlets: {primary:[], 'adminlistcontent':['companies']}}]);
     
   }

@@ -1,8 +1,8 @@
 <div class="detail-content-container">
   <h3 class="companyName">{{ companyForDisplay.companyName }}</h3>
   <div class="address">{{ companyForDisplay.address }}</div>
-  <div class="contactNum">{{ companyForDisplay.contactNum }}</div>
-  <div class="website">{{ companyForDisplay.website }}</div>
+  <div class="telephoneNumber">{{ companyForDisplay.telephoneNumber }}</div>
+  <div class="website">{{ companyForDisplay.companyUrl }}</div>
   <div class="email">{{ companyForDisplay.email }}</div>
   <div class="detail-btn-group">
     <button [routerLink]="['/admin',{outlets: {primary: [], adminlistcontent: ['companies', companyForDisplay.id, 'jobrequests' ]}}]">

@@ -1,19 +1,82 @@
 import { JobRequest } from "src/app/shared/jobrequest.model";
-import { EventEmitter } from "@angular/core";
+import { EventEmitter, Injectable } from "@angular/core";
 
+import { Http, Headers } from "@angular/http";
+import 'rxjs/Rx';
+import { Observable } from "rxjs";
+
+@Injectable()
 export class JobRequestService{
-    private jobRequests: JobRequest[] = [
-        new JobRequest(1, 1, 'Fenty Beauty', 'New', 'jack', 'a boy', new Date(), new Date(), new Date()),
-        new JobRequest(2, 2, 'Kylioe', 'Active', 'carlo', 'a boy', new Date(), new Date(), new Date()),
-        new JobRequest(3, 3, 'Zalora', 'Inactive', 'thessa', 'a girl', new Date(), new Date(), new Date())
-    ];
+    private jobRequests: JobRequest[];
+
+    constructor(private http: Http){
+    }
     
     jobRequestSelected = new EventEmitter<JobRequest>();
     jobRequestsChanged = new EventEmitter<JobRequest[]>();
-    getJobRequests(){
-        return this.jobRequests.slice();
+
+    getJobRequests(company_id: number){
+        return this.http.get("http://localhost:8090/getwork/"+company_id+"/jobrequests")
+        .map(
+            (response) => {
+                return response.json();
+            }
+        )
+        .catch(
+            (error: Response) => {
+                return Observable.throw('something went wrong');
+            }
+        );
     }
     
+    createJobRequest(jobRequest: any){
+        let url: string = "http://localhost:8090/getwork/"+jobRequest.company.id+"/jobrequests/create";
+        console.log(url);
+        return this.http.post(url, jobRequest);
+    }
+    
+    getJobRequestById(company_id: number, req_id: number){
+        return this.http.get("http://localhost:8090/getwork/"+company_id+"/jobrequests/"+req_id)
+        .map(
+            (response) => {
+                return response.json();
+            }
+        )
+        .catch(
+            (error: Response) => {
+                return Observable.throw('something went wrong');
+            }
+        );
+    }
+
+    updateJobRequest(updatedJobRequest: JobRequest){
+        let url: string = "http://localhost:8090/getwork/"+updatedJobRequest.company.id+"/jobrequests/"+updatedJobRequest.id+"/update";
+        return this.http.post(url, updatedJobRequest);
+    }
+
+    deleteJobRequest(companyId: number, request_id:number){
+        let url: string = "http://localhost:8090/getwork/"+companyId+"/jobrequests/"+request_id;
+        return this.http.delete(url);
+    }
+    
+    // deleteJobRequest(id:number){
+    //     let ndx = this.jobRequests.findIndex(
+    //         obj => obj.id === id
+    //     );
+
+    //     this.jobRequests.splice(ndx,1);
+    //     this.jobRequestsChanged.emit(this.jobRequests.slice());
+    // }
+
+    // updateJobRequest(updatedJobRequest: JobRequest){
+    //     let ndx = this.jobRequests.findIndex(
+    //         obj => obj.id === updatedJobRequest.id
+    //     );
+
+    //     this.jobRequests[ndx] = updatedJobRequest;
+    //     this.jobRequestsChanged.emit(this.jobRequests.slice());
+    // }
+
     getJobRequestsByCompanyId(company_id: number){
         return this.filterJobRequests(this.jobRequests, company_id).slice();
     }
@@ -21,14 +84,6 @@ export class JobRequestService{
     addJobRequest(jobRequest: JobRequest){
         this.jobRequests.push(jobRequest);
         this.jobRequestsChanged.emit(this.jobRequests.slice());
-    }
-
-    getJobRequestById(id:number){
-        return this.jobRequests.find(
-            obj => {
-                return obj.id === id;
-            }
-        );
     }
     
     filterJobRequests(jobRequests: JobRequest[], company_id: number){
@@ -41,23 +96,5 @@ export class JobRequestService{
                }
             }
         );
-    }
-
-    updateJobRequest(updatedJobRequest: JobRequest){
-        let ndx = this.jobRequests.findIndex(
-            obj => obj.id === updatedJobRequest.id
-        );
-
-        this.jobRequests[ndx] = updatedJobRequest;
-        this.jobRequestsChanged.emit(this.jobRequests.slice());
-    }
-
-    deleteJobRequest(id:number){
-        let ndx = this.jobRequests.findIndex(
-            obj => obj.id === id
-        );
-
-        this.jobRequests.splice(ndx,1);
-        this.jobRequestsChanged.emit(this.jobRequests.slice());
     }
 }

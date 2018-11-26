@@ -4,6 +4,8 @@ import { Contract } from 'src/app/shared/contract.model';
 import { ContractsService } from '../contracts.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminNavbarService } from 'src/app/admin-navbar/admin-navbar.service';
+import { JobRequest } from 'src/app/shared/jobrequest.model';
+import { Company } from 'src/app/shared/company.model';
 
 @Component({
   selector: 'app-contract-create',
@@ -26,17 +28,47 @@ export class ContractCreateComponent implements OnInit {
   }
   
   createContract(){
+    // parameters here are only temporary! TEST
     this.newContract = new Contract(
-      Math.floor(Math.random() * (50000 - 5 + 1)) + 5,
-      +this.route.snapshot.params['id'],
+      20,
+      new JobRequest(
+        4,
+        '15101138101',
+        new Date(),
+        new Date(),
+        new Company(1,
+          new Date(),
+          new Date(), 
+          'carloski', 
+          'France de Guatero', 
+          'versace.com', 
+          '09452186422', 
+          'versace@gmail.com', 
+          'versace'),
+        this.createForm.form.value.status,
+        this.createForm.form.value.description,
+        this.createForm.form.value.startDate,
+        this.createForm.form.value.endDate,
+        null
+      ),
+      new Date(),
+      new Date(),
+      '15101138109',
       this.createForm.form.value.type,
       this.createForm.form.value.contractorName,
-      this.strToDate(this.createForm.form.value.startDate),
-      this.strToDate(this.createForm.form.value.endDate),
+      this.createForm.form.value.startDate,
+      this.createForm.form.value.endDate,
       this.createForm.form.value.status
     );
-    this.contractsService.addContract(this.newContract);
-    this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests', this.newContract.jobRequest_id, 'contracts']}}]);
+    this.contractsService.createContract(this.newContract).subscribe(
+      (response: any) => {
+        console.log(response);
+        this.contractsService.contractsChanged.emit([]);
+      }, (error) => {
+            console.log(error);
+      }
+    );
+    this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests', this.newContract.jobRequest.id, 'contracts']}}]);
   }
 
   private strToDate(strDate): Date{

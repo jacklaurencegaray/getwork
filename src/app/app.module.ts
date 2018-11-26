@@ -39,6 +39,11 @@ import { CompanyContractDetailComponent } from './admin-page/companies/company-c
 import { CompanyContractUpdateComponent } from './admin-page/companies/company-contract-update/company-contract-update.component';
 import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
 import { AdminNavbarService } from './admin-navbar/admin-navbar.service';
+import { HttpModule } from '@angular/http';
+import { CompanyJobRequestUpdateComponent } from './admin-page/companies/company-job-request-update/company-job-request-update.component';
+import { CompanyService } from './admin-page/companies/companies.service';
+import { HomeService } from './home.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -73,13 +78,16 @@ import { AdminNavbarService } from './admin-navbar/admin-navbar.service';
     CompanyContractDetailComponent,
     CompanyContractUpdateComponent,
     AdminNavbarComponent,
+    CompanyJobRequestUpdateComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [HomeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

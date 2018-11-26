@@ -1,19 +1,18 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { JobRequest } from 'src/app/shared/jobrequest.model';
-import { JobRequestService } from '../jobrequests.service';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { NgForm, FormArray, FormGroup, FormControl } from '@angular/forms';
+import { ActivatedRoute, Router, Params } from '@angular/router';
+import { JobRequestService } from 'src/app/company-page/jobrequests/jobrequests.service';
+import { NgForm } from '@angular/forms';
 import { AdminNavbarService } from 'src/app/admin-navbar/admin-navbar.service';
+import { JobRequest } from 'src/app/shared/jobrequest.model';
 
 @Component({
-  selector: 'app-job-request-update',
-  templateUrl: './job-request-update.component.html',
-  styleUrls: ['./job-request-update.component.scss']
+  selector: 'app-company-job-request-update',
+  templateUrl: './company-job-request-update.component.html',
+  styleUrls: ['./company-job-request-update.component.scss']
 })
-export class JobRequestUpdateComponent implements OnInit {
+export class CompanyJobRequestUpdateComponent implements OnInit {
+
   jobRequestForUpdate: JobRequest;
-  startDate: string;
-  endDate: string;
   closedDate = null;
   @ViewChild('f') updateForm: NgForm;
 
@@ -25,7 +24,7 @@ export class JobRequestUpdateComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
-        this.jobRequestService.getJobRequestById(1,+params['id']).subscribe(
+        this.jobRequestService.getJobRequestById(+params['id'],+params['jobRequestId']).subscribe(
           (jobRequest: any) => {
             this.jobRequestForUpdate = jobRequest;
           }, (error) => {
@@ -51,16 +50,7 @@ export class JobRequestUpdateComponent implements OnInit {
             console.log(error);
       }
     );
-    this.router.navigate(['/test', {outlets: {primary:[], 'listcontent':['jobrequests']}}]);
-    this.adminNavbarService.linkChanged.emit(['Job Requests']);
+    this.router.navigate(['/admin', {outlets: {primary:[], 'adminlistcontent':['companies', +this.route.snapshot.params['id'], 'jobrequests']}}]);
+    this.adminNavbarService.linkChanged.emit([this.jobRequestForUpdate.company.companyName, 'Job Requests']);
   }
-
-  private strToDate(strDate): Date{
-    let day = parseInt(strDate.substring(0,2));
-    let month = parseInt(strDate.substring(3,5));
-    let year = parseInt(strDate.substring(6,10));
-
-    return new Date(year,month-1, day);
-  }
-
 }
