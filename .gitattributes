@@ -1,1 +1,7 @@
-*/*.scss linguist-vendored
+src/assets/* linguist-vendored
+src/*.scss linguist-vendored
+src/app/*.scss linguist-vendored
+src/app/*/*.scss linguist-vendored
+src/app/*/*/*.scss linguist-vendored
+src/app/*/*/*/.scss linguist-vendored
+src/app/*/*/*/*.scss linguist-vendored
